@@ -1,0 +1,117 @@
+/* ==========================================================================
+   AKKSP — komponenty (znovupoužitelné napříč webem)
+   ========================================================================== */
+
+/* --- Tlačítko: text | šipkový modul (styl B) ---------------------------- */
+.ak-btn {
+  display: inline-flex; align-items: stretch; min-height: 48px; border-radius: var(--ak-r-1); overflow: hidden;
+  font-family: var(--ak-sans); font-size: 15px; line-height: 24px; font-weight: 600; white-space: nowrap;
+  transition: background-color var(--ak-t-fast) var(--ak-ease), box-shadow var(--ak-t-fast) var(--ak-ease), transform var(--ak-t-fast) var(--ak-ease);
+}
+.ak-btn > span { display: flex; align-items: center; padding: 12px 18px; }
+.ak-btn > i { display: grid; place-items: center; width: 48px; font-style: normal; transition: background-color var(--ak-t-fast) var(--ak-ease); }
+.ak-btn .ak-ico { transition: transform var(--ak-t) var(--ak-ease); }
+.ak-btn:hover .ak-ico { transform: translateX(3px); }
+.ak-btn:active { transform: translateY(1px); }
+
+.ak-btn--primary { background: var(--ak-gold-soft); color: var(--ak-navy); }
+.ak-btn--primary > i { background: var(--ak-gold); }
+.ak-btn--primary:hover > i { background: var(--ak-amber); }
+
+.ak-btn--secondary { color: var(--fg); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.ak-btn--secondary > i { box-shadow: inset 1px 0 0 var(--line-strong); color: var(--ctrl); }
+.ak-btn--secondary:hover { background: var(--ak-ink-08); }
+.ak-dark .ak-btn--secondary:hover { background: var(--ak-paper-08); }
+
+.ak-btn--glass { color: var(--ak-paper); background: var(--ak-glass-bg); box-shadow: inset 0 0 0 1px var(--ak-glass-border), var(--ak-glass-highlight); backdrop-filter: var(--ak-glass-blur); -webkit-backdrop-filter: var(--ak-glass-blur); }
+.ak-btn--glass > i { box-shadow: inset 1px 0 0 var(--ak-glass-border); color: var(--ak-gold); }
+.ak-btn--glass:hover { background: rgb(250 248 244 / .14); }
+
+.ak-btn--sm { min-height: 40px; font-size: 14px; }
+.ak-btn--sm > span { padding: 8px 14px; }
+.ak-btn--sm > i { width: 40px; }
+
+/* Textový odkaz: mono verzálky + šipka */
+.ak-link {
+  display: inline-flex; align-items: center; gap: 10px; padding: 6px 0;
+  font-family: var(--ak-mono); font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--fg);
+  background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 1px no-repeat;
+  transition: background-size var(--ak-t) var(--ak-ease);
+}
+.ak-link .ak-ico { transition: transform var(--ak-t) var(--ak-ease); }
+.ak-link:hover { background-size: 100% 1px; }
+.ak-link:hover .ak-ico { transform: translateX(3px); }
+
+/* --- Přepínač „+ → ×" --------------------------------------------------- */
+.ak-px {
+  position: relative; flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--ak-r-1);
+  box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--ctrl);
+  transition: background-color var(--ak-t-fast) var(--ak-ease), color var(--ak-t-fast) var(--ak-ease), box-shadow var(--ak-t-fast) var(--ak-ease);
+}
+.ak-px__ico { position: relative; width: 14px; height: 14px; transition: transform var(--ak-t) var(--ak-ease); }
+.ak-px__ico::before, .ak-px__ico::after { content: ""; position: absolute; left: 50%; top: 50%; background: currentColor; transform: translate(-50%, -50%); }
+.ak-px__ico::before { width: 14px; height: 1.5px; }
+.ak-px__ico::after { width: 1.5px; height: 14px; }
+[aria-expanded="true"] .ak-px, .ak-px[aria-expanded="true"] { background: var(--ak-gold-soft); color: var(--ak-navy); box-shadow: none; }
+[aria-expanded="true"] .ak-px__ico { transform: rotate(45deg); }
+
+/* --- Sklo ----------------------------------------------------------------- */
+.ak-glass {
+  background: var(--ak-glass-bg); border: 1px solid var(--ak-glass-border); border-radius: var(--ak-r-2);
+  backdrop-filter: var(--ak-glass-blur); -webkit-backdrop-filter: var(--ak-glass-blur);
+  box-shadow: var(--ak-glass-highlight), 0 24px 60px rgb(0 10 20 / .22);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ak-glass, .ak-btn--glass { background: rgb(2 24 44 / .88); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .ak-glass, .ak-btn--glass, .ak-nav__bar { background: var(--ak-navy-850) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+}
+
+/* --- Fotka s navy překryvem (podklad pro sklo) ------------------------- */
+.ak-photo { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.ak-photo img { width: 100%; height: 100%; object-fit: cover; }
+.ak-photo::after { content: ""; position: absolute; inset: 0; background: var(--overlay, rgb(0 22 40 / .72)); }
+
+/* --- Hlavička sekce (švýcarská: index | nadpis | akce) ------------------ */
+.ak-head { row-gap: var(--ak-s-4); align-items: end; padding-top: var(--ak-s-5); border-top: 1px solid var(--line); margin-bottom: var(--ak-s-8); }
+.ak-head__label { grid-column: 1 / 4; align-self: start; }
+.ak-head__title { grid-column: 4 / 10; }
+.ak-head__title .ak-lead { margin-top: var(--ak-s-4); max-width: 560px; }
+.ak-head__action { grid-column: 10 / 13; justify-self: end; }
+
+/* --- Přepínač jazyka (segment) ------------------------------------------ */
+.ak-seg { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 3px; border-radius: var(--ak-r-1); background: rgb(0 22 40 / .45); box-shadow: inset 0 0 0 1px var(--ak-paper-16); }
+.ak-seg button { position: relative; z-index: 1; padding: 6px 14px; font-family: var(--ak-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--ak-paper-72); transition: color var(--ak-t-fast) var(--ak-ease); }
+.ak-seg button[aria-pressed="true"] { color: var(--ak-navy); }
+.ak-seg__thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 1px; background: var(--ak-gold-soft); transition: transform var(--ak-t) var(--ak-ease); }
+.ak-seg[data-lang="pl"] .ak-seg__thumb { transform: translateX(100%); }
+.ak-swap { transition: opacity var(--ak-t-fast) var(--ak-ease); }
+.ak-swap.is-out { opacity: 0; }
+
+/* --- Dlaždice s měkkým reliéfem (jen na krémové) ------------------------ */
+.ak-tile {
+  display: flex; flex-direction: column; gap: var(--ak-s-2); padding: var(--ak-s-5);
+  background: var(--ak-cream); border-radius: var(--ak-r-1); box-shadow: var(--ak-relief), inset 0 0 0 1px rgb(255 255 255 / .7);
+  transition: box-shadow var(--ak-t) var(--ak-ease);
+}
+.ak-tile:hover { box-shadow: 3px 3px 10px rgb(10 14 69 / .08), -3px -3px 10px #FFFDFA, inset 0 0 0 1px var(--ak-gold-line); }
+.ak-tile--pressed { background: var(--ak-sand); box-shadow: var(--ak-relief-in); }
+.ak-tile--pressed:hover { box-shadow: var(--ak-relief-in), inset 0 0 0 1px var(--ak-gold-line); }
+.ak-tile__meta { display: flex; justify-content: space-between; align-items: center; }
+.ak-tile__meta::after { content: ""; width: 8px; height: 8px; background: var(--ak-gold-line); }
+.ak-tile--pressed .ak-tile__meta::after { background: var(--ak-ink); }
+
+/* --- Karta (papír) ------------------------------------------------------- */
+.ak-card { background: var(--ak-paper); border-radius: var(--ak-r-2); box-shadow: inset 0 0 0 1px var(--ak-ink-08); transition: box-shadow var(--ak-t) var(--ak-ease); }
+.ak-card:hover { box-shadow: inset 0 0 0 1px var(--ak-ink-44); }
+
+/* --- Accordion (oblasti) ------------------------------------------------- */
+.ak-acc__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--ak-t) var(--ak-ease); }
+.ak-acc__panel > div { overflow: hidden; min-height: 0; }
+.ak-acc__panel > div > * { opacity: 0; transition: opacity var(--ak-t-fast) var(--ak-ease); }
+.is-open > .ak-acc__panel { grid-template-rows: 1fr; }
+.is-open > .ak-acc__panel > div > * { opacity: 1; transition-delay: 120ms; }
+.ak-list-sq { display: grid; gap: 6px; font-size: 14px; line-height: 1.45; }
+.ak-list-sq li { display: flex; gap: 10px; align-items: baseline; }
+.ak-list-sq li::before { content: ""; flex: none; width: 6px; height: 6px; background: var(--ak-gold); transform: translateY(-2px); }

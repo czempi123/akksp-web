@@ -1,6 +1,8 @@
-# 03 · Brand tokeny (pracovní verze)
+# 03 · Brand tokeny (pracovní verze z fáze 1)
 
-Zdroj pravdy v kódu: `moodboard/css/tokens.css`. Po výběru variant se tento dokument zúží na jednu verzi a stane se z něj brand manual.
+> **Nahrazeno ve fázi 2:** platné tokeny jsou v `site/css/tokens.css` a v `brand-manual/index.html`, rozhodnutí v `docs/05-design-system-v1.md`. Tento dokument zůstává jako záznam variant z moodboardu.
+
+Zdroj pravdy v kódu fáze 1: `moodboard/css/tokens.css`. Po výběru variant se tento dokument zúží na jednu verzi a stane se z něj brand manual.
 
 ## Barvy (vzorkováno z konceptu)
 

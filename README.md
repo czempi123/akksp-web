@@ -6,14 +6,23 @@ Pracovní repozitář pro redesign webu AKKSP advokátní kancelář, s.r.o. Obs
 
 | Fáze | Obsah | Stav |
 |---|---|---|
-| 1 | Moodboard: 3 varianty každého prvku (paleta, písmo, tlačítka, navigace, hero, rozcestník, kontakt, čísla, oblasti, tým, reference, školení, aktuality, patička, pohyb) | **hotovo, čeká na výběr** |
-| 2 | Brand manual z vybraných variant + kompletní homepage (desktop + mobil) | čeká |
+| 1 | Moodboard: 3 varianty každého prvku (paleta, písmo, tlačítka, navigace, hero, rozcestník, kontakt, čísla, oblasti, tým, reference, školení, aktuality, patička, pohyb) | hotovo, vybráno |
+| 2 | Brand manual v1 (`brand-manual/`) + kompletní homepage (`site/`, desktop + mobil) | **hotovo, čeká na připomínky** |
 | 3 | Implementace do WordPressu (staging → produkce) | čeká |
 
 ## Struktura
 
 ```
-moodboard/              Moodboard (HTML/CSS/JS bez knihoven)
+site/                   Homepage v1 (prototyp pro WordPress)
+  index.html
+  css/tokens.css        design tokeny --ak-*
+  css/base.css          základ, typografie, plochy, mřížka
+  css/components.css    tlačítka, „+ → ×", sklo, karty, štítky
+  css/sections.css      sekce homepage + responzivita
+  js/site.js            navigace, menu, accordion, CZ/PL, odkrývání
+brand-manual/           Vizuální brand manual v1 (používá CSS ze site/)
+tools/shoot.ps1         celostránkové snímky přes headless Edge
+moodboard/              Moodboard fáze 1 (HTML/CSS/JS bez knihoven)
   index.html            otevřít v prohlížeči
   css/tokens.css        design tokeny (barvy z konceptu, písma, spacing, pohyb)
   css/variants.css      varianty A / B / C všech prvků
@@ -27,7 +36,10 @@ docs/
   02-reference-styly.md
   03-brand-tokeny.md
   04-wordpress-implementace.md
+  05-design-system-v1.md    jak byl výběr sjednocen, mapování kódu do WP
 ```
+
+Stránky: `http://localhost:4173/site/` (homepage), `/brand-manual/`, `/moodboard/`. Parametr `?static` vypne animace (pro snímky).
 
 ## Jak otevřít moodboard
 
