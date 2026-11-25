@@ -91,6 +91,9 @@
 .ak-areas { isolation: isolate; overflow: hidden; }
 .ak-areas::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 70% at 100% 0%, rgb(18 50 73 / .9), transparent 70%), radial-gradient(45% 55% at 0% 100%, rgb(226 148 33 / .1), transparent 70%); }
 .ak-areas__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); align-items: start; }
+/* Varianta po sloupcích (WordPress): pořadí 1–9 čte se shora dolů, rozbalení neovlivní sousední sloupce */
+.ak-areas__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); align-items: start; }
+.ak-areas__col { display: grid; gap: var(--ak-gutter); }
 .ak-area { border-radius: var(--ak-r-2); transition: background-color var(--ak-t) var(--ak-ease), border-color var(--ak-t) var(--ak-ease); }
 .ak-area:hover { border-color: var(--ak-gold-40); }
 .ak-area.is-open { background: rgb(250 248 244 / .12); border-color: rgb(248 196 111 / .55); }
@@ -204,7 +207,7 @@
   .ak-route { grid-column: 1 / -1; min-height: 0; }
   .ak-route__go { width: 40px; height: 40px; }
   .ak-why__tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .ak-areas__list { grid-template-columns: minmax(0, 1fr); }
+  .ak-areas__list, .ak-areas__cols { grid-template-columns: minmax(0, 1fr); }
   .ak-team__people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ak-refs__cards { grid-template-columns: minmax(0, 1fr); }
   .ak-training__panel { grid-column: 1 / -1; padding: var(--ak-s-5); }

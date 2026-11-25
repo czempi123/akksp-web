@@ -7,8 +7,8 @@ Pracovní repozitář pro redesign webu AKKSP advokátní kancelář, s.r.o. Obs
 | Fáze | Obsah | Stav |
 |---|---|---|
 | 1 | Moodboard: 3 varianty každého prvku (paleta, písmo, tlačítka, navigace, hero, rozcestník, kontakt, čísla, oblasti, tým, reference, školení, aktuality, patička, pohyb) | hotovo, vybráno |
-| 2 | Brand manual v1 (`brand-manual/`) + kompletní homepage (`site/`, desktop + mobil) | **hotovo, čeká na připomínky** |
-| 3 | Implementace do WordPressu (staging → produkce) | čeká |
+| 2 | Brand manual v1 (`brand-manual/`) + kompletní homepage (`site/`, desktop + mobil) | hotovo |
+| 3 | WordPress child téma pro Hello Elementor (`wordpress/akksp-child/`), 10 Elementor widgetů, lokální písma, otestováno v lokálním WP | **hotovo, čeká na nasazení na staging** |
 
 ## Struktura
 
@@ -20,7 +20,12 @@ site/                   Homepage v1 (prototyp pro WordPress)
   css/components.css    tlačítka, „+ → ×", sklo, karty, štítky
   css/sections.css      sekce homepage + responzivita
   js/site.js            navigace, menu, accordion, CZ/PL, odkrývání
+  css/wp.css            doplňky jen pro WordPress / Elementor
 brand-manual/           Vizuální brand manual v1 (používá CSS ze site/)
+wordpress/akksp-child/  Child téma (Hello Elementor): header/footer, widgety, písma
+tools/build-theme.ps1   zkopíruje CSS/JS ze site/ do tématu a vytvoří ZIP (wordpress/dist/)
+tools/get-fonts.ps1     stáhne písma (OFL) jako WOFF2 do tématu
+tools/playground/       lokální testovací WordPress (blueprint + seed)
 tools/shoot.ps1         celostránkové snímky přes headless Edge
 moodboard/              Moodboard fáze 1 (HTML/CSS/JS bez knihoven)
   index.html            otevřít v prohlížeči
@@ -37,6 +42,7 @@ docs/
   03-brand-tokeny.md
   04-wordpress-implementace.md
   05-design-system-v1.md    jak byl výběr sjednocen, mapování kódu do WP
+  06-wordpress-instalace.md instalace tématu, nastavení, lokální test, checklist
 ```
 
 Stránky: `http://localhost:4173/site/` (homepage), `/brand-manual/`, `/moodboard/`. Parametr `?static` vypne animace (pro snímky).

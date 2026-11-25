@@ -82,8 +82,9 @@
 
 /* --- Přepínač jazyka (segment) ------------------------------------------ */
 .ak-seg { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 3px; border-radius: var(--ak-r-1); background: rgb(0 22 40 / .45); box-shadow: inset 0 0 0 1px var(--ak-paper-16); }
-.ak-seg button { position: relative; z-index: 1; padding: 6px 14px; font-family: var(--ak-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--ak-paper-72); transition: color var(--ak-t-fast) var(--ak-ease); }
-.ak-seg button[aria-pressed="true"] { color: var(--ak-navy); }
+.ak-seg button, .ak-seg a { position: relative; z-index: 1; padding: 6px 14px; text-align: center; font-family: var(--ak-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--ak-paper-72); transition: color var(--ak-t-fast) var(--ak-ease); }
+.ak-seg button[aria-pressed="true"], .ak-seg a[aria-current] { color: var(--ak-navy); }
+.ak-seg a:not([aria-current]):hover { color: var(--ak-paper); }
 .ak-seg__thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 1px; background: var(--ak-gold-soft); transition: transform var(--ak-t) var(--ak-ease); }
 .ak-seg[data-lang="pl"] .ak-seg__thumb { transform: translateX(100%); }
 .ak-swap { transition: opacity var(--ak-t-fast) var(--ak-ease); }

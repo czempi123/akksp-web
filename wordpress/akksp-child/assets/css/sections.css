@@ -1,0 +1,226 @@
+/* ==========================================================================
+   AKKSP — sekce homepage (v pořadí stránky)
+   ========================================================================== */
+
+/* --- 0 · Navigace: plovoucí skleněná lišta ----------------------------- */
+.ak-nav { position: fixed; z-index: 100; top: 16px; left: 0; right: 0; padding: 0 var(--ak-margin); pointer-events: none; }
+.ak-nav__bar {
+  pointer-events: auto; max-width: var(--ak-max); margin: 0 auto; height: 64px;
+  display: flex; align-items: center; gap: var(--ak-s-4); padding: 0 8px 0 20px; color: var(--ak-paper);
+  border-radius: var(--ak-r-2); background: rgb(0 22 40 / .28); border: 1px solid var(--ak-paper-16);
+  backdrop-filter: var(--ak-glass-blur); -webkit-backdrop-filter: var(--ak-glass-blur); box-shadow: var(--ak-glass-highlight);
+  transition: background-color var(--ak-t) var(--ak-ease), height var(--ak-t) var(--ak-ease), box-shadow var(--ak-t) var(--ak-ease);
+}
+.ak-nav.is-scrolled .ak-nav__bar { background: rgb(2 24 44 / .9); height: 56px; box-shadow: var(--ak-glass-highlight), 0 12px 32px rgb(0 10 20 / .25); }
+.ak-nav__logo img { width: 116px; height: auto; }
+.ak-nav__menu { display: flex; gap: 2px; }
+.ak-nav__menu a { display: block; padding: 8px 8px; white-space: nowrap; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ak-paper-72); position: relative; transition: color var(--ak-t-fast) var(--ak-ease); }
+.ak-nav__menu a::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 2px; height: 2px; background: var(--ak-gold); transform: scaleX(0); transform-origin: left; transition: transform var(--ak-t) var(--ak-ease); }
+.ak-nav__menu a:hover, .ak-nav__menu a[aria-current] { color: var(--ak-paper); }
+.ak-nav__menu a:hover::after, .ak-nav__menu a[aria-current]::after { transform: scaleX(1); }
+.ak-nav__tools { margin-left: auto; display: flex; align-items: center; gap: var(--ak-s-2); }
+.ak-nav__icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--ak-r-1); color: var(--ak-paper); transition: background-color var(--ak-t-fast) var(--ak-ease); }
+.ak-nav__icon:hover { background: var(--ak-paper-08); }
+.ak-nav__lang { font-family: var(--ak-mono); font-size: 12px; letter-spacing: .08em; padding: 0 8px; color: var(--ak-paper-48); white-space: nowrap; }
+.ak-nav__lang b { color: var(--ak-gold); font-weight: 500; }
+.ak-nav__lang a:hover { color: var(--ak-paper); }
+.ak-burger { display: none; width: 44px; height: 44px; place-items: center; border-radius: var(--ak-r-1); color: var(--ak-paper); }
+.ak-burger__lines { position: relative; width: 20px; height: 12px; }
+.ak-burger__lines i { position: absolute; left: 0; width: 100%; height: 1.5px; background: currentColor; transition: transform var(--ak-t) var(--ak-ease), opacity var(--ak-t-fast) var(--ak-ease); }
+.ak-burger__lines i:nth-child(1) { top: 0; } .ak-burger__lines i:nth-child(2) { top: 5.25px; } .ak-burger__lines i:nth-child(3) { bottom: 0; }
+.ak-burger[aria-expanded="true"] i:nth-child(1) { transform: translateY(5.25px) rotate(45deg); }
+.ak-burger[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
+.ak-burger[aria-expanded="true"] i:nth-child(3) { transform: translateY(-5.25px) rotate(-45deg); }
+
+/* Mobilní panel */
+.ak-mobile { position: fixed; inset: 0; z-index: 90; padding: 104px var(--ak-margin) 32px; display: flex; flex-direction: column; gap: var(--ak-s-6);
+  background: rgb(0 22 40 / .96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); color: var(--ak-paper);
+  opacity: 0; visibility: hidden; transition: opacity var(--ak-t) var(--ak-ease), visibility 0s linear var(--ak-t); }
+.ak-mobile.is-open { opacity: 1; visibility: visible; transition: opacity var(--ak-t) var(--ak-ease); }
+.ak-mobile__menu a { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--ak-paper-16); font-family: var(--ak-serif); font-size: 26px; font-weight: 600; opacity: 0; transform: translateY(24px); transition: opacity var(--ak-t) var(--ak-ease), transform var(--ak-t) var(--ak-ease); }
+.ak-mobile.is-open .ak-mobile__menu a { opacity: 1; transform: none; transition-delay: calc(var(--i) * 50ms + 80ms); }
+.ak-mobile__menu a .ak-mono { color: var(--ak-gold); }
+.ak-mobile__foot { margin-top: auto; display: grid; gap: var(--ak-s-4); }
+
+/* --- 1 · Hero: fotka, sklo, přepínač CZ/PL, rozcestník ----------------- */
+.ak-hero { position: relative; isolation: isolate; min-height: clamp(760px, 100svh, 940px); padding: 152px 0 48px; display: flex; flex-direction: column; color: var(--ak-paper); overflow: hidden; }
+.ak-hero .ak-photo { --overlay: linear-gradient(90deg, rgb(0 22 40 / .94) 0%, rgb(0 22 40 / .74) 50%, rgb(0 22 40 / .5) 100%); }
+.ak-hero .ak-photo img { object-position: center 40%; }
+.ak-hero__light { position: absolute; z-index: -1; inset: 0; background: radial-gradient(50% 60% at 85% 0%, rgb(248 196 111 / .2), transparent 70%); pointer-events: none; }
+.ak-hero__panel { grid-column: 1 / 9; padding: var(--ak-s-7); }
+.ak-hero__top { display: flex; justify-content: space-between; align-items: center; gap: var(--ak-s-4); }
+.ak-hero h1 { margin-top: var(--ak-s-6); }
+.ak-hero__sub { margin-top: var(--ak-s-5); max-width: 560px; }
+.ak-hero__cities { margin-top: var(--ak-s-6); display: flex; gap: var(--ak-s-5); flex-wrap: wrap; }
+.ak-hero__cities span { display: inline-flex; align-items: center; gap: 8px; }
+.ak-hero__cities span::before { content: ""; width: 6px; height: 6px; background: var(--ak-paper-48); }
+.ak-hero__cities span:first-child::before { background: var(--ak-gold); box-shadow: 0 0 0 4px rgb(248 196 111 / .2); }
+.ak-hero__routes { margin-top: auto; padding-top: var(--ak-s-8); row-gap: var(--ak-gutter); }
+.ak-route { grid-column: span 4; display: flex; flex-direction: column; gap: var(--ak-s-3); min-height: 220px; padding: var(--ak-s-5) var(--ak-s-5) var(--ak-s-5); transition: transform var(--ak-t) var(--ak-ease), background-color var(--ak-t) var(--ak-ease), border-color var(--ak-t) var(--ak-ease); }
+.ak-route:hover { transform: translateY(-4px); background: rgb(250 248 244 / .13); border-color: rgb(248 196 111 / .5); }
+.ak-route__meta { display: flex; justify-content: space-between; }
+.ak-route__meta::after { content: ""; width: 8px; height: 8px; background: var(--ak-gold); }
+.ak-route__title { color: var(--ak-paper); }
+.ak-route p { color: var(--ak-paper-72); }
+.ak-route__go { margin-top: auto; align-self: flex-end; width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--ak-r-1); background: var(--ak-gold-soft); color: var(--ak-navy); transition: background-color var(--ak-t-fast) var(--ak-ease); }
+.ak-route:hover .ak-route__go { background: var(--ak-gold); }
+.ak-route .ak-ico { transition: transform var(--ak-t) var(--ak-ease); }
+.ak-route:hover .ak-ico { transform: translateX(3px); }
+
+/* --- 2 · Kontaktní lišta ------------------------------------------------ */
+.ak-contact { background: var(--ak-navy-850); }
+.ak-contact__row { display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)) auto; align-items: stretch; }
+.ak-contact__row > * { padding: 24px 28px; display: grid; align-content: center; gap: 4px; border-right: 1px solid var(--ak-paper-08); }
+.ak-contact__row > *:first-child { padding-left: 0; }
+.ak-contact__row > *:last-child { border-right: 0; padding-right: 0; }
+.ak-contact__title { font-family: var(--ak-serif); font-weight: 600; font-size: 24px; color: var(--ak-paper); }
+.ak-contact__row > a span { color: var(--ak-paper); font-size: 16px; transition: color var(--ak-t-fast) var(--ak-ease); }
+.ak-contact__row > a:hover span { color: var(--ak-gold); }
+.ak-contact__row .ak-btn { justify-self: start; }
+.ak-contact .ak-label::before { display: none; }
+
+/* --- 3 · Proč AKKSP ------------------------------------------------------ */
+.ak-why__grid { align-items: stretch; row-gap: var(--ak-gutter); }
+.ak-why__head { grid-column: 1 / 4; display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
+.ak-why__tiles { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ak-gutter); }
+.ak-why__num { font-family: var(--ak-serif); font-weight: 600; font-size: 56px; line-height: 1; letter-spacing: -0.03em; color: var(--ak-ink); margin-top: var(--ak-s-6); }
+.ak-why__word { font-family: var(--ak-serif); font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: -0.01em; color: var(--ak-ink); margin-top: var(--ak-s-6); }
+.ak-why .ak-tile p { font-size: 14px; line-height: 1.5; color: var(--ak-ink-64); }
+
+/* --- 4 · Oblasti právní pomoci (3×3 sklo) ------------------------------ */
+.ak-areas { isolation: isolate; overflow: hidden; }
+.ak-areas::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 70% at 100% 0%, rgb(18 50 73 / .9), transparent 70%), radial-gradient(45% 55% at 0% 100%, rgb(226 148 33 / .1), transparent 70%); }
+.ak-areas__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); align-items: start; }
+/* Varianta po sloupcích (WordPress): pořadí 1–9 čte se shora dolů, rozbalení neovlivní sousední sloupce */
+.ak-areas__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); align-items: start; }
+.ak-areas__col { display: grid; gap: var(--ak-gutter); }
+.ak-area { border-radius: var(--ak-r-2); transition: background-color var(--ak-t) var(--ak-ease), border-color var(--ak-t) var(--ak-ease); }
+.ak-area:hover { border-color: var(--ak-gold-40); }
+.ak-area.is-open { background: rgb(250 248 244 / .12); border-color: rgb(248 196 111 / .55); }
+.ak-area__btn { width: 100%; display: grid; grid-template-columns: 1fr 40px; gap: 6px 16px; padding: 22px 20px 22px 24px; text-align: left; }
+.ak-area__btn .ak-mono { color: var(--ak-paper-48); grid-column: 1; }
+.ak-area__title { grid-column: 1; font-size: 18px; line-height: 1.3; font-weight: 600; color: var(--ak-paper); }
+.ak-area__sub { grid-column: 1; font-size: 14px; line-height: 1.4; color: var(--ak-paper-72); }
+.ak-area__btn .ak-px { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
+.ak-area__body { padding: 0 24px 24px; display: grid; gap: 12px; }
+.ak-area__body .ak-label { font-size: 11px; }
+.ak-area__body .ak-label::before { display: none; }
+.ak-areas__foot { margin-top: var(--ak-s-7); display: flex; justify-content: space-between; align-items: center; gap: var(--ak-s-5); flex-wrap: wrap; }
+.ak-areas__foot p { max-width: 560px; }
+
+/* --- 5 · Tým (editorial) ------------------------------------------------- */
+.ak-team__grid { row-gap: var(--ak-s-6); }
+.ak-team__head { grid-column: 1 / 4; display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
+.ak-team__people { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ak-gutter); }
+.ak-person { display: block; }
+.ak-person__img { display: block; overflow: hidden; border-radius: var(--ak-r-1); background: var(--ak-ink-08); }
+.ak-person img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 22%; filter: grayscale(1) contrast(1.04); transition: filter var(--ak-t-slow) var(--ak-ease), transform var(--ak-t-slow) var(--ak-ease); }
+.ak-person:hover img, .ak-person:focus-visible img { filter: none; transform: scale(1.02); }
+.ak-person__name { display: block; margin-top: var(--ak-s-4); font-family: var(--ak-serif); font-size: 21px; line-height: 1.2; font-weight: 600; color: var(--ak-ink); }
+.ak-person .ak-mono { display: block; margin-top: 6px; }
+
+/* --- 6 · Reference ------------------------------------------------------- */
+.ak-refs__grid { row-gap: var(--ak-gutter); }
+.ak-refs__head { grid-column: 1 / 4; display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
+.ak-refs__cards { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ak-gutter); }
+.ak-ref { padding: var(--ak-s-6); display: flex; flex-direction: column; gap: var(--ak-s-5); }
+.ak-ref__meta { display: flex; justify-content: space-between; align-items: center; }
+.ak-ref__q { font-family: var(--ak-serif); font-size: 40px; line-height: 20px; height: 20px; color: var(--ak-amber); }
+.ak-ref blockquote p { font-family: var(--ak-serif); font-size: 20px; line-height: 1.5; color: var(--ak-ink); }
+.ak-ref__who { margin-top: auto; padding-top: var(--ak-s-4); border-top: 1px solid var(--ak-ink-14); display: flex; align-items: center; gap: 14px; }
+.ak-ref__who b { display: block; font-size: 15px; color: var(--ak-ink); }
+.ak-ref__badge { flex: none; width: 72px; height: 44px; border-radius: var(--ak-r-1); background: var(--ak-navy); display: grid; place-items: center; padding: 8px; }
+.ak-ref__badge--mono { width: 44px; background: var(--ak-gold-soft); color: var(--ak-navy); font-weight: 600; font-size: 14px; }
+.ak-clients { grid-column: 4 / 13; margin-top: var(--ak-s-6); padding-top: var(--ak-s-5); border-top: 1px solid var(--ak-ink-14); display: flex; align-items: center; gap: var(--ak-s-6); flex-wrap: wrap; }
+.ak-clients ul { display: flex; align-items: center; gap: var(--ak-s-6); flex-wrap: wrap; }
+.ak-clients img { height: 26px; width: auto; filter: brightness(0); opacity: .5; transition: opacity var(--ak-t-fast) var(--ak-ease); }
+.ak-clients img:hover { opacity: .85; }
+
+/* --- 7 · Školení --------------------------------------------------------- */
+.ak-training { position: relative; isolation: isolate; overflow: hidden; color: var(--ak-paper); }
+.ak-training .ak-photo { --overlay: linear-gradient(270deg, rgb(0 22 40 / .9) 0%, rgb(0 22 40 / .55) 55%, rgb(0 22 40 / .3) 100%); }
+.ak-training__panel { grid-column: 7 / 13; padding: var(--ak-s-7); display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
+.ak-training .ak-section { padding: clamp(96px, 10vw, 160px) 0; }
+
+/* --- 8 · Aktuality (editorial sloupce) ---------------------------------- */
+.ak-news__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--ak-s-8); }
+.ak-post { position: relative; display: flex; flex-direction: column; gap: var(--ak-s-3); }
+.ak-post + .ak-post::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--ak-s-8) / -2); width: 1px; background: var(--ak-ink-14); }
+.ak-post__img { overflow: hidden; border-radius: var(--ak-r-1); margin-bottom: var(--ak-s-2); }
+.ak-post img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; filter: grayscale(1); transition: filter var(--ak-t-slow) var(--ak-ease), transform var(--ak-t-slow) var(--ak-ease); }
+.ak-post:hover img { filter: none; transform: scale(1.02); }
+.ak-post h3 { font-size: 24px; }
+.ak-post h3 a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size var(--ak-t) var(--ak-ease); }
+.ak-post:hover h3 a { background-size: 100% 1px; }
+.ak-post .ak-link { margin-top: auto; align-self: flex-start; }
+
+/* --- 9 · Patička --------------------------------------------------------- */
+.ak-footer { background: var(--ak-navy); color: var(--ak-paper-72); font-size: 14px; line-height: 1.6; }
+.ak-footer__cols { padding-top: var(--ak-s-8); padding-bottom: var(--ak-s-7); row-gap: var(--ak-s-6); }
+.ak-footer h2 { font-family: var(--ak-sans); font-size: 14px; font-weight: 600; color: var(--ak-paper); margin-bottom: 12px; }
+.ak-footer__brand { grid-column: 1 / 4; }
+.ak-footer__brand img { width: 136px; margin-bottom: var(--ak-s-5); }
+.ak-footer__info { grid-column: 4 / 7; }
+.ak-footer__media { grid-column: 7 / 9; }
+.ak-footer__social { grid-column: 9 / 10; }
+.ak-footer__addr { grid-column: 10 / 13; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ak-footer__addr h2 { grid-column: 1 / -1; margin-bottom: 0; }
+.ak-footer__addr b { display: block; color: var(--ak-paper); font-weight: 600; }
+.ak-footer ul { display: grid; gap: 8px; }
+.ak-footer ul a { display: inline-flex; align-items: center; gap: 8px; transition: color var(--ak-t-fast) var(--ak-ease); }
+.ak-footer ul a:hover { color: var(--ak-paper); }
+.ak-footer ul .ak-ico { color: var(--ak-gold); transition: transform var(--ak-t) var(--ak-ease); }
+.ak-footer ul a:hover .ak-ico { transform: translateX(3px); }
+.ak-footer__icons { display: flex; gap: 8px; }
+.ak-footer__icons a { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--ak-r-1); box-shadow: inset 0 0 0 1px var(--ak-paper-16); color: var(--ak-paper); transition: background-color var(--ak-t-fast) var(--ak-ease), color var(--ak-t-fast) var(--ak-ease); }
+.ak-footer__icons a:hover { background: var(--ak-gold-soft); color: var(--ak-navy); box-shadow: none; }
+.ak-footer__bottom { background: #011729; border-top: 1px solid var(--ak-paper-08); }
+.ak-footer__bottom .ak-wrap { display: flex; align-items: center; gap: var(--ak-s-5); padding-top: 18px; padding-bottom: 18px; font-size: 12px; flex-wrap: wrap; }
+.ak-footer__bottom nav { margin-left: auto; display: flex; gap: var(--ak-s-5); }
+.ak-footer__bottom a:hover { color: var(--ak-paper); }
+
+/* ==========================================================================
+   Responzivita
+   ========================================================================== */
+@media (max-width: 1360px) { .ak-nav__search { display: none; } }
+@media (max-width: 1260px) {
+  .ak-nav__menu { display: none; }
+  .ak-burger { display: grid; }
+  .ak-nav__lang { display: none; }
+}
+@media (max-width: 1180px) {
+  .ak-hero__panel { grid-column: 1 / 11; }
+  .ak-why__head, .ak-team__head, .ak-refs__head { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; }
+  .ak-why__tiles, .ak-team__people, .ak-refs__cards, .ak-clients { grid-column: 1 / -1; }
+  .ak-contact__row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ak-contact__title { grid-column: 1 / -1; padding-left: 0 !important; border-right: 0 !important; padding-bottom: 0 !important; }
+  .ak-contact__row > .ak-btn { display: none; }
+  .ak-training__panel { grid-column: 4 / 13; }
+  .ak-footer__brand { grid-column: 1 / 7; } .ak-footer__info { grid-column: 7 / 13; }
+  .ak-footer__media { grid-column: 1 / 5; } .ak-footer__social { grid-column: 5 / 7; } .ak-footer__addr { grid-column: 7 / 13; }
+}
+@media (max-width: 860px) {
+  .ak-head__label, .ak-head__title, .ak-head__action { grid-column: 1 / -1; justify-self: start; }
+  .ak-head { margin-bottom: var(--ak-s-7); }
+  .ak-hero { padding-top: 120px; }
+  .ak-hero__panel { grid-column: 1 / -1; padding: var(--ak-s-5); }
+  .ak-route { grid-column: 1 / -1; min-height: 0; }
+  .ak-route__go { width: 40px; height: 40px; }
+  .ak-why__tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ak-areas__list, .ak-areas__cols { grid-template-columns: minmax(0, 1fr); }
+  .ak-team__people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ak-refs__cards { grid-template-columns: minmax(0, 1fr); }
+  .ak-training__panel { grid-column: 1 / -1; padding: var(--ak-s-5); }
+  .ak-news__list { grid-template-columns: minmax(0, 1fr); gap: var(--ak-s-7); }
+  .ak-post + .ak-post::before { display: none; }
+  .ak-contact__row { grid-template-columns: minmax(0, 1fr); }
+  .ak-contact__row > * { padding: 14px 0; border-right: 0; border-bottom: 1px solid var(--ak-paper-08); }
+  .ak-footer__brand, .ak-footer__info, .ak-footer__media, .ak-footer__social, .ak-footer__addr { grid-column: 1 / -1; }
+  .ak-footer__bottom nav { margin-left: 0; }
+  .ak-nav__tools .ak-btn { display: none; }
+}
+@media (max-width: 520px) {
+  .ak-why__tiles { grid-template-columns: minmax(0, 1fr); }
+  .ak-hero__top { flex-direction: column-reverse; align-items: flex-start; }
+  .ak-ref { padding: var(--ak-s-5); }
+}

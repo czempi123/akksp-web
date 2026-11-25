@@ -1,0 +1,85 @@
+/* ==========================================================================
+   AKKSP — základ: reset, typografie, mřížka, světlé/tmavé plochy
+   ========================================================================== */
+
+html, body { background: var(--ak-cream); }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--ak-sans);
+  font-size: var(--ak-fs-body);
+  line-height: 1.6;
+  color: var(--ak-ink-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+h1, h2, h3, h4, p, figure, blockquote, ul, dl { margin: 0; }
+ul { padding: 0; list-style: none; }
+h1, h2, h3, h4 { text-wrap: balance; font-weight: 600; }
+p { text-wrap: pretty; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--ak-amber); outline-offset: 3px; border-radius: 1px; }
+::selection { background: var(--ak-sand); color: var(--ak-ink); }
+
+.ak-skip { position: absolute; left: 16px; top: -64px; z-index: 200; padding: 12px 16px; background: var(--ak-gold-soft); color: var(--ak-navy); font-weight: 600; border-radius: var(--ak-r-1); }
+.ak-skip:focus { top: 16px; }
+.ak-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* --- Plochy: každá sekce si nastaví lokální barvy ---------------------- */
+.ak-light, .ak-paper {
+  --fg: var(--ak-ink); --fg-body: var(--ak-ink-body); --fg-2: var(--ak-ink-64); --fg-3: var(--ak-ink-44);
+  --line: var(--ak-ink-14); --line-strong: var(--ak-ink-44); --accent: var(--ak-gold-line); --label: var(--ak-ink-64);
+  --ctrl: var(--ak-ink);
+  color: var(--fg-body);
+}
+.ak-light { background: var(--ak-cream); }
+.ak-paper { background: var(--ak-paper); }
+.ak-dark {
+  --fg: var(--ak-paper); --fg-body: var(--ak-paper); --fg-2: var(--ak-paper-72); --fg-3: var(--ak-paper-48);
+  --line: var(--ak-paper-16); --line-strong: var(--ak-gold-40); --accent: var(--ak-gold); --label: var(--ak-gold);
+  --ctrl: var(--ak-gold);
+  background: var(--ak-navy); color: var(--fg-body);
+}
+
+/* --- Kontejner a 12sloupcová mřížka ------------------------------------- */
+.ak-wrap { width: 100%; max-width: calc(var(--ak-max) + 2 * var(--ak-margin)); margin: 0 auto; padding: 0 var(--ak-margin); }
+.ak-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--ak-gutter); }
+.ak-section { padding: var(--ak-section) 0; position: relative; }
+
+/* --- Typografie --------------------------------------------------------- */
+.ak-display { font-family: var(--ak-serif); font-size: var(--ak-fs-display); line-height: 1.02; letter-spacing: -0.025em; font-weight: 600; color: var(--fg); }
+.ak-display em, .ak-h2 em { font-style: normal; color: var(--ak-gold); }
+.ak-h2 { font-family: var(--ak-serif); font-size: var(--ak-fs-h2); line-height: 1.06; letter-spacing: -0.02em; color: var(--fg); }
+.ak-h3 { font-family: var(--ak-serif); font-size: var(--ak-fs-h3); line-height: 1.15; letter-spacing: -0.012em; color: var(--fg); }
+.ak-h4 { font-family: var(--ak-sans); font-size: var(--ak-fs-h4); line-height: 1.35; color: var(--fg); }
+.ak-lead { font-size: var(--ak-fs-lead); line-height: 1.6; color: var(--fg-2); }
+.ak-small { font-size: var(--ak-fs-small); line-height: 1.55; color: var(--fg-2); }
+.ak-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--ak-mono); font-size: var(--ak-fs-label); line-height: 1.4; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--label);
+}
+.ak-label::before { content: ""; width: 8px; height: 8px; flex: none; background: var(--accent); }
+.ak-label--plain::before { display: none; }
+.ak-mono { font-family: var(--ak-mono); font-size: var(--ak-fs-label); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+
+/* --- Ikony -------------------------------------------------------------- */
+.ak-ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.ak-ico--sm { width: 16px; height: 16px; }
+
+/* --- Pohyb: odkrytí (profil B) — jen jednou, jen s JS ------------------ */
+.js .ak-reveal { opacity: 0; transform: translateY(16px); transition: opacity 600ms var(--ak-ease), transform 600ms var(--ak-ease); transition-delay: calc(var(--i, 0) * 60ms); }
+.js .ak-reveal.is-in { opacity: 1; transform: none; }
+.js .ak-mask { clip-path: inset(0 100% 0 0); transition: clip-path var(--ak-t) var(--ak-ease-reveal); }
+.js .ak-mask.is-in { clip-path: inset(0 0 0 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; transition-delay: 0ms !important; }
+  .js .ak-reveal { transform: none; }
+  .js .ak-mask { clip-path: none; }
+}

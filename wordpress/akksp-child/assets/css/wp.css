@@ -1,0 +1,84 @@
+/* ==========================================================================
+   AKKSP — doplňky pro WordPress / Elementor / Hello Elementor
+   (v prototypu se nenačítá; kopíruje se do child tématu)
+   ========================================================================== */
+
+/* Písmo a barva i přes nastavení Elementor kitu */
+body.ak-theme, body.ak-theme[class*="elementor-kit-"] { font-family: var(--ak-sans); color: var(--ak-ink-body); background: var(--ak-cream); }
+
+/* Admin lišta + plovoucí navigace */
+.admin-bar .ak-nav { top: 48px; }
+@media (max-width: 782px) { .admin-bar .ak-nav { top: 62px; } }
+
+/* Stránky bez tmavého záhlaví: obsah pod navigací, lišta rovnou zpevněná */
+.ak-top-light .ak-main { padding-top: 144px; }
+.ak-top-light .ak-nav__bar { background: rgb(2 24 44 / .92); }
+
+/* Elementor kontejnery se sekcemi AKKSP: bez vnitřních okrajů a mezer */
+.e-con:has(> .elementor-element[data-widget_type^="akksp-"]),
+.e-con-inner:has(> .elementor-element[data-widget_type^="akksp-"]) {
+  --padding-top: 0px; --padding-right: 0px; --padding-bottom: 0px; --padding-left: 0px;
+  --gap: 0px; --row-gap: 0px; --column-gap: 0px;
+  --content-width: 100%; max-width: none;
+}
+.elementor-widget[data-widget_type^="akksp-"] { width: 100%; margin: 0 !important; }
+.elementor-widget[data-widget_type^="akksp-"] > .elementor-widget-container { margin: 0; padding: 0; }
+
+/* Elementor ruší stíny na odkazech (.elementor a { box-shadow: none }) — obrysy a sklo vracíme */
+.ak-theme a.ak-btn.ak-btn--secondary { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.ak-theme a.ak-btn.ak-btn--glass { box-shadow: inset 0 0 0 1px var(--ak-glass-border), var(--ak-glass-highlight); }
+.ak-theme a.ak-glass { box-shadow: var(--ak-glass-highlight), 0 24px 60px rgb(0 10 20 / .22); }
+.ak-theme .ak-ref__who, .ak-theme .ak-ref__who * { font-style: normal; }
+
+/* Základní reset (místo vypnutého resetu Hello Elementor) */
+:where(.ak-theme) :where(button, [type="button"], [type="reset"]) { border: 0; border-radius: 0; background: none; text-transform: none; }
+.ak-theme table { border-collapse: collapse; width: 100%; }
+.ak-theme hr { border: 0; border-top: 1px solid var(--ak-ink-14); margin: var(--ak-s-6) 0; }
+
+/* Mobilní menu z wp_nav_menu */
+.ak-mobile__menu ul { display: grid; }
+.ak-mobile__menu li { list-style: none; }
+.ak-mobile__lang a:hover { color: var(--ak-paper); }
+
+/* Záhlaví podstránky */
+.ak-page-header { position: relative; isolation: isolate; overflow: hidden; padding: clamp(144px, 12vw, 200px) 0 clamp(56px, 6vw, 96px); }
+.ak-page-header .ak-photo { --overlay: linear-gradient(90deg, rgb(0 22 40 / .94), rgb(0 22 40 / .7)); }
+.ak-page-header__inner { grid-column: 1 / 10; display: grid; gap: var(--ak-s-5); }
+@media (max-width: 860px) { .ak-page-header__inner { grid-column: 1 / -1; } }
+
+/* Hlavička sekce jako samostatný widget */
+.ak-section-head { padding-top: var(--ak-section); }
+.ak-section-head .ak-head { margin-bottom: var(--ak-s-6); }
+
+/* Aktuality: obrázek jako odkaz */
+.ak-post__img { display: block; }
+
+/* Školení s panelem vlevo */
+.ak-training--left .ak-training__panel { grid-column: 1 / 7; }
+.ak-training--left .ak-photo { --overlay: linear-gradient(90deg, rgb(0 22 40 / .9) 0%, rgb(0 22 40 / .55) 55%, rgb(0 22 40 / .3) 100%); }
+@media (max-width: 860px) { .ak-training--left .ak-training__panel { grid-column: 1 / -1; } }
+
+/* Obsah běžných stránek a článků (šablony Hello Elementor) */
+.ak-theme .site-main:not(.elementor) { max-width: 760px; margin: 0 auto; padding: 0 var(--ak-margin) var(--ak-section); }
+.ak-theme .page-header .entry-title, .ak-theme .site-main h1 { font-family: var(--ak-serif); font-size: var(--ak-fs-h2); line-height: 1.08; letter-spacing: -0.02em; color: var(--ak-ink); margin: 0 0 var(--ak-s-6); }
+.ak-theme .page-content h2, .ak-theme .entry-content h2 { font-family: var(--ak-serif); font-size: var(--ak-fs-h3); color: var(--ak-ink); margin: var(--ak-s-7) 0 var(--ak-s-4); }
+.ak-theme .page-content h3, .ak-theme .entry-content h3 { font-size: var(--ak-fs-h4); color: var(--ak-ink); margin: var(--ak-s-6) 0 var(--ak-s-3); }
+.ak-theme .page-content p, .ak-theme .entry-content p { margin: 0 0 var(--ak-s-4); font-size: 17px; line-height: 1.7; }
+.ak-theme .page-content a, .ak-theme .entry-content a { color: var(--ak-ink); text-decoration: underline; text-decoration-color: var(--ak-gold-line); text-underline-offset: 3px; }
+.ak-theme .page-content ul, .ak-theme .entry-content ul { list-style: none; padding: 0; margin: 0 0 var(--ak-s-4); }
+.ak-theme .page-content ul li, .ak-theme .entry-content ul li { position: relative; padding-left: 18px; margin-bottom: 6px; }
+.ak-theme .page-content ul li::before, .ak-theme .entry-content ul li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; background: var(--ak-gold-line); }
+.ak-theme .page-content blockquote, .ak-theme .entry-content blockquote { margin: var(--ak-s-6) 0; padding: var(--ak-s-5) var(--ak-s-6); background: var(--ak-paper); border-left: 0; box-shadow: inset 0 0 0 1px var(--ak-ink-08); font-family: var(--ak-serif); font-size: 20px; color: var(--ak-ink); border-radius: var(--ak-r-2); }
+.ak-theme .page-content img, .ak-theme .entry-content img { border-radius: var(--ak-r-1); }
+
+/* Formuláře (např. kontaktní formulář pluginu) */
+.ak-theme input[type="text"], .ak-theme input[type="email"], .ak-theme input[type="tel"], .ak-theme input[type="search"], .ak-theme textarea, .ak-theme select {
+  font: inherit; color: var(--ak-ink); background: var(--ak-paper); border: 1px solid var(--ak-ink-14); border-radius: var(--ak-r-1); padding: 12px 14px; width: 100%;
+  transition: border-color var(--ak-t-fast) var(--ak-ease), box-shadow var(--ak-t-fast) var(--ak-ease);
+}
+.ak-theme input:focus, .ak-theme textarea:focus, .ak-theme select:focus { outline: none; border-color: var(--ak-ink-44); box-shadow: 0 0 0 3px rgb(226 148 33 / .25); }
+.ak-theme button[type="submit"], .ak-theme input[type="submit"] { font: inherit; font-weight: 600; background: var(--ak-gold-soft); color: var(--ak-navy); border: 0; border-radius: var(--ak-r-1); padding: 12px 20px; cursor: pointer; transition: background-color var(--ak-t-fast) var(--ak-ease); }
+.ak-theme button[type="submit"]:hover, .ak-theme input[type="submit"]:hover { background: var(--ak-gold); }
+
+/* Editor Elementoru: navigace nesmí zakrývat panel úprav */
+.elementor-editor-active .ak-nav { position: absolute; }

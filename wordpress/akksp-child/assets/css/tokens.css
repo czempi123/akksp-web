@@ -1,0 +1,81 @@
+/* ==========================================================================
+   AKKSP design system v1 — tokeny
+   Sjednocený směr z výběru v moodboardu:
+   paleta A (papír & inkoust + navy ostrovy) · typografie B · tlačítka B
+   · sklo jen na tmavých fotkách · švýcarská mřížka a čtvercový modul z loga.
+   Tyto proměnné se 1:1 přenesou do Elementor Global Colors / Fonts.
+   ========================================================================== */
+
+:root {
+  /* Barvy — přesné odstíny z konceptu */
+  --ak-navy:      #001628;
+  --ak-navy-850:  #02182C;
+  --ak-navy-700:  #123249;
+  --ak-ink:       #0A0E45;
+  --ak-ink-body:  #111335;
+  --ak-gold:      #F8C46F;
+  --ak-gold-soft: #FCCE85;
+  --ak-gold-line: #DEB66C;
+  --ak-amber:     #E29421;
+  --ak-cream:     #F5F1EE;
+  --ak-paper:     #FAF8F4;
+  --ak-sand:      #FCE4C4;
+
+  /* Průhlednosti stejných odstínů */
+  --ak-ink-64: rgb(10 14 69 / .64);
+  --ak-ink-44: rgb(10 14 69 / .44);
+  --ak-ink-14: rgb(10 14 69 / .14);
+  --ak-ink-08: rgb(10 14 69 / .08);
+  --ak-paper-72: rgb(250 248 244 / .72);
+  --ak-paper-48: rgb(250 248 244 / .48);
+  --ak-paper-16: rgb(250 248 244 / .16);
+  --ak-paper-08: rgb(250 248 244 / .08);
+  --ak-gold-40:  rgb(222 182 108 / .4);
+
+  /* Písma (SIL OFL 1.1) */
+  --ak-serif: "Source Serif 4", Georgia, serif;
+  --ak-sans:  "IBM Plex Sans", system-ui, sans-serif;
+  --ak-mono:  "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Typografická škála (fluidní, min → max) */
+  --ak-fs-display: clamp(2.75rem, 1.6rem + 3.6vw, 4.75rem);   /* 44 → 76 */
+  --ak-fs-h2:      clamp(2.25rem, 1.7rem + 1.8vw, 3.25rem);   /* 36 → 52 */
+  --ak-fs-h3:      clamp(1.5rem, 1.3rem + .7vw, 1.875rem);    /* 24 → 30 */
+  --ak-fs-h4:      1.25rem;                                    /* 20 */
+  --ak-fs-lead:    clamp(1.0625rem, 1rem + .25vw, 1.1875rem); /* 17 → 19 */
+  --ak-fs-body:    1rem;                                       /* 16 */
+  --ak-fs-small:   .875rem;                                    /* 14 */
+  --ak-fs-label:   .75rem;                                     /* 12 */
+
+  /* Spacing */
+  --ak-s-1: 4px;  --ak-s-2: 8px;  --ak-s-3: 12px; --ak-s-4: 16px;
+  --ak-s-5: 24px; --ak-s-6: 32px; --ak-s-7: 48px; --ak-s-8: 64px;
+  --ak-s-9: 96px; --ak-s-10: 128px;
+  --ak-section: clamp(64px, 5vw + 32px, 128px);
+
+  /* Mřížka */
+  --ak-max: 1320px;
+  --ak-gutter: 24px;
+  --ak-margin: clamp(20px, 4vw, 64px);
+
+  /* Tvary — téměř ostré (švýcarský řád), sklo o stupeň měkčí */
+  --ak-r-1: 2px;   /* tlačítka, dlaždice, štítky */
+  --ak-r-2: 4px;   /* karty, skleněné panely */
+
+  /* Sklo (jen na tmavém fotografickém podkladu) */
+  --ak-glass-bg: rgb(250 248 244 / .08);
+  --ak-glass-border: rgb(250 248 244 / .18);
+  --ak-glass-blur: blur(18px) saturate(140%);
+  --ak-glass-highlight: inset 0 1px 0 rgb(255 255 255 / .16);
+
+  /* Měkký reliéf (jen na krémové) */
+  --ak-relief: 8px 8px 20px rgb(10 14 69 / .08), -8px -8px 20px #FFFDFA;
+  --ak-relief-in: inset 5px 5px 12px rgb(10 14 69 / .08), inset -5px -5px 12px #FFFDFA;
+
+  /* Pohyb — profil B „přesné odkrytí" */
+  --ak-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ak-ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);
+  --ak-t-fast: 250ms;
+  --ak-t: 500ms;
+  --ak-t-slow: 700ms;
+}
