@@ -47,6 +47,9 @@
 .ak-routes { padding: var(--ak-s-8) 0; }
 .ak-routes__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); }
 .ak-route { display: flex; flex-direction: column; gap: var(--ak-s-3); min-height: 200px; padding: var(--ak-s-6); color: var(--ak-ink); }
+/* na krémovém pruhu vtlačené do plochy, stejně jako dlaždice Proč AKKSP */
+.ak-routes .ak-route { background: var(--ak-cream); box-shadow: inset 6px 6px 14px rgb(10 14 69 / .1), inset -6px -6px 14px #FFFFFF; }
+.ak-routes .ak-route:hover, .ak-routes .ak-route:focus-visible { box-shadow: inset 9px 9px 20px rgb(10 14 69 / .13), inset -9px -9px 20px #FFFFFF; }
 .ak-route__title { color: var(--ak-ink); }
 .ak-route p { color: var(--ak-ink-64); }
 .ak-route__go { margin-top: auto; align-self: flex-end; width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--ak-r-1);
@@ -127,9 +130,13 @@
 
 /* --- 7 · Školení --------------------------------------------------------- */
 .ak-training { position: relative; isolation: isolate; overflow: hidden; color: var(--ak-paper); }
-.ak-training .ak-photo { --overlay: linear-gradient(270deg, rgb(0 22 40 / .9) 0%, rgb(0 22 40 / .55) 55%, rgb(0 22 40 / .3) 100%); }
-.ak-training__panel { grid-column: 7 / 13; padding: var(--ak-s-7); background: rgb(0 22 40 / .55); display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
+/* bez boxu: kontrastní text vlevo, čitelnost drží tmavý přechod zleva */
+.ak-training .ak-photo { --overlay: linear-gradient(90deg, rgb(0 22 40 / .94) 0%, rgb(0 22 40 / .82) 38%, rgb(0 22 40 / .4) 72%, rgb(0 22 40 / .15) 100%); }
+.ak-training--right .ak-photo { --overlay: linear-gradient(270deg, rgb(0 22 40 / .94) 0%, rgb(0 22 40 / .82) 38%, rgb(0 22 40 / .4) 72%, rgb(0 22 40 / .15) 100%); }
+.ak-training__panel { grid-column: 1 / 7; display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
 .ak-training .ak-section { padding: clamp(96px, 10vw, 160px) 0; }
+.ak-training__panel .ak-lead { color: var(--ak-paper-72); max-width: 480px; }
+.ak-training--right .ak-training__panel { grid-column: 7 / 13; }
 
 /* --- 8 · Aktuality (editorial sloupce) ---------------------------------- */
 .ak-news__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--ak-s-8); }
@@ -266,7 +273,7 @@
   .ak-contact__row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ak-contact__title { grid-column: 1 / -1; padding-left: 0 !important; border-right: 0 !important; padding-bottom: 0 !important; }
   .ak-contact__row > .ak-btn { display: none; }
-  .ak-training__panel { grid-column: 4 / 13; }
+  .ak-training__panel { grid-column: 1 / 9; } .ak-training--right .ak-training__panel { grid-column: 5 / 13; }
   .ak-footer__brand { grid-column: 1 / 5; } .ak-footer__contact { grid-column: 5 / 8; } .ak-footer__addr { grid-column: 8 / 13; }
   .ak-footer__docs { grid-column: 1 / 7; } .ak-footer__media { grid-column: 7 / 13; }
 }
@@ -315,7 +322,8 @@
   .ak-areas__list, .ak-areas__cols { grid-template-columns: minmax(0, 1fr); }
   .ak-team__people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ak-refs__cards { grid-template-columns: minmax(0, 1fr); }
-  .ak-training__panel { grid-column: 1 / -1; padding: var(--ak-s-5); }
+  .ak-training__panel, .ak-training--right .ak-training__panel { grid-column: 1 / -1; }
+  .ak-training .ak-photo { --overlay: linear-gradient(0deg, rgb(0 22 40 / .9) 0%, rgb(0 22 40 / .7) 100%); }
   .ak-news__list { grid-template-columns: minmax(0, 1fr); gap: var(--ak-s-7); }
   .ak-post + .ak-post::before { display: none; }
   .ak-contact__row { grid-template-columns: minmax(0, 1fr); }

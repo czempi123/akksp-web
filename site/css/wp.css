@@ -78,9 +78,6 @@ body.ak-theme, body.ak-theme[class*="elementor-kit-"] { font-family: var(--ak-sa
 .ak-post__img { display: block; }
 
 /* Školení s panelem vlevo */
-.ak-training--left .ak-training__panel { grid-column: 1 / 7; }
-.ak-training--left .ak-photo { --overlay: linear-gradient(90deg, rgb(0 22 40 / .9) 0%, rgb(0 22 40 / .55) 55%, rgb(0 22 40 / .3) 100%); }
-@media (max-width: 860px) { .ak-training--left .ak-training__panel { grid-column: 1 / -1; } }
 
 /* Obsah běžných stránek a článků (šablony Hello Elementor) */
 .ak-theme .site-main:not(.elementor) { max-width: 760px; margin: 0 auto; padding: 0 var(--ak-margin) var(--ak-section); }
@@ -155,3 +152,6 @@ body.ak-theme, body.ak-theme[class*="elementor-kit-"] { font-family: var(--ak-sa
 
 /* Elementor (.elementor img { height: auto }) by zmenšil fotky v hero */
 .ak-theme .ak-hero__slide { height: 100%; max-width: none; }
+/* rozcestník je odkaz: Elementor by mu vzal vtlačený stín */
+.ak-theme .ak-routes a.ak-route { box-shadow: inset 6px 6px 14px rgb(10 14 69 / .1), inset -6px -6px 14px #FFFFFF; }
+.ak-theme .ak-routes a.ak-route:hover, .ak-theme .ak-routes a.ak-route:focus-visible { box-shadow: inset 9px 9px 20px rgb(10 14 69 / .13), inset -9px -9px 20px #FFFFFF; }

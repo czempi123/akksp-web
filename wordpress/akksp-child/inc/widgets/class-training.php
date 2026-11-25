@@ -1,6 +1,6 @@
 <?php
 /**
- * Školení a workshopy: fotka + skleněný panel.
+ * Školení a workshopy: fotka a kontrastní text bez boxu (výchozí vlevo).
  *
  * @package AKKSP
  */
@@ -40,9 +40,9 @@ class Training extends Base {
 		$this->add_control(
 			'side',
 			array(
-				'label'   => __( 'Panel', 'akksp' ),
+				'label'   => __( 'Text', 'akksp' ),
 				'type'    => Controls_Manager::SELECT,
-				'default' => 'right',
+				'default' => 'left',
 				'options' => array( 'right' => __( 'Vpravo', 'akksp' ), 'left' => __( 'Vlevo', 'akksp' ) ),
 			)
 		);
@@ -52,11 +52,11 @@ class Training extends Base {
 	protected function render() {
 		$s = $this->get_settings_for_display();
 		?>
-<section class="ak-training ak-dark<?php echo 'left' === $s['side'] ? ' ak-training--left' : ''; ?>">
+<section class="ak-training ak-dark<?php echo 'right' === $s['side'] ? ' ak-training--right' : ''; ?>">
 	<div class="ak-photo"><?php echo $this->image( $s['image'], akksp_img( 'demo/jednaci-mistnost.jpg' ), 'full' ); // phpcs:ignore ?></div>
 	<div class="ak-section">
 		<div class="ak-wrap ak-grid">
-			<div class="ak-training__panel ak-glass ak-reveal">
+			<div class="ak-training__panel ak-reveal">
 				<?php echo akksp_label( $s['label'] ); // phpcs:ignore ?>
 				<h2 class="ak-h2"><?php echo esc_html( $s['title'] ); ?></h2>
 				<?php if ( ! empty( $s['lead'] ) ) : ?><p class="ak-lead"><?php echo esc_html( $s['lead'] ); ?></p><?php endif; ?>

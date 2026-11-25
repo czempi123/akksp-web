@@ -131,15 +131,15 @@
 /* --n = počet jazyků, --pos = pořadí aktuálního (0 = první) */
 .ak-seg__thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / var(--n, 2)); border-radius: 1px; background: var(--ak-gold-soft); transform: translateX(calc(var(--pos, 0) * 100%)); transition: transform var(--ak-t) var(--ak-ease); }
 
-/* --- Dlaždice: světlá karta, která vystupuje stínem; obsah na středu -------- */
+/* --- Dlaždice: vtlačené do plochy (neumorfismus), obsah na středu ----------- */
 .ak-tile {
   position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ak-s-3);
   min-height: 210px; padding: var(--ak-s-6) var(--ak-s-5); text-align: center;
-  background: #FFFDFA; border-radius: var(--ak-r-2);
-  box-shadow: 0 1px 2px rgb(10 14 69 / .06), 0 14px 36px -8px rgb(10 14 69 / .16);
-  transition: box-shadow var(--ak-t) var(--ak-ease), transform var(--ak-t) var(--ak-ease);
+  background: var(--ak-cream); border-radius: var(--ak-r-2);
+  box-shadow: inset 6px 6px 14px rgb(10 14 69 / .1), inset -6px -6px 14px #FFFFFF;
+  transition: box-shadow var(--ak-t) var(--ak-ease);
 }
-.ak-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgb(10 14 69 / .06), 0 22px 48px -10px rgb(10 14 69 / .22); }
+.ak-tile:hover { box-shadow: inset 9px 9px 20px rgb(10 14 69 / .13), inset -9px -9px 20px #FFFFFF; }
 /* „Česko & Polsko“: stejná dlaždice jako ostatní; jen ampersand je tlumený */
 .ak-tile--accent { }.ak-amp { color: var(--ak-ink-44); font-weight: 400; }
 
