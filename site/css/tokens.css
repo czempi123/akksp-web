@@ -75,10 +75,12 @@
   /* Měkký reliéf (jen na krémové) */
   --ak-relief: 8px 8px 20px rgb(10 14 69 / .08), -8px -8px 20px #FFFDFA;
   --ak-relief-in: inset 5px 5px 12px rgb(10 14 69 / .08), inset -5px -5px 12px #FFFDFA;
-  /* Vtlačená dlaždice: o tón tmavší plocha + hlubší vnitřní stín + vlasová hrana, aby vystoupila z pozadí */
-  --ak-pressed-bg: #EDE7E0;
-  --ak-pressed: inset 7px 7px 16px rgb(10 14 69 / .14), inset -7px -7px 16px rgb(255 255 255 / .85), 0 0 0 1px rgb(10 14 69 / .06);
-  --ak-pressed-hover: inset 10px 10px 22px rgb(10 14 69 / .18), inset -10px -10px 22px rgb(255 255 255 / .9), 0 0 0 1px rgb(10 14 69 / .1);
+  /* Světlé sklo (dlaždice Proč AKKSP, rozcestník): mléčná průsvitná plocha, bílá hrana, měkký stín.
+     Za ním jsou v sekci jemné barevné skvrny, aby rozostření bylo vidět. */
+  --ak-pressed-bg: rgb(255 255 255 / .5);
+  --ak-pressed: inset 0 1px 0 rgb(255 255 255 / .95), inset 0 0 0 1px rgb(255 255 255 / .75), 0 12px 32px -12px rgb(10 14 69 / .22);
+  --ak-pressed-hover: inset 0 1px 0 #FFFFFF, inset 0 0 0 1px rgb(255 255 255 / .9), 0 18px 40px -12px rgb(10 14 69 / .28);
+  --ak-frost-blur: blur(18px) saturate(150%);
 
   /* Pohyb — profil B „přesné odkrytí" */
   --ak-ease: cubic-bezier(0.22, 1, 0.36, 1);

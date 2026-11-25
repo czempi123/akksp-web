@@ -131,15 +131,15 @@
 /* --n = počet jazyků, --pos = pořadí aktuálního (0 = první) */
 .ak-seg__thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / var(--n, 2)); border-radius: 1px; background: var(--ak-gold-soft); transform: translateX(calc(var(--pos, 0) * 100%)); transition: transform var(--ak-t) var(--ak-ease); }
 
-/* --- Dlaždice: vtlačené do plochy (neumorfismus), obsah na středu ----------- */
+/* --- Dlaždice: světlé sklo, obsah na středu ------------------------------- */
 .ak-tile {
   position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ak-s-3);
   min-height: 210px; padding: var(--ak-s-6) var(--ak-s-5); text-align: center;
   background: var(--ak-pressed-bg); border-radius: var(--ak-r-2);
-  box-shadow: var(--ak-pressed);
-  transition: box-shadow var(--ak-t) var(--ak-ease);
+  box-shadow: var(--ak-pressed); -webkit-backdrop-filter: var(--ak-frost-blur); backdrop-filter: var(--ak-frost-blur);
+  transition: box-shadow var(--ak-t) var(--ak-ease), background-color var(--ak-t) var(--ak-ease);
 }
-.ak-tile:hover { box-shadow: var(--ak-pressed-hover); }
+.ak-tile:hover { box-shadow: var(--ak-pressed-hover); background: rgb(255 255 255 / .68); }
 /* „Česko & Polsko“: stejná dlaždice jako ostatní; jen ampersand je tlumený */
 .ak-tile--accent { }.ak-amp { color: var(--ak-ink-44); font-weight: 400; }
 

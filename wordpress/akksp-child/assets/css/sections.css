@@ -45,11 +45,19 @@
 
 /* --- 1b · Rozcestník: vlastní pruh pod hero -------------------------------- */
 .ak-routes { padding: var(--ak-s-8) 0; }
+/* světlé sklo: za dlaždicemi jemné barevné skvrny (navy + teplá), aby rozostření bylo znát */
+.ak-routes, .ak-why { position: relative; isolation: isolate; overflow: hidden; }
+.ak-routes::before, .ak-why::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(38% 60% at 22% 70%, rgb(18 50 73 / .16), transparent 70%),
+              radial-gradient(30% 55% at 78% 30%, rgb(226 148 33 / .10), transparent 70%),
+              radial-gradient(26% 50% at 55% 95%, rgb(18 50 73 / .10), transparent 70%); }
+.ak-why::before { background: radial-gradient(30% 70% at 45% 40%, rgb(18 50 73 / .15), transparent 70%),
+              radial-gradient(28% 60% at 85% 65%, rgb(226 148 33 / .10), transparent 70%); }
 .ak-routes__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); }
 .ak-route { display: flex; flex-direction: column; gap: var(--ak-s-3); min-height: 200px; padding: var(--ak-s-6); color: var(--ak-ink); }
-/* na krémovém pruhu vtlačené do plochy, stejně jako dlaždice Proč AKKSP */
-.ak-routes .ak-route { background: var(--ak-pressed-bg); box-shadow: var(--ak-pressed); }
-.ak-routes .ak-route:hover, .ak-routes .ak-route:focus-visible { box-shadow: var(--ak-pressed-hover); }
+/* světlé sklo, stejně jako dlaždice Proč AKKSP */
+.ak-routes .ak-route { background: var(--ak-pressed-bg); box-shadow: var(--ak-pressed); -webkit-backdrop-filter: var(--ak-frost-blur); backdrop-filter: var(--ak-frost-blur); transition: box-shadow var(--ak-t) var(--ak-ease), background-color var(--ak-t) var(--ak-ease); }
+.ak-routes .ak-route:hover, .ak-routes .ak-route:focus-visible { box-shadow: var(--ak-pressed-hover); background: rgb(255 255 255 / .68); }
 .ak-route__title { color: var(--ak-ink); }
 .ak-route p { color: var(--ak-ink-64); }
 .ak-route__go { margin-top: auto; align-self: flex-end; width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--ak-r-1);
