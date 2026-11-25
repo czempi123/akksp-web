@@ -135,11 +135,11 @@
 .ak-tile {
   position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ak-s-3);
   min-height: 210px; padding: var(--ak-s-6) var(--ak-s-5); text-align: center;
-  background: var(--ak-cream); border-radius: var(--ak-r-2);
-  box-shadow: inset 6px 6px 14px rgb(10 14 69 / .1), inset -6px -6px 14px #FFFFFF;
+  background: var(--ak-pressed-bg); border-radius: var(--ak-r-2);
+  box-shadow: var(--ak-pressed);
   transition: box-shadow var(--ak-t) var(--ak-ease);
 }
-.ak-tile:hover { box-shadow: inset 9px 9px 20px rgb(10 14 69 / .13), inset -9px -9px 20px #FFFFFF; }
+.ak-tile:hover { box-shadow: var(--ak-pressed-hover); }
 /* „Česko & Polsko“: stejná dlaždice jako ostatní; jen ampersand je tlumený */
 .ak-tile--accent { }.ak-amp { color: var(--ak-ink-44); font-weight: 400; }
 

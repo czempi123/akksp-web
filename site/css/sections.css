@@ -48,8 +48,8 @@
 .ak-routes__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gutter); }
 .ak-route { display: flex; flex-direction: column; gap: var(--ak-s-3); min-height: 200px; padding: var(--ak-s-6); color: var(--ak-ink); }
 /* na krémovém pruhu vtlačené do plochy, stejně jako dlaždice Proč AKKSP */
-.ak-routes .ak-route { background: var(--ak-cream); box-shadow: inset 6px 6px 14px rgb(10 14 69 / .1), inset -6px -6px 14px #FFFFFF; }
-.ak-routes .ak-route:hover, .ak-routes .ak-route:focus-visible { box-shadow: inset 9px 9px 20px rgb(10 14 69 / .13), inset -9px -9px 20px #FFFFFF; }
+.ak-routes .ak-route { background: var(--ak-pressed-bg); box-shadow: var(--ak-pressed); }
+.ak-routes .ak-route:hover, .ak-routes .ak-route:focus-visible { box-shadow: var(--ak-pressed-hover); }
 .ak-route__title { color: var(--ak-ink); }
 .ak-route p { color: var(--ak-ink-64); }
 .ak-route__go { margin-top: auto; align-self: flex-end; width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--ak-r-1);

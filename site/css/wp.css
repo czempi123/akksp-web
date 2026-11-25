@@ -153,5 +153,5 @@ body.ak-theme, body.ak-theme[class*="elementor-kit-"] { font-family: var(--ak-sa
 /* Elementor (.elementor img { height: auto }) by zmenšil fotky v hero */
 .ak-theme .ak-hero__slide { height: 100%; max-width: none; }
 /* rozcestník je odkaz: Elementor by mu vzal vtlačený stín */
-.ak-theme .ak-routes a.ak-route { box-shadow: inset 6px 6px 14px rgb(10 14 69 / .1), inset -6px -6px 14px #FFFFFF; }
-.ak-theme .ak-routes a.ak-route:hover, .ak-theme .ak-routes a.ak-route:focus-visible { box-shadow: inset 9px 9px 20px rgb(10 14 69 / .13), inset -9px -9px 20px #FFFFFF; }
+.ak-theme .ak-routes a.ak-route { box-shadow: var(--ak-pressed); }
+.ak-theme .ak-routes a.ak-route:hover, .ak-theme .ak-routes a.ak-route:focus-visible { box-shadow: var(--ak-pressed-hover); }
