@@ -42,7 +42,7 @@ class Contact_Bar extends Base {
 		$phone   = $s['phone'] ? $s['phone'] : akksp_contact( 'phone' );
 		$email   = $s['email'] ? $s['email'] : akksp_contact( 'email' );
 		$offices = $s['offices'] ? $s['offices'] : akksp_contact( 'offices' );
-		$btn_url = $this->url( $s['btn_link'], akksp_contact( 'contact_url' ) );
+		$btn_url = $this->url( $s['btn_link'], '#kontakt' ); // #kontakt otevře kontaktní panel
 		?>
 <section class="ak-contact ak-dark" aria-label="<?php echo esc_attr( $s['title'] ); ?>">
 	<div class="ak-wrap">

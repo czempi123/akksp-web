@@ -42,6 +42,7 @@ function Save-Resized([string]$from, [string]$to, [int]$maxW) {
 $demo = @{
   'hero-zasedacka.jpg'    = @('2024-11-20241114_135120.jpg', 2000)
   'jednaci-mistnost.jpg'  = @('2025-01-20241114_134712.jpg', 2000)
+  'schody.jpg'            = @('2025-01-schody-3.jpg', 2000)
   'troszok.jpg'           = @('2024-12-P6200389CHO-scaled-e1692876753442.jpg', 800)
   'filipczyk.jpg'         = @('2024-12-P6290544CHO-scaled-e1692876639242.jpg', 800)
   'kadlubiec.jpg'         = @('2024-12-182-1.jpg', 800)
@@ -51,7 +52,7 @@ $demo = @{
 foreach ($k in $demo.Keys) { Save-Resized (Join-Path $img $demo[$k][0]) "$theme\assets\img\demo\$k" $demo[$k][1] }
 
 # 4) screenshot.png (1200x900) z nahledu homepage, pokud existuje
-$shot = Join-Path $root 'shots\home-1440.png'
+$shot = Join-Path $root 'shots\w2-1440.png'
 if (Test-Path $shot) {
   $im = [Drawing.Image]::FromFile($shot)
   $bmp = New-Object Drawing.Bitmap 1200, 900

@@ -18,13 +18,13 @@ function akksp_contact_defaults() {
 		'offices'      => 'Husova 401, Třinec',
 		'search_form_id' => '350',
 		'search_title' => 'S čím vám můžeme pomoci?',
-		'contact_url'  => '#kontakt',
 		'company'      => 'AKKSP advokátní kancelář, s.r.o.',
 		'company_info' => "IČO: 27787541\nZápis v obchodním rejstříku:\nC 29686 u Krajského soudu v Ostravě\nID datové schránky: xvwje95",
-		'seat'         => "Husova 401\n739 61 Třinec\nČeská republika\n+420 558 997 104",
-		'branch'       => "Průmyslová 1032\n739 61 Třinec\nČeská republika\n+420 558 532 496",
+		'seat'         => "Husova 401\n739 61 Třinec\n+420 558 997 104",
+		'branch'       => "Průmyslová 1032\n739 61 Třinec\n+420 558 532 496",
+		'data_box'     => 'xvwje95',
 		'linkedin'     => '',
-		'youtube'      => '',
+		'contact_form' => '',
 	);
 }
 
@@ -52,7 +52,7 @@ add_action(
 			array(
 				'title'       => __( 'AKKSP: kontakty a firma', 'akksp' ),
 				'priority'    => 30,
-				'description' => __( 'Údaje v hlavičce, kontaktní liště a patičce.', 'akksp' ),
+				'description' => __( 'Údaje v kontaktním panelu (tlačítko Kontakt), hero a patičce.', 'akksp' ),
 			)
 		);
 
@@ -62,13 +62,13 @@ add_action(
 			'offices'      => array( __( 'Kancelář (jeden řádek, kontaktní lišta)', 'akksp' ), 'text' ),
 			'search_form_id' => array( __( 'Ivory Search: ID formuláře (dnes 350)', 'akksp' ), 'text' ),
 			'search_title' => array( __( 'Nadpis vyhledávání', 'akksp' ), 'text' ),
-			'contact_url'  => array( __( 'Odkaz tlačítka Kontakt', 'akksp' ), 'text' ),
 			'company'      => array( __( 'Název společnosti', 'akksp' ), 'text' ),
 			'company_info' => array( __( 'Údaje o společnosti (IČO, rejstřík, DS)', 'akksp' ), 'textarea' ),
 			'seat'         => array( __( 'Sídlo (adresa + telefon)', 'akksp' ), 'textarea' ),
 			'branch'       => array( __( 'Pobočka (adresa + telefon)', 'akksp' ), 'textarea' ),
-			'linkedin'     => array( __( 'LinkedIn URL', 'akksp' ), 'url' ),
-			'youtube'      => array( __( 'YouTube URL', 'akksp' ), 'url' ),
+			'data_box'     => array( __( 'ID datové schránky (kontaktní panel)', 'akksp' ), 'text' ),
+			'linkedin'     => array( __( 'LinkedIn URL (firemní profil)', 'akksp' ), 'url' ),
+			'contact_form' => array( __( 'Kontaktní panel: shortcode stávajícího formuláře (např. [elementor-template id="123"] nebo [contact-form-7 id="…"]); prázdné = bez formuláře', 'akksp' ), 'textarea' ),
 		);
 
 		$defaults = akksp_contact_defaults();

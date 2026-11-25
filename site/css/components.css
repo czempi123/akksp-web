@@ -6,43 +6,64 @@
    s tmavým pozadím, nese vždy 1px zlatý obrys.
    ========================================================================== */
 
-/* --- Šipka: průjezd (ven vpravo, zpět zleva) ---------------------------- */
+/* --- Šipka: hravé pružné „pošťouchnutí“ vpřed (nikam nemizí) ------------- */
 @keyframes ak-arrow-through {
-  0%   { transform: translateX(0); opacity: 1; }
-  45%  { transform: translateX(120%); opacity: 0; }
-  46%  { transform: translateX(-120%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0%, 100% { transform: translateX(0); }
+  22% { transform: translateX(5px); }
+  40% { transform: translateX(-1px); }
+  58% { transform: translateX(3px); }
+  76% { transform: translateX(0); }
 }
 .ak-arrow-box { overflow: hidden; }
 .ak-arrow-box .ak-ico { display: block; }
 :is(a, button):hover .ak-arrow-box .ak-ico,
-:is(a, button):focus-visible .ak-arrow-box .ak-ico { animation: ak-arrow-through 520ms var(--ak-ease) both; }
+:is(a, button):focus-visible .ak-arrow-box .ak-ico { animation: ak-arrow-through 650ms var(--ak-ease) both; }
+
+/* Telefon místo průjezdu krátce „zazvoní“, obálka se jen nadzvedne */
+@keyframes ak-ring {
+  0%, 100% { transform: rotate(0); }
+  12% { transform: rotate(-14deg); }
+  24% { transform: rotate(12deg); }
+  36% { transform: rotate(-10deg); }
+  48% { transform: rotate(8deg); }
+  60% { transform: rotate(-4deg); }
+  72% { transform: rotate(0); }
+}
+@keyframes ak-lift {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3px); }
+}
+:is(a, button):is(:hover, :focus-visible) .ak-arrow-box .ak-ico:has(use[href="#i-phone"]) { animation: ak-ring 700ms var(--ak-ease) both; transform-origin: 50% 50%; }
+:is(a, button):is(:hover, :focus-visible) .ak-arrow-box .ak-ico:has(use[href="#i-mail"]) { animation: ak-lift 520ms var(--ak-ease) both; }
 
 /* --- Tlačítko: text | šipkový modul ------------------------------------- */
 .ak-btn {
-  display: inline-flex; align-items: stretch; min-height: 48px; border-radius: var(--ak-r-1); overflow: hidden;
+  position: relative; display: inline-flex; align-items: stretch; min-height: 48px; border-radius: var(--ak-r-1); overflow: hidden;
   font-family: var(--ak-sans); font-size: 15px; line-height: 24px; font-weight: 600; white-space: nowrap;
-  transition: background-color var(--ak-t-inv) var(--ak-ease), color var(--ak-t-inv) var(--ak-ease), box-shadow var(--ak-t-inv) var(--ak-ease);
+  transition: background-color var(--ak-t-inv) var(--ak-ease), color var(--ak-t-inv) var(--ak-ease);
 }
+/* Obrys se kreslí jako vrstva NAD obsahem, takže obepne i šipkový modul (dřív ho výplň modulu překryla) */
+.ak-btn::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--btn-ring, transparent); transition: box-shadow var(--ak-t-inv) var(--ak-ease); }
 .ak-btn > span { display: flex; align-items: center; padding: 12px 18px; }
 .ak-btn > i { display: grid; place-items: center; width: 48px; font-style: normal; transition: background-color var(--ak-t-inv) var(--ak-ease), color var(--ak-t-inv) var(--ak-ease), box-shadow var(--ak-t-inv) var(--ak-ease); }
 .ak-btn:active { transform: translateY(1px); }
 
-/* Primární: zlatá → navy se zlatým obrysem */
-.ak-btn--primary { background: var(--ak-gold-soft); color: var(--ak-navy); box-shadow: inset 0 0 0 1px var(--ak-gold-soft); }
+/* Primární: zlatá → celé tlačítko navy se zlatým textem a zlatým obrysem */
+.ak-btn--primary { --btn-ring: var(--ak-gold-soft); background: var(--ak-gold-soft); color: var(--ak-navy); }
 .ak-btn--primary > i { background: var(--ak-gold); color: var(--ak-navy); }
-.ak-btn--primary:hover, .ak-btn--primary:focus-visible { background: var(--ak-navy); color: var(--ak-gold-soft); box-shadow: inset 0 0 0 1px var(--ak-gold); }
+.ak-btn--primary:hover, .ak-btn--primary:focus-visible { --btn-ring: var(--ak-gold); background: var(--ak-navy); color: var(--ak-gold-soft); }
 .ak-btn--primary:hover > i, .ak-btn--primary:focus-visible > i { background: var(--ak-navy); color: var(--ak-gold); box-shadow: inset 1px 0 0 var(--ak-gold-40); }
 
 /* Sekundární: obrys → plná výplň (na světlé navy, na tmavé zlatá) */
-.ak-btn--secondary { color: var(--fg); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.ak-btn--secondary { --btn-ring: var(--line-strong); color: var(--fg); }
 .ak-btn--secondary > i { box-shadow: inset 1px 0 0 var(--line-strong); color: var(--ctrl); }
-.ak-btn--secondary:hover, .ak-btn--secondary:focus-visible { background: var(--inv-bg); color: var(--inv-fg); box-shadow: inset 0 0 0 1px var(--inv-edge); }
+.ak-btn--secondary:hover, .ak-btn--secondary:focus-visible { --btn-ring: var(--inv-edge); background: var(--inv-bg); color: var(--inv-fg); }
 .ak-btn--secondary:hover > i, .ak-btn--secondary:focus-visible > i { color: var(--inv-fg); box-shadow: inset 1px 0 0 var(--inv-line); }
 
-.ak-btn--glass { color: var(--ak-paper); background: var(--ak-glass-bg); box-shadow: inset 0 0 0 1px var(--ak-glass-border), var(--ak-glass-highlight); backdrop-filter: var(--ak-glass-blur); -webkit-backdrop-filter: var(--ak-glass-blur); }
+.ak-btn--glass { --btn-ring: var(--ak-glass-border); color: var(--ak-paper); background: var(--ak-glass-bg); box-shadow: var(--ak-glass-highlight); backdrop-filter: var(--ak-glass-blur); -webkit-backdrop-filter: var(--ak-glass-blur); }
 .ak-btn--glass > i { box-shadow: inset 1px 0 0 var(--ak-glass-border); color: var(--ak-gold); }
-.ak-btn--glass:hover, .ak-btn--glass:focus-visible { background: var(--ak-gold-soft); color: var(--ak-navy); box-shadow: inset 0 0 0 1px var(--ak-gold); }
+.ak-btn--glass:hover, .ak-btn--glass:focus-visible { --btn-ring: var(--ak-gold); background: var(--ak-gold-soft); color: var(--ak-navy); }
 .ak-btn--glass:hover > i, .ak-btn--glass:focus-visible > i { color: var(--ak-navy); box-shadow: inset 1px 0 0 rgb(0 22 40 / .2); }
 
 .ak-btn--sm { min-height: 40px; font-size: 14px; }
@@ -118,10 +139,9 @@
 }
 .ak-tile::after { content: ""; position: absolute; top: var(--ak-s-5); right: var(--ak-s-5); width: 8px; height: 8px; background: var(--ak-gold-line); }
 .ak-tile:hover { box-shadow: 3px 3px 10px rgb(10 14 69 / .08), -3px -3px 10px #FFFDFA, inset 0 0 0 1px var(--ak-gold-line); }
-/* Zvýrazněná dlaždice: jemně — zlatý obrys a zlatý ampersand, bez plné výplně */
-.ak-tile--accent { box-shadow: var(--ak-relief), inset 0 0 0 1px var(--ak-gold-line); }
-.ak-tile--accent::after { background: var(--ak-navy); }
-.ak-amp { color: var(--ak-amber); font-weight: 400; }
+/* „Česko & Polsko“: stejná dlaždice jako ostatní, nic nevystupuje; jen ampersand je tlumený */
+.ak-tile--accent { }
+.ak-amp { color: var(--ak-ink-44); font-weight: 400; }
 
 /* --- Karta (papír) ------------------------------------------------------- */
 .ak-card { background: var(--ak-paper); border-radius: var(--ak-r-2); box-shadow: inset 0 0 0 1px var(--ak-ink-08); transition: box-shadow var(--ak-t) var(--ak-ease); }

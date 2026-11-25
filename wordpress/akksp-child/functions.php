@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AKKSP_VERSION', '1.1.0' );
+define( 'AKKSP_VERSION', '1.2.0' );
 define( 'AKKSP_DIR', get_stylesheet_directory() );
 define( 'AKKSP_URI', get_stylesheet_directory_uri() );
 

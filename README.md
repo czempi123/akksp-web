@@ -9,7 +9,8 @@ Pracovní repozitář pro redesign webu AKKSP advokátní kancelář, s.r.o. Obs
 | 1 | Moodboard: 3 varianty každého prvku (paleta, písmo, tlačítka, navigace, hero, rozcestník, kontakt, čísla, oblasti, tým, reference, školení, aktuality, patička, pohyb) | hotovo, vybráno |
 | 2 | Brand manual v1 (`brand-manual/`) + kompletní homepage (`site/`, desktop + mobil) | hotovo |
 | 3 | WordPress child téma pro Hello Elementor (`wordpress/akksp-child/`), 10 Elementor widgetů, lokální písma, otestováno v lokálním WP | hotovo |
-| 3.1 | Finální design homepage podle 11 připomínek, PL mutace (`site/pl/`), vyhledávání (Ivory Search), **AKKSP Design System** (`design-system/` + artefakt) | **hotovo, čeká na připomínky a staging** |
+| 3.1 | Finální design homepage podle 11 připomínek, PL mutace (`site/pl/`), vyhledávání (Ivory Search), **AKKSP Design System** (`design-system/` + artefakt) | hotovo |
+| 3.2 | Druhá vlna připomínek: hlavička v jednom řádku bez burgeru, kontaktní panel, hero s prolínáním fotek, nové oblasti, patička, cookie lišta, CZ \| PL \| EN (`docs/08`) | **hotovo, čeká na připomínky a staging** |
 
 Platná pravidla designu: **`design-system/project/README.md`** (a artefakt AKKSP Design System). `brand-manual/` a `docs/03` jsou historické verze.
 
@@ -20,7 +21,7 @@ design-system/           Design system (zdroj artefaktu): README = brand book, t
   build-components.mjs  vygeneruje komponenty a obálku (node design-system/build-components.mjs)
 site/                   Homepage (prototyp pro WordPress)
   index.html            česká verze
-  pl/index.html         polská mutace (generuje tools/make-pl.ps1 z tools/i18n/pl.json)
+  pl/, en/              jazykové mutace (generuje tools/make-lang.ps1 z tools/i18n/pl.json, en.json)
   css/tokens.css        design tokeny --ak-*
   css/base.css          základ, typografie, plochy, mřížka
   css/components.css    tlačítka, „+ → ×", sklo, karty, štítky
@@ -49,9 +50,11 @@ docs/
   04-wordpress-implementace.md
   05-design-system-v1.md    jak byl výběr sjednocen, mapování kódu do WP
   06-wordpress-instalace.md instalace tématu, nastavení, lokální test, checklist
+  07-finalni-design-v1-1.md první vlna připomínek
+  08-druha-vlna-pripominek.md druhá vlna připomínek (téma 1.2.0)
 ```
 
-Stránky: `http://localhost:4173/site/` (homepage), `/site/pl/`, `/moodboard/`. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
+Stránky: `http://localhost:4173/site/` (homepage), `/site/pl/`, `/site/en/`, `/moodboard/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
 
 ## Jak otevřít moodboard
 

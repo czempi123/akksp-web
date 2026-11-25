@@ -59,8 +59,8 @@
   --ak-margin: clamp(20px, 4vw, 64px);
 
   /* Hlavička */
-  --ak-nav-h: 80px;
-  --ak-nav-h-scrolled: 64px;
+  --ak-nav-h: 80px;              /* jeden řádek: logo, menu, hledání, jazyk, Kontakt */
+  --ak-nav-h-scrolled: 74px;   /* po odscrollování jen nepatrně nižší */
 
   /* Tvary — téměř ostré (švýcarský řád), sklo o stupeň měkčí */
   --ak-r-1: 2px;   /* tlačítka, dlaždice, štítky */

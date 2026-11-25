@@ -1,15 +1,15 @@
 # 06 · WordPress: instalace a práce s tématem AKKSP
 
-Child téma `wordpress/akksp-child/` (rodič: **Hello Elementor**). Balíček k nahrání: `wordpress/dist/akksp-child-1.1.0.zip` (sestaví `tools/build-theme.ps1`). Vizuální pravidla: artefakt **AKKSP Design System** a jeho zdroj v `design-system/`.
+Child téma `wordpress/akksp-child/` (rodič: **Hello Elementor**). Balíček k nahrání: `wordpress/dist/akksp-child-1.2.0.zip` (sestaví `tools/build-theme.ps1`). Vizuální pravidla: artefakt **AKKSP Design System** a jeho zdroj v `design-system/`.
 
 ## Co téma obsahuje
 
 | Část | Kde | Poznámka |
 |---|---|---|
-| Hlavička (navy lišta přes celou šířku, mobilní menu, CZ \| PL, vyhledávání) | `header.php` | menu „AKKSP: hlavní menu“; přepínač celých jazykových mutací z Polylangu; overlay se stávajícím **Ivory Search** |
+| Hlavička (jeden řádek: logo, celé menu, vyhledávání, CZ \| PL \| EN, Kontakt; bez burgeru) | `header.php` | menu „AKKSP: hlavní menu“; přepínač celých jazykových mutací z Polylangu; overlay se stávajícím **Ivory Search** |
 | Výsledky vyhledávání | `search.php`, `searchform.php` | vzhled tématu; filtry a nastavení dál řídí Ivory Search |
 | Patička (struktura jako dnes) | `footer.php` | 3 menu + údaje z Přizpůsobit |
-| Údaje kanceláře | Vzhled → Přizpůsobit → **AKKSP: kontakty a firma** | telefon, e-mail, kancelář, IČO, sídlo, pobočka, LinkedIn, YouTube, ID formuláře Ivory Search (350), nadpis vyhledávání |
+| Údaje kanceláře | Vzhled → Přizpůsobit → **AKKSP: kontakty a firma** | telefon, e-mail, IČO, sídlo, pobočka, datová schránka, LinkedIn, shortcode formuláře pro kontaktní panel, ID formuláře Ivory Search (350), nadpis vyhledávání |
 | 10 Elementor widgetů | panel Elementoru → kategorie **AKKSP sekce** | výchozí obsah = schválená homepage |
 | Design system | `assets/css/` (kopie `site/css/`) | needitovat v tématu, ale v `site/` a spustit build |
 | Lokální písma | `assets/fonts/` | stáhne `tools/get-fonts.ps1`; Google Fonts z Elementoru jsou vypnutá |
@@ -38,26 +38,25 @@ Funguje s Elementorem zdarma i s **Elementor Pro**. Současný web Elementor Pro
 2. **Záloha** produkce (soubory + databáze).
 3. Ověřit, že je nainstalované téma **Hello Elementor** (rodič).
 4. Na počítači: `.\tools\get-fonts.ps1` (stáhne písma) a `.\tools\build-theme.ps1` (sestaví ZIP).
-5. Vzhled → Motivy → Přidat → Nahrát motiv → `akksp-child-1.0.0.zip` → **Aktivovat**.
+5. Vzhled → Motivy → Přidat → Nahrát motiv → `akksp-child-1.2.0.zip` → **Aktivovat**.
 6. Elementor → Nastavení:
    - *Disable Default Colors* a *Disable Default Fonts*: zaškrtnuto (téma nastaví samo),
    - Elementor → Nastavení → Pokročilé → *Google Fonts*: **Disable**,
    - *Font-display*: swap.
 7. Vzhled → Menu:
    - **AKKSP: hlavní menu**: Pro firmy, Pro jednotlivce, Česko / Polsko, O nás, Zkušenosti, Školení a workshopy, Právní poradna,
-   - **AKKSP: patička – Další informace**: 4 PDF (spotřebitelské spory, AML, osobní údaje, cookies),
+   - **AKKSP: patička – Dokumenty**: 4 PDF (spotřebitelské spory, AML, osobní údaje, cookies),
    - **AKKSP: patička – Média**: Právní rady veřejnosti (eHutnik), Teaser,
-   - **AKKSP: patička – spodní lišta**: Ochrana osobních údajů, Cookies, Kontakty,
    - pro polskou verzi vytvořit stejná menu v PL (Polylang → Jazyky → Menu).
 8. Přizpůsobit → AKKSP: kontakty a firma → zkontrolovat údaje (spisová značka **C 29686**), doplnit LinkedIn / YouTube nebo nechat prázdné (sloupec se skryje).
 9. **Homepage:** nová stránka → Upravit pomocí Elementoru → šablona stránky **Elementor Full Width** → postupně vložit widgety:
-   Hero → Kontaktní lišta → Proč AKKSP → Oblasti → Tým → Reference → Školení → Aktuality.
+   Hero + rozcestník → Proč AKKSP → Oblasti → Tým → Reference → Školení → Aktuality.
    Každý widget do vlastního kontejneru, nebo všechny do jednoho; téma vynuluje okraje kontejnerů samo.
 10. Nastavení → Zobrazování → statická úvodní stránka = nová homepage.
 11. V Reference doplnit galerii log klientů z knihovny médií (po souhlasu klientů).
 12. Polylang: přeložit homepage do PL (Jazyky → přidat překlad), v Hero nechat režim „Odkazy na jazykové verze".
 13. LiteSpeed Cache: po nasazení *Purge All*; pokud je zapnutá optimalizace CSS/JS, ověřit, že nerozbíjí `site.js` (případně vyloučit `akksp-site`).
-14. Complianz: beze změny (písma jsou lokální, žádné nové cookies).
+14. Complianz: obsah beze změny (písma jsou lokální, žádné nové cookies); vzhled lišty dodává téma, odkaz Nastavení cookies v patičce ji znovu otevře.
 
 ## Podstránky
 

@@ -20,9 +20,8 @@ add_action(
 		register_nav_menus(
 			array(
 				'akksp-primary'     => __( 'AKKSP: hlavní menu', 'akksp' ),
-				'akksp-footer-info' => __( 'AKKSP: patička – Další informace', 'akksp' ),
+				'akksp-footer-info' => __( 'AKKSP: patička – Dokumenty', 'akksp' ),
 				'akksp-footer-media'=> __( 'AKKSP: patička – Média', 'akksp' ),
-				'akksp-footer-legal'=> __( 'AKKSP: patička – spodní lišta', 'akksp' ),
 			)
 		);
 
@@ -70,36 +69,3 @@ add_filter(
 	}
 );
 
-/**
- * Pořadové číslo položek mobilního menu (pro postupný náběh).
- */
-add_filter(
-	'nav_menu_link_attributes',
-	function ( $atts, $item, $args ) {
-		static $i = 0;
-		if ( isset( $args->akksp_mobile ) && $args->akksp_mobile ) {
-			$atts['style'] = '--i:' . (int) $i;
-			$i++;
-		}
-		return $atts;
-	},
-	10,
-	3
-);
-
-/**
- * U položek mobilního menu přidá číslo vpravo (01, 02 …).
- */
-add_filter(
-	'nav_menu_item_title',
-	function ( $title, $item, $args ) {
-		static $n = 0;
-		if ( isset( $args->akksp_mobile ) && $args->akksp_mobile && 0 === (int) $item->menu_item_parent ) {
-			$n++;
-			$title .= ' <span class="ak-mono">' . esc_html( str_pad( (string) $n, 2, '0', STR_PAD_LEFT ) ) . '</span>';
-		}
-		return $title;
-	},
-	10,
-	3
-);

@@ -20,7 +20,7 @@ function akksp_icon_sprite() {
 	<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></symbol>
 	<symbol id="i-quote" viewBox="0 0 32 32"><path d="M4 22.5c0-6.2 2.9-10.9 8.6-14l1.6 2.3c-3.3 2-5 4.4-5.3 7.2H14V27H4v-4.5zm14 0c0-6.2 2.9-10.9 8.6-14l1.6 2.3c-3.3 2-5 4.4-5.3 7.2H28V27H18v-4.5z"/></symbol>
 	<symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8.2 10.5v6M8.2 7.6v.1M11.8 16.5v-3.6a2.3 2.3 0 0 1 4.6 0v3.6M11.8 10.5v6"/></symbol>
-	<symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.8" y="5.8" width="18.4" height="12.4" rx="3.5"/><path d="m10.3 9.3 4.4 2.7-4.4 2.7z"/></symbol>
+	<symbol id="i-cookie" viewBox="0 0 24 24"><path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 3.6 3.6 3 3 0 0 0 3.6 3.6c.6.6 1.2 1.2 1.8 1.8z"/><path d="M8.5 10.5v.1M12 15v.1M15.5 13.5v.1M8.5 15.5v.1"/></symbol>
 </svg>
 	<?php
 }
@@ -161,27 +161,67 @@ function akksp_search_form() {
 }
 
 /**
- * Šipka za položkou menu v patičce.
+ * Česká typografie: jednopísmenné předložky a spojky nezůstanou na konci řádku.
+ * Vrací HTML (vstup se escapuje).
  */
-function akksp_footer_arrow( $title ) {
-	return $title . ' ' . akksp_icon( 'arrow', true );
+function akksp_typo( $text ) {
+	return preg_replace( '/(^|[\s(])([kKsSvVzZoOuUaAiI])\s+/u', '$1$2&nbsp;', esc_html( (string) $text ) );
 }
 
 /**
- * Walker: jen holé odkazy (spodní lišta patičky).
+ * Kontaktní panel (otevře každé tlačítko „Kontakt" i odkaz na #kontakt).
+ * Formulář = shortcode stávajícího formuláře z Přizpůsobit; bez něj jen telefon, e-mail a adresy.
  */
-class AKKSP_Plain_Links_Walker extends Walker_Nav_Menu {
-	public function start_el( &$output, $data_object, $depth = 0, $args = null, $current_object_id = 0 ) {
-		$item    = $data_object;
-		$current = in_array( 'current-menu-item', (array) $item->classes, true ) ? ' aria-current="page"' : '';
-		$target  = $item->target ? ' target="' . esc_attr( $item->target ) . '" rel="noopener"' : '';
-		$output .= sprintf( '<a href="%s"%s%s>%s</a>', esc_url( $item->url ), $current, $target, esc_html( $item->title ) );
-	}
-	public function end_el( &$output, $data_object, $depth = 0, $args = null ) {}
-	public function start_lvl( &$output, $depth = 0, $args = null ) {}
-	public function end_lvl( &$output, $depth = 0, $args = null ) {}
+function akksp_contact_drawer() {
+	$phone = akksp_contact( 'phone' );
+	$email = akksp_contact( 'email' );
+	$form  = trim( (string) akksp_contact( 'contact_form' ) );
+	$rows  = array(
+		__( 'Sídlo', 'akksp' )           => akksp_contact( 'seat' ),
+		__( 'Pobočka', 'akksp' )         => akksp_contact( 'branch' ),
+		__( 'Datová schránka', 'akksp' ) => akksp_contact( 'data_box' ),
+	);
+	?>
+<div class="ak-drawer" id="kontakt" role="dialog" aria-modal="true" aria-labelledby="kontakt-title" data-drawer>
+	<a class="ak-drawer__scrim" href="#" tabindex="-1" aria-hidden="true" data-drawer-close></a>
+	<div class="ak-drawer__panel ak-dark" tabindex="-1" data-drawer-panel>
+		<div class="ak-drawer__head">
+			<h2 id="kontakt-title" class="ak-h3"><?php esc_html_e( 'Kontaktujte nás', 'akksp' ); ?></h2>
+			<a class="ak-drawer__close" href="#" role="button" aria-label="<?php esc_attr_e( 'Zavřít kontakt', 'akksp' ); ?>" data-drawer-close><span class="ak-px__ico"></span></a>
+		</div>
+		<div class="ak-drawer__quick">
+			<?php if ( $phone ) : ?>
+			<a class="ak-drawer__phone" href="<?php echo esc_attr( akksp_tel_href( $phone ) ); ?>"><small class="ak-mono"><?php esc_html_e( 'Zavolejte nám', 'akksp' ); ?></small><b><?php echo esc_html( $phone ); ?></b><span class="ak-arrow-box" aria-hidden="true"><?php echo akksp_icon( 'phone' ); // phpcs:ignore ?></span></a>
+			<?php endif; ?>
+			<?php if ( $email ) : ?>
+			<a class="ak-drawer__mail" href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>"><small class="ak-mono"><?php esc_html_e( 'Napište e-mail', 'akksp' ); ?></small><b><?php echo esc_html( antispambot( $email ) ); ?></b><span class="ak-arrow-box" aria-hidden="true"><?php echo akksp_icon( 'mail' ); // phpcs:ignore ?></span></a>
+			<?php endif; ?>
+		</div>
+		<dl class="ak-drawer__rows">
+			<?php foreach ( $rows as $label => $value ) : ?>
+				<?php if ( trim( (string) $value ) ) : ?>
+			<div><dt><?php echo esc_html( $label ); ?></dt><dd><?php echo akksp_lines( $value ); // phpcs:ignore ?></dd></div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</dl>
+		<?php if ( $form ) : ?>
+		<div class="ak-drawer__form">
+			<h3 class="ak-h4"><?php esc_html_e( 'Nebo nám zanechte zprávu', 'akksp' ); ?></h3>
+			<?php echo do_shortcode( $form ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		</div>
+		<?php endif; ?>
+	</div>
+</div>
+	<?php
 }
 
+/**
+ * Hodnota Customizeru jako URL dokumentu (prázdné = nic).
+ */
+function akksp_doc_url( $key ) {
+	$url = trim( (string) akksp_contact( $key ) );
+	return $url ? esc_url( $url ) : '';
+}
 /**
  * Štítek sekce „01 · Název".
  */

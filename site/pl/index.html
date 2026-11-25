@@ -12,14 +12,15 @@
   <meta name="theme-color" content="#02182C">
   <link rel="alternate" hreflang="cs" href="../">
   <link rel="alternate" hreflang="pl" href="./">
+  <link rel="alternate" hreflang="en" href="../en/">
   <link rel="icon" href="../../assets/brand/akksp-logo-navy.svg">
-  <!-- Polská jazyková mutace (pracovní překlad) -->
+  <!-- Polská jazyková mutace (pracovní překlad, generuje tools/make-lang.ps1) -->
   <link rel="stylesheet" href="../../wordpress/akksp-child/assets/fonts/fonts.css">
   <link rel="preload" as="image" href="../../assets/aktrinec/2024-11-20241114_135120.jpg" fetchpriority="high">
-  <link rel="stylesheet" href="../css/tokens.css?v=3">
-  <link rel="stylesheet" href="../css/base.css?v=3">
-  <link rel="stylesheet" href="../css/components.css?v=3">
-  <link rel="stylesheet" href="../css/sections.css?v=3">
+  <link rel="stylesheet" href="../css/tokens.css?v=5">
+  <link rel="stylesheet" href="../css/base.css?v=5">
+  <link rel="stylesheet" href="../css/components.css?v=5">
+  <link rel="stylesheet" href="../css/sections.css?v=5">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -28,17 +29,19 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h2.8l1.6 4.4-2 1.3a10.6 10.6 0 0 0 5.8 5.8l1.3-2 4.4 1.6v2.8a2 2 0 0 1-2.1 2A16.5 16.5 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="m4.5 7 7.5 6 7.5-6"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></symbol>
+  <symbol id="i-cookie" viewBox="0 0 24 24"><path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 3.6 3.6 3 3 0 0 0 3.6 3.6c.6.6 1.2 1.2 1.8 1.8z"/><path d="M8.5 10.5v.1M12 15v.1M15.5 13.5v.1M8.5 15.5v.1"/></symbol>
   <symbol id="i-quote" viewBox="0 0 32 32"><path d="M4 22.5c0-6.2 2.9-10.9 8.6-14l1.6 2.3c-3.3 2-5 4.4-5.3 7.2H14V27H4v-4.5zm14 0c0-6.2 2.9-10.9 8.6-14l1.6 2.3c-3.3 2-5 4.4-5.3 7.2H28V27H18v-4.5z"/></symbol>
   <symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8.2 10.5v6M8.2 7.6v.1M11.8 16.5v-3.6a2.3 2.3 0 0 1 4.6 0v3.6M11.8 10.5v6"/></symbol>
-  <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.8" y="5.8" width="18.4" height="12.4" rx="3.5"/><path d="m10.3 9.3 4.4 2.7-4.4 2.7z"/></symbol>
 </svg>
 
-<!-- ============================================================ HLAVIČKA -->
+<!-- ============================================================ HLAVIČKA: jeden řádek, menu napřímo, Kontakt otevře panel -->
 <header class="ak-nav" data-nav>
-  <div class="ak-nav__bar">
-    <a class="ak-nav__logo" href="./" aria-label="AKKSP, strona główna"><img src="../../assets/brand/akksp-logo-white.svg" alt="AKKSP advokátní kancelář" width="120" height="30"></a>
-    <nav aria-label="Nawigacja główna">
+  <div class="ak-nav__in">
+    <a class="ak-nav__logo" href="./" aria-label="AKKSP, strona główna"><img src="../../assets/brand/akksp-logo-white.svg" alt="AKKSP Kancelaria Adwokacka" width="128" height="32"></a>
+    <div class="ak-nav__main">
+      <nav class="ak-nav__scroll" aria-label="Nawigacja główna">
       <ul class="ak-nav__menu">
         <li><a href="#rozcestnik">Dla firm</a></li>
         <li><a href="#rozcestnik">Dla osób prywatnych</a></li>
@@ -48,31 +51,16 @@
         <li><a href="#skoleni">Szkolenia i warsztaty</a></li>
         <li><a href="#aktuality">Porady prawne</a></li>
       </ul>
-    </nav>
+      </nav>
+      <button type="button" class="ak-nav__icon ak-nav__icon--m" aria-label="Szukaj" aria-controls="hledani" aria-expanded="false" data-search-open><svg class="ak-ico"><use href="#i-search"/></svg></button>
+    </div>
     <div class="ak-nav__tools">
       <button type="button" class="ak-nav__icon" aria-label="Szukaj" aria-controls="hledani" aria-expanded="false" data-search-open><svg class="ak-ico"><use href="#i-search"/></svg></button>
-      <nav class="ak-seg" style="--n:2;--pos:1" aria-label="Język strony"><span class="ak-seg__thumb" aria-hidden="true"></span><a href="../" hreflang="cs" lang="cs">CZ</a><a href="./" aria-current="true" lang="pl">PL</a></nav>
-      <a class="ak-btn ak-btn--primary ak-btn--sm" href="#kontakt"><span>Kontakt</span><i class="ak-arrow-box"><svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></i></a>
-      <button type="button" class="ak-burger" aria-expanded="false" aria-controls="mobilni-menu" aria-label="Menu" data-burger><span class="ak-burger__lines"><i></i><i></i><i></i></span></button>
+      <nav class="ak-seg" style="--n:3;--pos:1" aria-label="Język strony"><span class="ak-seg__thumb" aria-hidden="true"></span><a href="../" hreflang="cs" lang="cs">CZ</a><a href="./" aria-current="true" lang="pl">PL</a><a href="../en/" hreflang="en" lang="en">EN</a></nav>
+      <a class="ak-btn ak-btn--primary ak-btn--sm" href="#kontakt" aria-controls="kontakt" aria-expanded="false" data-contact-open><span>Kontakt</span><i class="ak-arrow-box"><svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></i></a>
     </div>
   </div>
 </header>
-
-<div class="ak-mobile" id="mobilni-menu" data-mobile>
-  <nav class="ak-mobile__menu" aria-label="Nawigacja mobilna">
-    <a href="#rozcestnik" style="--i:0">Dla firm</a>
-    <a href="#rozcestnik" style="--i:1">Dla osób prywatnych</a>
-    <a href="#rozcestnik" style="--i:2">Czechy / Polska</a>
-    <a href="#proc" style="--i:3">O nas</a>
-    <a href="#reference" style="--i:4">Doświadczenie</a>
-    <a href="#skoleni" style="--i:5">Szkolenia i warsztaty</a>
-    <a href="#aktuality" style="--i:6">Porady prawne</a>
-  </nav>
-  <div class="ak-mobile__foot ak-dark">
-    <a class="ak-btn ak-btn--primary" href="tel:+420558997103"><span>+420 558 997 103</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-phone"/></svg></i></a>
-    <nav class="ak-seg" style="--n:2;--pos:1" aria-label="Język strony"><span class="ak-seg__thumb" aria-hidden="true"></span><a href="../" hreflang="cs" lang="cs">CZ</a><a href="./" aria-current="true" lang="pl">PL</a></nav>
-  </div>
-</div>
 
 <!-- ============================================================ VYHLEDÁVÁNÍ (v WordPressu formulář Ivory Search) -->
 <div class="ak-search" id="hledani" role="dialog" aria-modal="true" aria-label="Wyszukiwanie" data-search>
@@ -90,57 +78,88 @@
   </div>
 </div>
 
+<!-- ============================================================ KONTAKTNÍ PANEL (otevře každé „Kontakt") -->
+<div class="ak-drawer" id="kontakt" role="dialog" aria-modal="true" aria-labelledby="kontakt-title" data-drawer>
+  <a class="ak-drawer__scrim" href="#" tabindex="-1" aria-hidden="true" data-drawer-close></a>
+  <div class="ak-drawer__panel ak-dark" tabindex="-1" data-drawer-panel>
+    <div class="ak-drawer__head">
+      <h2 id="kontakt-title" class="ak-h3">Skontaktuj się z nami</h2>
+      <a class="ak-drawer__close" href="#" role="button" aria-label="Zamknij kontakt" data-drawer-close><span class="ak-px__ico"></span></a>
+    </div>
+    <div class="ak-drawer__quick">
+      <a class="ak-drawer__phone" href="tel:+420558997103"><small class="ak-mono">Zadzwoń do nas</small><b>+420 558 997 103</b><span class="ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-phone"/></svg></span></a>
+      <a class="ak-drawer__mail" href="mailto:info@aktrinec.cz"><small class="ak-mono">Napisz e-mail</small><b>info@aktrinec.cz</b><span class="ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-mail"/></svg></span></a>
+    </div>
+    <dl class="ak-drawer__rows">
+      <div><dt>Siedziba</dt><dd>Husova 401<br>739 61 Třinec, Czechy<br><a href="tel:+420558997104">+420 558 997 104</a></dd></div>
+      <div><dt>Oddział</dt><dd>Průmyslová 1032<br>739 61 Třinec, Czechy<br><a href="tel:+420558532496">+420 558 532 496</a></dd></div>
+      <div><dt>Skrzynka danych (ISDS)</dt><dd>xvwje95<br>IČO 27787541</dd></div>
+    </dl>
+    <!-- V WordPressu se sem vloží stávající formulář webu (shortcode v Přizpůsobit). Tady ukázka se stejnými poli. -->
+    <form class="ak-form" action="#" novalidate data-contact-form data-msg-required="Proszę wypełnić to pole." data-msg-email="Podaj adres e-mail w formacie imie@domena.pl." data-msg-sent="Przykład wysyłki: na stronie wiadomość dostarczy obecny formularz kancelarii.">
+      <h3 class="ak-h4">Lub zostaw nam wiadomość</h3>
+      <div class="ak-form__row">
+        <label class="ak-field"><span>Imię</span><input type="text" name="jmeno" autocomplete="given-name" required></label>
+        <label class="ak-field"><span>Nazwisko</span><input type="text" name="prijmeni" autocomplete="family-name" required></label>
+      </div>
+      <div class="ak-form__row">
+        <label class="ak-field"><span>Telefon</span><input type="tel" name="telefon" autocomplete="tel"></label>
+        <label class="ak-field"><span>E-mail</span><input type="email" name="email" autocomplete="email" required></label>
+      </div>
+      <label class="ak-field"><span>Wiadomość</span><textarea name="zprava" rows="4" required></textarea></label>
+      <p class="ak-form__note">Wysyłając wiadomość, przyjmujesz do wiadomości <a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">informacje o przetwarzaniu danych osobowych</a>.</p>
+      <button type="submit" class="ak-btn ak-btn--primary"><span>Wyślij wiadomość</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></button>
+      <p class="ak-form__status" role="status" aria-live="polite" data-form-status></p>
+    </form>
+  </div>
+</div>
+
 <main id="obsah">
 
-<!-- ============================================================ HERO + ROZCESTNÍK -->
-<section class="ak-hero ak-dark" aria-labelledby="hero-title">
-  <div class="ak-photo"><img src="../../assets/aktrinec/2024-11-20241114_135120.jpg" alt="" fetchpriority="high"></div>
-  <div class="ak-hero__light" aria-hidden="true"></div>
-  <div class="ak-wrap ak-grid">
-    <div class="ak-hero__panel ak-glass">
-      <div class="ak-hero__top">
-        <p class="ak-label">Kancelaria adwokacka AKKSP</p>
-        <nav class="ak-seg" style="--n:2;--pos:1" aria-label="Język strony"><span class="ak-seg__thumb" aria-hidden="true"></span><a href="../" hreflang="cs" lang="cs">CZ</a><a href="./" aria-current="true" lang="pl">PL</a></nav>
-      </div>
-      <h1 id="hero-title" class="ak-display">Partner prawny w <em>Czechach i w Polsce.</em></h1>
-      <p class="ak-lead ak-hero__sub">Kompleksowe wsparcie prawne dla firm, przedsiębiorców i osób prywatnych. Zrozumiale, rzetelnie i z naciskiem na praktyczne rozwiązania.</p>
-    </div>
+<!-- ============================================================ HERO: bez rámečku, prolínání fotek kanceláře -->
+<section class="ak-hero ak-dark" aria-labelledby="hero-title" data-slides style="--ak-slide-ms:7000ms">
+  <div class="ak-hero__media" data-slides-media>
+    <img class="ak-hero__slide is-active" src="../../assets/aktrinec/2024-11-20241114_135120.jpg" alt="" fetchpriority="high">
+    <img class="ak-hero__slide" src="../../assets/aktrinec/2025-01-schody-3.jpg" alt="" loading="lazy">
+    <img class="ak-hero__slide" src="../../assets/aktrinec/2025-01-20241114_134712.jpg" alt="" loading="lazy">
   </div>
-
-  <div class="ak-wrap ak-grid ak-hero__routes" id="rozcestnik">
-    <a class="ak-route ak-glass ak-reveal" style="--i:0" href="#oblasti">
-      <h2 class="ak-h3 ak-route__title">Biznes w Czechach i w Polsce</h2>
-      <p>Wsparcie prawne bez barier transgranicznych.</p>
-      <span class="ak-route__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
-    </a>
-    <a class="ak-route ak-glass ak-reveal" style="--i:1" href="#oblasti">
-      <h2 class="ak-h3 ak-route__title">Dla firm i przedsiębiorców</h2>
-      <p>Obsługa prawna dla stabilnego funkcjonowania i rozwoju firmy.</p>
-      <span class="ak-route__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
-    </a>
-    <a class="ak-route ak-glass ak-reveal" style="--i:2" href="#oblasti">
-      <h2 class="ak-h3 ak-route__title">Dla osób prywatnych</h2>
-      <p>Pewność prawna w kluczowych sytuacjach życiowych.</p>
-      <span class="ak-route__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
-    </a>
+  <div class="ak-wrap ak-hero__content">
+    <div class="ak-hero__text">
+      <h1 id="hero-title" class="ak-display">Partner prawny<br>w&nbsp;<em>Czechach i w Polsce.</em></h1>
+      <p class="ak-lead">Kompleksowe wsparcie prawne dla firm, przedsiębiorców i osób prywatnych. Zrozumiale, rzetelnie i z naciskiem na praktyczne rozwiązania.</p>
+      <div class="ak-hero__actions">
+        <a class="ak-btn ak-btn--primary" href="#kontakt" aria-controls="kontakt" data-contact-open><span>Skontaktuj się z nami</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></a>
+        <a class="ak-btn ak-btn--glass" href="tel:+420558997103"><span>+420 558 997 103</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-phone"/></svg></i></a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============================================================ KONTAKTNÍ LIŠTA -->
-<section class="ak-contact ak-dark" aria-label="Szybki kontakt">
+<!-- ============================================================ ROZCESTNÍK -->
+<section class="ak-routes ak-light" id="rozcestnik" aria-label="Na skróty">
   <div class="ak-wrap">
-    <div class="ak-contact__row">
-      <h2 class="ak-contact__title">Skontaktuj się z nami</h2>
-      <a href="tel:+420558997103"><small class="ak-label">Telefon</small><span>+420 558 997 103</span></a>
-      <a href="mailto:info@aktrinec.cz"><small class="ak-label">E-mail</small><span>info@aktrinec.cz</span></a>
-      <div><small class="ak-label">Kancelaria</small><span style="color:var(--ak-paper)">Husova 401, Třinec (CZ)</span></div>
-      <div><a class="ak-btn ak-btn--primary" href="#kontakt"><span>Napisz do nas</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></a></div>
+    <div class="ak-routes__list">
+      <a class="ak-route ak-card ak-reveal" style="--i:0" href="#oblasti">
+        <h2 class="ak-h3 ak-route__title">Biznes w Czechach i w Polsce</h2>
+        <p>Wsparcie prawne bez barier transgranicznych.</p>
+        <span class="ak-route__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="ak-route ak-card ak-reveal" style="--i:1" href="#oblasti">
+        <h2 class="ak-h3 ak-route__title">Dla firm i przedsiębiorców</h2>
+        <p>Obsługa prawna dla stabilnego funkcjonowania i rozwoju firmy.</p>
+        <span class="ak-route__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="ak-route ak-card ak-reveal" style="--i:2" href="#oblasti">
+        <h2 class="ak-h3 ak-route__title">Dla osób prywatnych</h2>
+        <p>Pewność prawna w kluczowych sytuacjach życiowych.</p>
+        <span class="ak-route__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ PROČ AKKSP -->
-<section class="ak-why ak-light ak-section" id="proc" aria-labelledby="proc-title">
+<section class="ak-why ak-paper ak-section" id="proc" aria-labelledby="proc-title">
   <div class="ak-wrap ak-grid ak-why__grid">
     <div class="ak-why__head">
       <h2 id="proc-title" class="ak-h2 ak-mask">Dlaczego AKKSP?</h2>
@@ -155,33 +174,31 @@
   </div>
 </section>
 
-<!-- ============================================================ OBLASTI PRÁVNÍ POMOCI -->
+<!-- ============================================================ OBLASTI PRÁVNÍ POMOCI (podle aktrinec.cz/pravni-sluzby-trinec) -->
 <section class="ak-areas ak-dark ak-section" id="oblasti" aria-labelledby="oblasti-title">
   <div class="ak-wrap">
     <div class="ak-head ak-grid">
       <div class="ak-head__title">
-        <p class="ak-label">Obszary naszej pomocy prawnej</p>
         <h2 id="oblasti-title" class="ak-h2 ak-mask">W czym możemy pomóc?</h2>
-        <p class="ak-lead">Szeroki zakres usług prawnych dla firm i przedsiębiorców.</p>
+        <p class="ak-lead">Usługi prawne dla firm, przedsiębiorców i osób prywatnych w Czechach i w Polsce.</p>
       </div>
-      <div class="ak-head__action"><a class="ak-btn ak-btn--secondary" href="#oblasti"><span>Wszystkie obszary pomocy prawnej</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></a></div>
     </div>
 
     <div class="ak-areas__cols">
       <div class="ak-areas__col">
-        <div class="ak-area ak-glass ak-reveal" style="--i:0"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a1"><span class="ak-area__title">Umowy</span><span class="ak-area__sub">i relacje handlowe</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a1"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>przygotować umowę</li><li>wynegocjować umowę</li><li>przy zaciąganiu kredytu</li><li>przy udzielaniu pożyczki</li></ul></div></div></div></div>
-        <div class="ak-area ak-glass ak-reveal" style="--i:1"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a2"><span class="ak-area__title">Spory</span><span class="ak-area__sub">i windykacja należności</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a2"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>gdy klient nie płaci</li><li>bronić się przed pozwem</li><li>w postępowaniu sądowym</li><li>rozwiązać spór</li><li>zawrzeć ugodę</li></ul></div></div></div></div>
-        <div class="ak-area ak-glass ak-reveal" style="--i:2"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a3"><span class="ak-area__title">Własność intelektualna</span><span class="ak-area__sub">i ochrona know-how</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a3"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>zgłosić znak towarowy</li><li>zgłosić patent</li><li>chronić własność przemysłową</li><li>chronić własność intelektualną</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:0"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a1"><span class="ak-area__title">Firma</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a1"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>założenie / likwidacja</li><li>organy i organizacja</li><li>statuty / umowy spółek</li><li>umowy o pełnienie funkcji</li><li>odpowiedzialność członków zarządu</li><li>zbycie przedsiębiorstwa, zbycie udziałów</li><li>compliance</li><li>raport o relacjach, ESG, CBAM, CS3D</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:3"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a4"><span class="ak-area__title">Rodzina</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a4"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>rozwód</li><li>wspólność majątkowa małżeńska</li><li>podział i zarząd majątkiem</li><li>wychowanie i opieka nad dziećmi</li><li>alimenty</li><li>ustalenie ojcostwa</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:6"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a7"><span class="ak-area__title">Problemy</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a7"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>spory, pozwy i postępowania sądowe</li><li>wykroczenia drogowe i inne</li><li>prowadzenie pojazdu pod wpływem alkoholu</li><li>postępowanie administracyjne</li><li>obrona</li><li>zakaz prowadzenia pojazdów</li><li>odszkodowanie</li></ul></div></div></div></div>
       </div>
       <div class="ak-areas__col">
-        <div class="ak-area ak-glass ak-reveal" style="--i:3"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a4"><span class="ak-area__title">Pracownicy</span><span class="ak-area__sub">i prawo pracy</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a4"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>w sporze o nieważność wypowiedzenia</li><li>w rozmowach ze związkami zawodowymi</li><li>przy odszkodowaniu za wypadek przy pracy</li><li>przeszkolić pracowników</li></ul></div></div></div></div>
-        <div class="ak-area ak-glass ak-reveal" style="--i:4"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a5"><span class="ak-area__title">Sprawy korporacyjne</span><span class="ak-area__sub">i restrukturyzacja</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a5"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>przekazać firmę rodzinną dzieciom</li><li>działać z należytą starannością</li><li>założyć lub zlikwidować oddział</li></ul></div></div></div></div>
-        <div class="ak-area ak-glass ak-reveal" style="--i:5"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a6"><span class="ak-area__title">Regulacje i compliance</span><span class="ak-area__sub">(AML, RODO i in.)</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a6"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>w ochronie danych osobowych</li><li>przy regulaminach wewnętrznych</li><li>gdy przychodzi kontrola</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:1"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a2"><span class="ak-area__title">Handel</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a2"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>umowy handlowe</li><li>przejęcia i fuzje</li><li>due diligence</li><li>podmioty powiązane</li><li>konkurencja i nieuczciwa konkurencja</li><li>finansowanie</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:4"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a5"><span class="ak-area__title">Majątek</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a5"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>nieruchomości / ruchomości</li><li>darowizna, sprzedaż, kupno, zamiana</li><li>współwłasność</li><li>obciążenia, służebności</li><li>najem, podnajem, dzierżawa</li><li>postępowanie przed urzędem katastralnym</li><li>budowy i postępowanie budowlane</li><li>wierzytelności, długi, zabezpieczenia</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:7"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a8"><span class="ak-area__title"><span aria-hidden="true">© ® ™</span><span class="ak-sr">Własność intelektualna</span></span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a8"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>znaki towarowe</li><li>patenty</li><li>wzory użytkowe</li><li>prawa autorskie</li><li>licencje</li><li>cyberbezpieczeństwo (NIS 2)</li></ul></div></div></div></div>
       </div>
       <div class="ak-areas__col">
-        <div class="ak-area ak-glass ak-reveal" style="--i:6"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a7"><span class="ak-area__title">Nieruchomości</span><span class="ak-area__sub">i budownictwo</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a7"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>przenieść własność nieruchomości</li><li>przy sprzedaży nieruchomości</li><li>ustanowić służebność</li><li>w katastrze nieruchomości</li></ul></div></div></div></div>
-        <div class="ak-area ak-glass ak-reveal" style="--i:7"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a8"><span class="ak-area__title">Biznes transgraniczny</span><span class="ak-area__sub">(CZ / PL)</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a8"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>prowadzić działalność w Czechach</li><li>założyć lub zlikwidować oddział</li><li>z prawnikiem mówiącym po polsku i po czesku</li></ul></div></div></div></div>
-        <div class="ak-area ak-glass ak-reveal" style="--i:8"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a9"><span class="ak-area__title">M&amp;A i strategia</span><span class="ak-area__sub">(przejęcia, sprzedaże, fuzje)</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a9"><div><div class="ak-area__body"><p class="ak-label">Pomożemy Państwu</p><ul class="ak-list-sq"><li>przeprowadzić due diligence</li><li>przy fuzji</li><li>przy zakupie przedsiębiorstwa</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:2"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a3"><span class="ak-area__title">Polska</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a3"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>firma</li><li>handel</li><li>rodzina</li><li>majątek</li><li>praca</li><li>problemy</li><li>własność intelektualna</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:5"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a6"><span class="ak-area__title">Praca</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a6"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>rozwiązanie stosunku pracy</li><li>alkohol w miejscu pracy</li><li>związki zawodowe i układ zbiorowy</li><li>wypadki przy pracy</li><li>choroby zawodowe</li><li>odszkodowania</li></ul></div></div></div></div>
+        <div class="ak-area ak-glass ak-reveal" style="--i:8"><button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="a9"><span class="ak-area__title">Życie</span><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span></button><div class="ak-acc__panel" id="a9"><div><div class="ak-area__body"><ul class="ak-list-sq"><li>ochrona dóbr osobistych</li><li>dane osobowe (RODO)</li><li>prawa konsumenta</li><li>dziedziczenie</li><li>opieka i kuratela</li><li>stosunki sąsiedzkie</li></ul></div></div></div></div>
       </div>
     </div>
   </div>
@@ -229,7 +246,7 @@
       </figure>
     </div>
     <div class="ak-clients">
-      <span class="ak-mono">Pracujemy dla</span>
+      <span class="ak-mono">Referencje</span>
       <ul>
         <li><img src="../../assets/aktrinec/2024-12-logo-tz.svg" alt="Třinecké železárny"></li>
         <li><img src="../../assets/aktrinec/2024-12-logotype.png" alt="ENEZA"></li>
@@ -291,48 +308,85 @@
 </main>
 
 <!-- ============================================================ PATIČKA -->
-<footer class="ak-footer ak-dark" id="kontakt">
+<footer class="ak-footer ak-dark">
   <div class="ak-wrap ak-grid ak-footer__cols">
     <div class="ak-footer__brand">
-      <img src="../../assets/brand/akksp-logo-white.svg" alt="AKKSP advokátní kancelář" width="136" height="34">
+      <img src="../../assets/brand/akksp-logo-white.svg" alt="AKKSP Kancelaria Adwokacka" width="136" height="34">
       <h2>AKKSP advokátní kancelář, s.r.o.</h2>
       <p>IČO (nr identyfikacyjny): 27787541<br>Wpis do czeskiego rejestru handlowego:<br>C 29686, Sąd Krajowy w Ostrawie<br>ID skrzynki danych: xvwje95</p>
     </div>
-    <div class="ak-footer__info">
-      <h2>Więcej informacji</h2>
+    <div class="ak-footer__contact">
+      <h2>Kontakt</h2>
       <ul>
-        <li><a href="https://aktrinec.cz/wp-content/uploads/2024/12/Mimosoudni-reseni-spotrebitelskych-sporu.pdf">Pozasądowe rozwiązywanie sporów konsumenckich<svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Pouceni-o-AML_WEB.pdf">Pouczenie klienta zgodnie z ustawą AML<svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">Ochrona danych osobowych<svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">Cookies<svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="tel:+420558997103">+420 558 997 103</a></li>
+        <li><a href="mailto:info@aktrinec.cz">info@aktrinec.cz</a></li>
+        <li><a class="ak-footer__in" href="#linkedin" data-todo="Doplnit URL firemního LinkedInu"><svg class="ak-ico ak-ico--sm"><use href="#i-in"/></svg>LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="ak-footer__addr">
+      <h2>Adresy</h2>
+      <p><b>Siedziba</b>Husova 401<br>739 61 Třinec, Czechy<br><a href="tel:+420558997104">+420 558 997 104</a></p>
+      <p><b>Oddział</b>Průmyslová 1032<br>739 61 Třinec, Czechy<br><a href="tel:+420558532496">+420 558 532 496</a></p>
+    </div>
+    <div class="ak-footer__docs">
+      <h2>Dokumenty</h2>
+      <ul>
+        <li><a href="https://aktrinec.cz/wp-content/uploads/2024/12/Mimosoudni-reseni-spotrebitelskych-sporu.pdf">Pozasądowe rozwiązywanie sporów konsumenckich</a></li>
+        <li><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Pouceni-o-AML_WEB.pdf">Pouczenie klienta zgodnie z ustawą AML</a></li>
+        <li><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">Ochrona danych osobowych</a></li>
+        <li><a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">Zasady korzystania z plików cookies</a></li>
       </ul>
     </div>
     <div class="ak-footer__media">
-      <h2>Média</h2>
+      <h2>Media</h2>
       <ul>
-        <li><a href="https://aktrinec.cz/blog/">Porady prawne dla czytelników (eHutnik)<svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="https://aktrinec.cz/wp-content/uploads/2025/03/teaser25web.pdf">Teaser<svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="https://aktrinec.cz/blog/">Porady prawne dla czytelników (eHutník)</a></li>
+        <li><a href="https://aktrinec.cz/wp-content/uploads/2025/03/teaser25web.pdf">Teaser</a></li>
       </ul>
-      <div>
-      <h2>Obserwuj nas</h2>
-      <div class="ak-footer__icons"><a href="#kontakt" aria-label="LinkedIn (link do uzupełnienia)"><svg class="ak-ico"><use href="#i-in"/></svg></a><a href="#kontakt" aria-label="YouTube (link do uzupełnienia)"><svg class="ak-ico"><use href="#i-yt"/></svg></a></div>
-      </div>
-    </div>
-    <div class="ak-footer__addr">
-      <h2>Adres</h2>
-      <p><b>Siedziba</b>Husova 401<br>739 61 Třinec<br>Republika Czeska<br><a href="tel:+420558997104">+420 558 997 104</a></p>
-      <p><b>Oddział</b>Průmyslová 1032<br>739 61 Třinec<br>Republika Czeska<br><a href="tel:+420558532496">+420 558 532 496</a></p>
     </div>
   </div>
   <div class="ak-footer__bottom">
     <div class="ak-wrap">
-      <span>© <span data-year>2026</span> AKKSP advokátní kancelář, s.r.o.</span>
-      <span>Wszelkie prawa zastrzeżone</span>
-      <nav aria-label="Informacje prawne"><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">Ochrona danych osobowych</a><a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">Cookies</a><a href="#kontakt">Kontakt</a></nav>
+      <span>© <span data-year>2026</span> AKKSP advokátní kancelář, s.r.o. Wszelkie prawa zastrzeżone.</span>
+      <button type="button" class="ak-footer__cookie cmplz-show-banner" data-cookie-open><svg class="ak-ico ak-ico--sm" aria-hidden="true"><use href="#i-cookie"/></svg>Ustawienia cookies</button>
     </div>
   </div>
 </footer>
 
-<script src="../js/site.js?v=3" defer></script>
+<!-- ============================================================ COOKIE LIŠTA (texty z Complianz na aktrinec.cz; ve WordPressu ji vykresluje Complianz) -->
+<section class="ak-cookie ak-paper" role="dialog" aria-modal="false" aria-labelledby="cookie-title" aria-describedby="cookie-text" data-cookie>
+  <div class="ak-cookie__head">
+    <h2 id="cookie-title" class="ak-cookie__title">Zarządzaj zgodą</h2>
+    <button type="button" class="ak-cookie__close" aria-label="Zamknij" data-cookie-deny><span class="ak-px__ico"></span></button>
+  </div>
+  <p id="cookie-text" class="ak-cookie__text">Używamy funkcjonalnych i analitycznych plików cookies (<a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">informacje tutaj</a>). Funkcjonalne pliki cookies są niezbędne. Na analityczne pliki cookies możesz wyrazić zgodę lub odmówić.</p>
+  <div class="ak-cookie__cats" data-cookie-cats>
+    <details class="ak-cookie__cat">
+      <summary><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span><span class="ak-cookie__name">Funkcjonalne</span><span class="ak-cookie__always">Zawsze aktywne</span></summary>
+      <p>Przechowywanie lub dostęp do danych technicznych jest ściśle konieczny do uzasadnionego celu umożliwienia korzystania z konkretnej usługi wyraźnie żądanej przez subskrybenta lub użytkownika, lub wyłącznie w celu przeprowadzenia transmisji komunikatu przez sieć łączności elektronicznej.</p>
+    </details>
+    <details class="ak-cookie__cat">
+      <summary><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span><span class="ak-cookie__name">Preferencje</span><input class="ak-switch" type="checkbox" name="preferences" aria-label="Preferencje" data-cookie-cat></summary>
+      <p>Przechowywanie lub dostęp techniczny jest niezbędny do uzasadnionego celu przechowywania preferencji, o które nie prosi subskrybent lub użytkownik.</p>
+    </details>
+    <details class="ak-cookie__cat">
+      <summary><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span><span class="ak-cookie__name">Statystyka</span><input class="ak-switch" type="checkbox" name="statistics" aria-label="Statystyka" data-cookie-cat></summary>
+      <p>Przechowywanie techniczne lub dostęp, który jest używany wyłącznie do celów statystycznych.</p>
+    </details>
+    <details class="ak-cookie__cat">
+      <summary><span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span><span class="ak-cookie__name">Marketing</span><input class="ak-switch" type="checkbox" name="marketing" aria-label="Marketing" data-cookie-cat></summary>
+      <p>Przechowywanie lub dostęp techniczny jest wymagany do tworzenia profili użytkowników w celu wysyłania reklam lub śledzenia użytkownika na stronie internetowej lub na kilku stronach internetowych w podobnych celach marketingowych.</p>
+    </details>
+  </div>
+  <div class="ak-cookie__btns">
+    <button type="button" class="ak-btn ak-btn--primary" data-cookie-accept><span>Akceptuję</span></button>
+    <button type="button" class="ak-btn ak-btn--secondary" data-cookie-deny><span>Odmów</span></button>
+    <button type="button" class="ak-btn ak-btn--secondary" data-cookie-prefs><span>Zobacz preferencje</span></button>
+    <button type="button" class="ak-btn ak-btn--secondary" data-cookie-save><span>Zapisz preferencje</span></button>
+  </div>
+  <p class="ak-cookie__links"><a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">Zasady korzystania z plików cookies</a><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">Ochrona danych osobowych</a></p>
+</section>
+
+<script src="../js/site.js?v=5" defer></script>
 </body>
 </html>

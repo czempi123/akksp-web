@@ -30,17 +30,17 @@ class Areas extends Base {
 		$this->start_controls_section( 'head', array( 'label' => __( 'Hlavička', 'akksp' ) ) );
 		$this->add_head_controls(
 			array(
-				'label'    => 'Oblasti naší právní pomoci',
+				'label'    => '',
 				'title'    => 'S čím vám pomůžeme?',
-				'lead'     => 'Široké spektrum právních služeb pro firmy a podnikatele.',
-				'btn_text' => 'Všechny oblasti právní pomoci',
+				'lead'     => 'Právní služby pro firmy, podnikatele i jednotlivce v Česku a Polsku.',
+				'btn_text' => '',
 				'btn_url'  => '',
 			)
 		);
 		$this->end_controls_section();
 
 		$this->start_controls_section( 'items_s', array( 'label' => __( 'Oblasti', 'akksp' ) ) );
-		$this->add_control( 'list_label', array( 'label' => __( 'Nadpis seznamu po rozbalení', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Pomůžeme vám' ) );
+		$this->add_control( 'list_label', array( 'label' => __( 'Nadpis seznamu po rozbalení', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '' ) );
 		$this->add_control( 'columns_note', array( 'type' => Controls_Manager::RAW_HTML, 'raw' => __( 'Oblasti se řadí do 3 sloupců shora dolů (1–3 první sloupec, 4–6 druhý …).', 'akksp' ), 'content_classes' => 'elementor-descriptor' ) );
 		$r = new Repeater();
 		$r->add_control( 'title', array( 'label' => __( 'Název', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '', 'label_block' => true ) );
@@ -54,15 +54,16 @@ class Areas extends Base {
 				'fields'      => $r->get_controls(),
 				'title_field' => '{{{ title }}}',
 				'default'     => array(
-					array( 'title' => 'Smlouvy', 'sub' => 'a obchodní vztahy', 'items' => "sepsat smlouvu\nvyjednat smlouvu\nkdyž sjednáváte úvěr\nkdyž poskytujete zápůjčku" ),
-					array( 'title' => 'Spory', 'sub' => 'a vymáhání pohledávek', 'items' => "když vám zákazník neplatí\nbránit se žalobě\nv soudním řízení\nnarovnat spor\nuzavřít smír" ),
-					array( 'title' => 'Duševní vlastnictví', 'sub' => 'a ochrana know-how', 'items' => "přihlásit ochrannou známku\npřihlásit patent\nchránit průmyslové vlastnictví\nchránit duševní vlastnictví" ),
-					array( 'title' => 'Zaměstnanci', 'sub' => 'a pracovní právo', 'items' => "ve sporu o neplatnost výpovědi\nv jednání s odborovou organizací\nodškodnit pracovní úraz\nproškolit zaměstnance" ),
-					array( 'title' => 'Korporátní agenda', 'sub' => 'a restrukturalizace', 'items' => "předat rodinnou firmu dětem\njednat s péčí řádného hospodáře\nzřídit nebo zrušit organizační složku" ),
-					array( 'title' => 'Regulace a compliance', 'sub' => '(AML, GDPR aj.)', 'items' => "s ochranou osobních údajů\ns vnitřními předpisy\nkdyž k vám přijde kontrola" ),
-					array( 'title' => 'Nemovitosti', 'sub' => 'a výstavba', 'items' => "převést nemovitost\npři prodeji nemovitosti\nzřídit věcné břemeno\nna katastru nemovitostí" ),
-					array( 'title' => 'Přeshraniční podnikání', 'sub' => '(CZ / PL)', 'items' => "podnikat v Polsku\nzřídit nebo zrušit organizační složku\ns právníkem, který mluví česky i polsky" ),
-					array( 'title' => 'M&A a strategie', 'sub' => '(akvizice, prodeje, fúze)', 'items' => "provést due diligence\ns fúzí\nkdyž kupujete závod" ),
+					// podle aktrinec.cz/pravni-sluzby-trinec; řazení po sloupcích (1. sloupec Firma, Rodina, Problémy …)
+					array( 'title' => 'Firma', 'items' => "založení / likvidace\norgány a organizace\nstanovy / společenské smlouvy\nsmlouvy o výkonu funkce\nodpovědnost statutárů\npřevod podniku, převod podílu\ncompliance\nzpráva o vztazích, ESG, CBAM, CS3D" ),
+					array( 'title' => 'Rodina', 'items' => "rozvod\nspolečné jmění manželů\nvypořádání a správa majetku\nvýchova a péče o děti\nvýživné\nurčování otcovství" ),
+					array( 'title' => 'Problémy', 'items' => "spory, žaloby a soudní řízení\ndopravní a jiné přestupky\nřízení pod vlivem alkoholu\nsprávní řízení\nobhajoba\nzákaz řízení\nnáhrada škody" ),
+					array( 'title' => 'Obchod', 'items' => "obchodní smlouvy\nakvizice a fúze\ndue diligence\npropojené osoby\nhospodářská a nekalá soutěž\nfinancování" ),
+					array( 'title' => 'Majetek', 'items' => "nemovité věci / movité věci\ndarování, prodej, koupě, směna\nspoluvlastnictví\nbřemena, služebnosti\nnájem, podnájem, pacht\nřízení před katastrálním úřadem\nstavby a stavební řízení\npohledávky, dluhy, zajištění" ),
+					array( 'title' => '© ® ™', 'items' => "ochranné známky\npatenty\nužitné vzory\nautorská práva\nlicence\nkybernetická bezpečnost (NIS 2)" ),
+					array( 'title' => 'Polsko', 'items' => "firma\nobchod\nrodina\nmajetek\npráce\nproblémy\nduševní vlastnictví" ),
+					array( 'title' => 'Práce', 'items' => "zrušení pracovního poměru\nalkohol na pracovišti\nodbory a kolektivní smlouva\npracovní úrazy\nnemoci z povolání\nodškodňování" ),
+					array( 'title' => 'Život', 'items' => "ochrana osobnosti\nosobní údaje (GDPR)\npráva spotřebitele\ndědění\nopatrovnictví\nsousedské vztahy" ),
 				),
 			)
 		);
@@ -74,7 +75,7 @@ class Areas extends Base {
 		$areas = array_values( (array) $s['areas'] );
 		$total = count( $areas );
 		$cols  = $total ? array_chunk( $areas, (int) ceil( $total / 3 ), true ) : array();
-		$btn   = akksp_button( $s['btn_text'], $this->url( $s['btn_link'] ), 'secondary', array( 'attrs' => trim( $this->link_extra( $s['btn_link'] ) ) ) );
+		$btn   = empty( $s['btn_text'] ) ? '' : akksp_button( $s['btn_text'], $this->url( $s['btn_link'] ), 'secondary', array( 'attrs' => trim( $this->link_extra( $s['btn_link'] ) ) ) );
 		?>
 <section class="ak-areas ak-dark ak-section">
 	<div class="ak-wrap">
@@ -90,7 +91,7 @@ class Areas extends Base {
 				<div class="ak-area ak-glass ak-reveal" style="--i:<?php echo (int) $i; ?>">
 					<button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="<?php echo esc_attr( $pid ); ?>">
 						<span class="ak-area__title"><?php echo esc_html( $a['title'] ); ?></span>
-						<span class="ak-area__sub"><?php echo esc_html( $a['sub'] ); ?></span>
+						<?php if ( ! empty( $a['sub'] ) ) : ?><span class="ak-area__sub"><?php echo esc_html( $a['sub'] ); ?></span><?php endif; ?>
 						<span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span>
 					</button>
 					<div class="ak-acc__panel" id="<?php echo esc_attr( $pid ); ?>">

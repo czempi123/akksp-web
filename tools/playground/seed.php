@@ -94,7 +94,6 @@ $home = akksp_seed_page(
 	'uvod',
 	array(
 		array( 'akksp-hero', array() ),
-		array( 'akksp-contact-bar', array() ),
 		array( 'akksp-why', array() ),
 		array( 'akksp-areas', array() ),
 		array( 'akksp-team', array() ),

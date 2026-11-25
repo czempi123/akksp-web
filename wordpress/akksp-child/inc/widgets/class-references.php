@@ -69,7 +69,7 @@ class References extends Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section( 'clients_s', array( 'label' => __( 'Loga klientů', 'akksp' ) ) );
-		$this->add_control( 'clients_label', array( 'label' => __( 'Popisek', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Pracujeme pro' ) );
+		$this->add_control( 'clients_label', array( 'label' => __( 'Popisek', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Reference' ) );
 		$this->add_control( 'clients', array( 'label' => __( 'Loga (zobrazí se jednobarevně)', 'akksp' ), 'type' => Controls_Manager::GALLERY, 'default' => array() ) );
 		$this->end_controls_section();
 	}
