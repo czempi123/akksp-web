@@ -30,7 +30,7 @@ class Areas extends Base {
 		$this->start_controls_section( 'head', array( 'label' => __( 'Hlavička', 'akksp' ) ) );
 		$this->add_head_controls(
 			array(
-				'label'    => '02 · Oblasti naší právní pomoci',
+				'label'    => 'Oblasti naší právní pomoci',
 				'title'    => 'S čím vám pomůžeme?',
 				'lead'     => 'Široké spektrum právních služeb pro firmy a podnikatele.',
 				'btn_text' => 'Všechny oblasti právní pomoci',
@@ -89,7 +89,6 @@ class Areas extends Base {
 					?>
 				<div class="ak-area ak-glass ak-reveal" style="--i:<?php echo (int) $i; ?>">
 					<button type="button" class="ak-area__btn" aria-expanded="false" aria-controls="<?php echo esc_attr( $pid ); ?>">
-						<span class="ak-mono"><?php echo esc_html( sprintf( '%02d / %02d', $i + 1, $total ) ); ?></span>
 						<span class="ak-area__title"><?php echo esc_html( $a['title'] ); ?></span>
 						<span class="ak-area__sub"><?php echo esc_html( $a['sub'] ); ?></span>
 						<span class="ak-px" aria-hidden="true"><span class="ak-px__ico"></span></span>

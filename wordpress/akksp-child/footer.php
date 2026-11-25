@@ -44,20 +44,20 @@ $akksp_footer_menu = function ( $location ) {
 		<div class="ak-footer__media">
 			<h2><?php esc_html_e( 'Média', 'akksp' ); ?></h2>
 			<?php $akksp_footer_menu( 'akksp-footer-media' ); ?>
-		</div>
-		<?php
-		$akksp_li = akksp_contact( 'linkedin' );
-		$akksp_yt = akksp_contact( 'youtube' );
-		if ( $akksp_li || $akksp_yt ) :
-			?>
-		<div class="ak-footer__social">
-			<h2><?php esc_html_e( 'Sledujte nás', 'akksp' ); ?></h2>
-			<div class="ak-footer__icons">
-				<?php if ( $akksp_li ) : ?><a href="<?php echo esc_url( $akksp_li ); ?>" aria-label="LinkedIn" rel="noopener" target="_blank"><?php echo akksp_icon( 'in' ); // phpcs:ignore ?></a><?php endif; ?>
-				<?php if ( $akksp_yt ) : ?><a href="<?php echo esc_url( $akksp_yt ); ?>" aria-label="YouTube" rel="noopener" target="_blank"><?php echo akksp_icon( 'yt' ); // phpcs:ignore ?></a><?php endif; ?>
+			<?php
+			$akksp_li = akksp_contact( 'linkedin' );
+			$akksp_yt = akksp_contact( 'youtube' );
+			if ( $akksp_li || $akksp_yt ) :
+				?>
+			<div>
+				<h2><?php esc_html_e( 'Sledujte nás', 'akksp' ); ?></h2>
+				<div class="ak-footer__icons">
+					<?php if ( $akksp_li ) : ?><a href="<?php echo esc_url( $akksp_li ); ?>" aria-label="LinkedIn" rel="noopener" target="_blank"><?php echo akksp_icon( 'in' ); // phpcs:ignore ?></a><?php endif; ?>
+					<?php if ( $akksp_yt ) : ?><a href="<?php echo esc_url( $akksp_yt ); ?>" aria-label="YouTube" rel="noopener" target="_blank"><?php echo akksp_icon( 'yt' ); // phpcs:ignore ?></a><?php endif; ?>
+				</div>
 			</div>
+			<?php endif; ?>
 		</div>
-		<?php endif; ?>
 		<div class="ak-footer__addr">
 			<h2><?php esc_html_e( 'Adresa', 'akksp' ); ?></h2>
 			<p><b><?php esc_html_e( 'Sídlo', 'akksp' ); ?></b><?php echo akksp_lines( akksp_contact( 'seat' ) ); // phpcs:ignore ?></p>

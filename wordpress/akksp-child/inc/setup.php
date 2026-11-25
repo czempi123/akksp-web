@@ -47,6 +47,9 @@ add_filter( 'hello_elementor_description_meta_tag', '__return_false' );
  * Podle toho se navigace zobrazí přes fotku, nebo se obsah odsadí.
  */
 function akksp_has_dark_top( $post_id = null ) {
+	if ( is_search() ) {
+		return true; // search.php začíná tmavým záhlavím
+	}
 	$post_id = $post_id ? $post_id : get_queried_object_id();
 	if ( ! $post_id || ! is_singular() ) {
 		return false;

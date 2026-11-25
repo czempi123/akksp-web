@@ -8,13 +8,19 @@ Pracovní repozitář pro redesign webu AKKSP advokátní kancelář, s.r.o. Obs
 |---|---|---|
 | 1 | Moodboard: 3 varianty každého prvku (paleta, písmo, tlačítka, navigace, hero, rozcestník, kontakt, čísla, oblasti, tým, reference, školení, aktuality, patička, pohyb) | hotovo, vybráno |
 | 2 | Brand manual v1 (`brand-manual/`) + kompletní homepage (`site/`, desktop + mobil) | hotovo |
-| 3 | WordPress child téma pro Hello Elementor (`wordpress/akksp-child/`), 10 Elementor widgetů, lokální písma, otestováno v lokálním WP | **hotovo, čeká na nasazení na staging** |
+| 3 | WordPress child téma pro Hello Elementor (`wordpress/akksp-child/`), 10 Elementor widgetů, lokální písma, otestováno v lokálním WP | hotovo |
+| 3.1 | Finální design homepage podle 11 připomínek, PL mutace (`site/pl/`), vyhledávání (Ivory Search), **AKKSP Design System** (`design-system/` + artefakt) | **hotovo, čeká na připomínky a staging** |
+
+Platná pravidla designu: **`design-system/project/README.md`** (a artefakt AKKSP Design System). `brand-manual/` a `docs/03` jsou historické verze.
 
 ## Struktura
 
 ```
-site/                   Homepage v1 (prototyp pro WordPress)
-  index.html
+design-system/           Design system (zdroj artefaktu): README = brand book, tokens.json, komponenty
+  build-components.mjs  vygeneruje komponenty a obálku (node design-system/build-components.mjs)
+site/                   Homepage (prototyp pro WordPress)
+  index.html            česká verze
+  pl/index.html         polská mutace (generuje tools/make-pl.ps1 z tools/i18n/pl.json)
   css/tokens.css        design tokeny --ak-*
   css/base.css          základ, typografie, plochy, mřížka
   css/components.css    tlačítka, „+ → ×", sklo, karty, štítky
@@ -45,14 +51,14 @@ docs/
   06-wordpress-instalace.md instalace tématu, nastavení, lokální test, checklist
 ```
 
-Stránky: `http://localhost:4173/site/` (homepage), `/brand-manual/`, `/moodboard/`. Parametr `?static` vypne animace (pro snímky).
+Stránky: `http://localhost:4173/site/` (homepage), `/site/pl/`, `/moodboard/`. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
 
 ## Jak otevřít moodboard
 
 Moodboard načítá obrázky relativně, proto je nejlepší pustit malý lokální server z kořene repozitáře:
 
 ```powershell
-python -m http.server 4173
+python -m http.server 4173 --directory "C:\Nový web"
 ```
 
 Pak otevřít `http://localhost:4173/moodboard/`. U každého prvku klikněte na **Vybrat**, výběr se ukládá v prohlížeči a tlačítkem **Kopírovat výběr** (panel vpravo dole) ho pošlete dál.

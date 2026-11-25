@@ -18,6 +18,7 @@ function akksp_icon_sprite() {
 	<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
 	<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.7-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.3 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.3"/></symbol>
 	<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></symbol>
+	<symbol id="i-quote" viewBox="0 0 32 32"><path d="M4 22.5c0-6.2 2.9-10.9 8.6-14l1.6 2.3c-3.3 2-5 4.4-5.3 7.2H14V27H4v-4.5zm14 0c0-6.2 2.9-10.9 8.6-14l1.6 2.3c-3.3 2-5 4.4-5.3 7.2H28V27H18v-4.5z"/></symbol>
 	<symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8.2 10.5v6M8.2 7.6v.1M11.8 16.5v-3.6a2.3 2.3 0 0 1 4.6 0v3.6M11.8 10.5v6"/></symbol>
 	<symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.8" y="5.8" width="18.4" height="12.4" rx="3.5"/><path d="m10.3 9.3 4.4 2.7-4.4 2.7z"/></symbol>
 </svg>
@@ -64,7 +65,7 @@ function akksp_button( $text, $url, $variant = 'primary', $args = array() ) {
 	$args  = wp_parse_args( $args, array( 'size' => '', 'attrs' => '', 'icon' => 'arrow' ) );
 	$class = 'ak-btn ak-btn--' . sanitize_html_class( $variant ) . ( $args['size'] ? ' ak-btn--' . sanitize_html_class( $args['size'] ) : '' );
 	return sprintf(
-		'<a class="%1$s" href="%2$s"%3$s><span>%4$s</span><i>%5$s</i></a>',
+		'<a class="%1$s" href="%2$s"%3$s><span>%4$s</span><i class="ak-arrow-box">%5$s</i></a>',
 		esc_attr( $class ),
 		esc_url( $url ? $url : '#' ),
 		$args['attrs'] ? ' ' . $args['attrs'] : '',
@@ -112,22 +113,51 @@ function akksp_languages() {
 	return is_array( $langs ) ? $langs : array();
 }
 
-function akksp_lang_switch( $context = 'nav' ) {
-	$langs = akksp_languages();
+/**
+ * Přepínač jazykových mutací celého webu (segment CZ | PL | …), odkazy z Polylangu.
+ * Bez Polylangu (nebo s jediným jazykem) nevypíše nic.
+ */
+function akksp_lang_switch() {
+	$langs = array_values( akksp_languages() );
 	if ( count( $langs ) < 2 ) {
 		return '';
 	}
-	$parts = array();
-	foreach ( $langs as $lang ) {
-		$label = strtoupper( 'cs' === $lang['slug'] ? 'cz' : $lang['slug'] );
-		if ( ! empty( $lang['current_lang'] ) ) {
-			$parts[] = '<b aria-current="true">' . esc_html( $label ) . '</b>';
-		} else {
-			$parts[] = sprintf( '<a href="%s" hreflang="%s" lang="%s">%s</a>', esc_url( $lang['url'] ), esc_attr( $lang['locale'] ?? $lang['slug'] ), esc_attr( $lang['slug'] ), esc_html( $label ) );
+	$links = '';
+	$pos   = 0;
+	foreach ( $langs as $i => $lang ) {
+		$label   = strtoupper( 'cs' === $lang['slug'] ? 'cz' : $lang['slug'] );
+		$current = ! empty( $lang['current_lang'] );
+		if ( $current ) {
+			$pos = $i;
 		}
+		$links .= sprintf(
+			'<a href="%s" hreflang="%s" lang="%s"%s>%s</a>',
+			esc_url( $lang['url'] ),
+			esc_attr( str_replace( '_', '-', $lang['locale'] ?? $lang['slug'] ) ),
+			esc_attr( $lang['slug'] ),
+			$current ? ' aria-current="true"' : '',
+			esc_html( $label )
+		);
 	}
-	$class = 'mobile' === $context ? 'ak-mono ak-mobile__lang' : 'ak-nav__lang';
-	return '<span class="' . esc_attr( $class ) . '">' . implode( ' | ', $parts ) . '</span>';
+	return sprintf(
+		'<nav class="ak-seg" style="--n:%d;--pos:%d" aria-label="%s"><span class="ak-seg__thumb" aria-hidden="true"></span>%s</nav>',
+		count( $langs ),
+		$pos,
+		esc_attr__( 'Jazyk webu', 'akksp' ),
+		$links
+	);
+}
+
+/**
+ * Vyhledávací formulář do overlaye: stávající Ivory Search (stejná konfigurace, filtry
+ * i živé výsledky jako dnes), jinak vlastní searchform.php tématu.
+ */
+function akksp_search_form() {
+	$id = absint( akksp_contact( 'search_form_id' ) );
+	if ( $id && shortcode_exists( 'ivory-search' ) ) {
+		return do_shortcode( '[ivory-search id="' . $id . '"]' );
+	}
+	return get_search_form( array( 'echo' => false ) );
 }
 
 /**

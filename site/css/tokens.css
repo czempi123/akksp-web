@@ -58,6 +58,10 @@
   --ak-gutter: 24px;
   --ak-margin: clamp(20px, 4vw, 64px);
 
+  /* Hlavička */
+  --ak-nav-h: 80px;
+  --ak-nav-h-scrolled: 64px;
+
   /* Tvary — téměř ostré (švýcarský řád), sklo o stupeň měkčí */
   --ak-r-1: 2px;   /* tlačítka, dlaždice, štítky */
   --ak-r-2: 4px;   /* karty, skleněné panely */
@@ -76,6 +80,7 @@
   --ak-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ak-ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);
   --ak-t-fast: 250ms;
+  --ak-t-inv: 350ms;   /* plynulá inverze modrá ↔ zlatá */
   --ak-t: 500ms;
   --ak-t-slow: 700ms;
 }

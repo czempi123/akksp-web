@@ -30,7 +30,7 @@ class Team extends Base {
 		$this->start_controls_section( 'head', array( 'label' => __( 'Hlavička', 'akksp' ) ) );
 		$this->add_head_controls(
 			array(
-				'label'    => '03 · Lidé',
+				'label'    => '',
 				'title'    => 'Poznejte náš tým',
 				'lead'     => 'Zkušení advokáti, kteří rozumí podnikání i životním situacím v Česku a Polsku.',
 				'btn_text' => 'Seznam odborníků',

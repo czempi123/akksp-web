@@ -12,7 +12,12 @@ $edge = @("${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe", "$en
 New-Item -ItemType Directory -Force $OutDir | Out-Null
 $png = Join-Path $OutDir "$Name.png"
 $sep = if ($Url -match '\?') { '&' } else { '?' }
-Start-Process -FilePath $edge -Wait -ArgumentList "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1", "--virtual-time-budget=6000", "--window-size=$Width,$Height", "--screenshot=$png", "$Url${sep}r=$(Get-Random)"
+# Edge neumi zapsat snimek do cesty s diakritikou -> nejdriv do TEMP, pak presunout
+$tmp = Join-Path $env:TEMP "akksp-shot-$([guid]::NewGuid().ToString('N')).png"
+Start-Process -FilePath $edge -Wait -ArgumentList "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1", "--virtual-time-budget=6000", "--window-size=$Width,$Height", "--screenshot=$tmp", "$Url${sep}r=$(Get-Random)"
+if (-not (Test-Path $tmp)) { throw "Edge did not write the screenshot" }
+Move-Item $tmp $png -Force
+Get-ChildItem $OutDir -Filter "$Name-*.jpg" | Remove-Item -Force
 Add-Type -AssemblyName System.Drawing
 $img = [Drawing.Image]::FromFile($png)
 $i = 0

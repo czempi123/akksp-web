@@ -40,7 +40,7 @@ abstract class Base extends Widget_Base {
 		$this->add_control(
 			'label',
 			array(
-				'label'       => __( 'Štítek (01 · Název)', 'akksp' ),
+				'label'       => __( 'Štítek nad nadpisem (nepovinný)', 'akksp' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => $d['label'] ?? '',
 				'label_block' => true,
@@ -136,11 +136,11 @@ abstract class Base extends Widget_Base {
 		return array( 'url' => akksp_img( $file ) );
 	}
 
-	/** Švýcarská hlavička sekce: štítek | nadpis + úvod | akce. */
+	/** Hlavička sekce: (nepovinný štítek) nadpis + úvod | akce vpravo. */
 	protected function render_head( array $s, $action_html = '' ) {
 		echo '<div class="ak-head ak-grid">';
-		echo akksp_label( $s['label'] ?? '', 'ak-head__label' ); // phpcs:ignore WordPress.Security.EscapeOutput
 		echo '<div class="ak-head__title">';
+		echo akksp_label( $s['label'] ?? '' ); // phpcs:ignore WordPress.Security.EscapeOutput
 		if ( ! empty( $s['title'] ) ) {
 			echo '<h2 class="ak-h2 ak-mask">' . esc_html( $s['title'] ) . '</h2>';
 		}

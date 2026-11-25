@@ -29,7 +29,7 @@ class Training extends Base {
 		$this->start_controls_section( 'content', array( 'label' => __( 'Obsah', 'akksp' ) ) );
 		$this->add_head_controls(
 			array(
-				'label'    => '05 · Vzdělávání',
+				'label'    => '',
 				'title'    => 'Školení a workshopy',
 				'lead'     => 'Přinášíme praktické znalosti z oblasti práva pro firmy i jednotlivce.',
 				'btn_text' => 'Zobrazit nabídku školení',

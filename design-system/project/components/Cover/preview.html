@@ -1,0 +1,29 @@
+<!-- @dsCard height=300 -->
+<div class="cov">
+<!--
+blocks: ak-navy 480x300 bleed (wide slab), ak-navy-850 strip, ak-gold-soft 96x96, ak-cream ground, ak-paper 2 tiles
+arrangement: one tall navy slab from x=480 to the right edge with the logo's 3x3 module cut out of it
+pattern: geometric, modular (the logo is a 3x3 grid of squares) -> 9 square tiles, one gold = Třinec
+scales: tile 64px (ak-s-8), gap 32px (ak-s-6), corners ak-r-1
+-->
+<svg class="art" viewBox="0 0 480 300" aria-hidden="true">
+  <rect class="navy" x="0" y="0" width="480" height="300"/>
+  <rect class="navy2" x="0" y="252" width="480" height="48"/>
+  <g transform="translate(176 26)">
+    <rect class="tile paper" x="0" y="0" width="64" height="64"/><rect class="tile paper" x="96" y="0" width="64" height="64"/><rect class="tile paper" x="192" y="0" width="64" height="64"/>
+    <rect class="tile paper" x="0" y="96" width="64" height="64"/><rect class="tile gold" x="96" y="96" width="64" height="64"/><rect class="tile paper" x="192" y="96" width="64" height="64"/>
+    <rect class="tile paper" x="0" y="192" width="64" height="64"/><rect class="tile paper" x="96" y="192" width="64" height="64"/><rect class="tile paper" x="192" y="192" width="64" height="64"/>
+  </g>
+</svg>
+<div class="txt"><h1>AKKSP Design<br>System</h1><p>Klidná jistota na hranici dvou zemí: Třinec, Česko a Polsko.</p></div>
+</div>
+<style>
+.cov{position:relative;width:960px;height:300px;background:var(--ak-cream);overflow:hidden}
+.art{position:absolute;left:480px;top:0;width:480px;height:300px}
+.navy{fill:var(--ak-navy)}.navy2{fill:var(--ak-navy-850)}
+.paper{fill:var(--ak-paper)}.gold{fill:var(--ak-gold-soft)}
+.tile{rx:var(--ak-r-1)}
+.txt{position:absolute;left:40px;bottom:40px;max-width:420px}
+.txt h1{margin:0;font-family:var(--font-serif);font-weight:600;font-size:64px;line-height:.95;letter-spacing:-.02em;color:var(--ak-ink)}
+.txt p{margin:14px 0 0;font-family:var(--font-sans);font-size:14px;line-height:1.5;color:var(--ak-ink-64)}
+</style>

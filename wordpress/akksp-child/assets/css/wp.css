@@ -7,11 +7,11 @@
 body.ak-theme, body.ak-theme[class*="elementor-kit-"] { font-family: var(--ak-sans); color: var(--ak-ink-body); background: var(--ak-cream); }
 
 /* Admin lišta + plovoucí navigace */
-.admin-bar .ak-nav { top: 48px; }
-@media (max-width: 782px) { .admin-bar .ak-nav { top: 62px; } }
+.admin-bar .ak-nav { top: 32px; }
+@media (max-width: 782px) { .admin-bar .ak-nav { top: 46px; } }
 
 /* Stránky bez tmavého záhlaví: obsah pod navigací, lišta rovnou zpevněná */
-.ak-top-light .ak-main { padding-top: 144px; }
+.ak-top-light .ak-main { padding-top: calc(var(--ak-nav-h) + 64px); }
 .ak-top-light .ak-nav__bar { background: rgb(2 24 44 / .92); }
 
 /* Elementor kontejnery se sekcemi AKKSP: bez vnitřních okrajů a mezer */
@@ -49,6 +49,32 @@ body.ak-theme, body.ak-theme[class*="elementor-kit-"] { font-family: var(--ak-sa
 /* Hlavička sekce jako samostatný widget */
 .ak-section-head { padding-top: var(--ak-section); }
 .ak-section-head .ak-head { margin-bottom: var(--ak-s-6); }
+
+/* Vyhledávání: formulář v záhlaví stránky výsledků (ne overlay) */
+.ak-search.ak-search--inline { position: static; inset: auto; z-index: auto; padding: 0; margin-top: var(--ak-s-4); background: none; backdrop-filter: none; -webkit-backdrop-filter: none; opacity: 1; visibility: visible; display: block; max-width: 760px; }
+.ak-theme .ak-search input[type="search"], .ak-theme .ak-search .is-search-input { border: 0; border-radius: var(--ak-r-1) 0 0 var(--ak-r-1); padding: 0 24px; background: var(--ak-paper); font-family: var(--ak-serif); font-weight: 600; font-size: clamp(22px, 2.4vw, 30px); height: 72px; }
+.ak-theme .ak-search--inline input[type="search"], .ak-theme .ak-search--inline .is-search-input { height: 60px; font-size: 22px; }
+.ak-search--inline button[type="submit"], .ak-search--inline .is-search-submit { width: 60px; height: 60px; }
+
+/* Seznam výsledků */
+.ak-results { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--ak-ink-14); }
+.ak-results li { border-bottom: 1px solid var(--ak-ink-14); }
+.ak-result { display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 6px 24px; padding: var(--ak-s-5) 0; color: var(--ak-ink); }
+.ak-result > span:not(.ak-result__go) { grid-column: 1; }
+.ak-result .ak-h3 { font-size: 24px; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size var(--ak-t) var(--ak-ease); justify-self: start; }
+.ak-result:hover .ak-h3 { background-size: 100% 1px; }
+.ak-result__go { grid-column: 2; grid-row: 1 / span 3; align-self: center; width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--ak-r-1); box-shadow: inset 0 0 0 1px var(--ak-ink-44); color: var(--ak-ink); transition: background-color var(--ak-t-inv) var(--ak-ease), color var(--ak-t-inv) var(--ak-ease), box-shadow var(--ak-t-inv) var(--ak-ease); }
+.ak-result:hover .ak-result__go { background: var(--ak-navy); color: var(--ak-gold); box-shadow: inset 0 0 0 1px var(--ak-navy); }
+.ak-pager { display: flex; gap: 8px; margin-top: var(--ak-s-6); flex-wrap: wrap; }
+.ak-pager .page-numbers { min-width: 44px; height: 44px; padding: 0 14px; display: grid; place-items: center; border-radius: var(--ak-r-1); box-shadow: inset 0 0 0 1px var(--ak-ink-14); font-family: var(--ak-mono); font-size: 13px; color: var(--ak-ink); transition: background-color var(--ak-t-inv) var(--ak-ease), color var(--ak-t-inv) var(--ak-ease); }
+.ak-pager a.page-numbers:hover { background: var(--ak-navy); color: var(--ak-gold); }
+.ak-pager .current { background: var(--ak-gold-soft); box-shadow: none; }
+
+/* Ivory Search: sjednocení se vzhledem tématu (jeho vlastní CSS přebíjíme) */
+.ak-theme .is-search-form .is-search-input { border: 0 !important; }
+.ak-theme .is-ajax-search-result { z-index: 5; }
+.ak-theme .is-ajax-search-post .is-search-sections { display: block !important; }
+.ak-theme .is-ajax-search-post .left-section { display: none !important; }
 
 /* Aktuality: obrázek jako odkaz */
 .ak-post__img { display: block; }

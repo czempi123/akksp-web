@@ -50,7 +50,7 @@ class Contact_Bar extends Base {
 			<h2 class="ak-contact__title"><?php echo esc_html( $s['title'] ); ?></h2>
 			<a href="<?php echo esc_attr( akksp_tel_href( $phone ) ); ?>"><small class="ak-label"><?php esc_html_e( 'Telefon', 'akksp' ); ?></small><span><?php echo esc_html( $phone ); ?></span></a>
 			<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>"><small class="ak-label"><?php esc_html_e( 'E-mail', 'akksp' ); ?></small><span><?php echo esc_html( antispambot( $email ) ); ?></span></a>
-			<div><small class="ak-label"><?php esc_html_e( 'Kanceláře', 'akksp' ); ?></small><span style="color:var(--ak-paper)"><?php echo esc_html( $offices ); ?></span></div>
+			<div><small class="ak-label"><?php esc_html_e( 'Kancelář', 'akksp' ); ?></small><span style="color:var(--ak-paper)"><?php echo esc_html( $offices ); ?></span></div>
 			<div><?php echo akksp_button( $s['btn_text'], $btn_url ); // phpcs:ignore ?></div>
 		</div>
 	</div>

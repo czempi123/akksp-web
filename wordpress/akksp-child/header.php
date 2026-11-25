@@ -1,7 +1,7 @@
 <?php
 /**
- * Hlavička: plovoucí skleněná navigace + mobilní panel.
- * Pokud je v Elementor Pro nastavená vlastní hlavička, má přednost.
+ * Hlavička: navy lišta přes celou šířku, vyhledávání (Ivory Search), CZ | PL, mobilní menu.
+ * Pokud je v Elementor Pro přiřazená vlastní hlavička (Theme Builder), má přednost.
  *
  * @package AKKSP
  */
@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#001628">
+	<meta name="theme-color" content="#02182C">
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -22,12 +22,12 @@ defined( 'ABSPATH' ) || exit;
 
 <?php
 if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) :
-	$contact_url = akksp_contact( 'contact_url' );
+	$akksp_lang = akksp_lang_switch();
 	?>
 <header class="ak-nav" data-nav>
 	<div class="ak-nav__bar">
 		<a class="ak-nav__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) . ', ' . __( 'úvodní stránka', 'akksp' ) ); ?>">
-			<img src="<?php echo esc_url( akksp_logo_url( 'white' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="116" height="29">
+			<img src="<?php echo esc_url( akksp_logo_url( 'white' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="120" height="30">
 		</a>
 		<nav aria-label="<?php esc_attr_e( 'Hlavní navigace', 'akksp' ); ?>">
 			<?php
@@ -43,9 +43,9 @@ if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_
 			?>
 		</nav>
 		<div class="ak-nav__tools">
-			<a class="ak-nav__icon ak-nav__search" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" aria-label="<?php esc_attr_e( 'Hledat', 'akksp' ); ?>"><?php echo akksp_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></a>
-			<?php echo akksp_lang_switch( 'nav' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-			<?php echo akksp_button( __( 'Kontakt', 'akksp' ), $contact_url, 'primary', array( 'size' => 'sm' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<button type="button" class="ak-nav__icon" aria-label="<?php esc_attr_e( 'Hledat', 'akksp' ); ?>" aria-controls="hledani" aria-expanded="false" data-search-open><?php echo akksp_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></button>
+			<?php echo $akksp_lang; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php echo akksp_button( __( 'Kontakt', 'akksp' ), akksp_contact( 'contact_url' ), 'primary', array( 'size' => 'sm' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<button type="button" class="ak-burger" aria-expanded="false" aria-controls="mobilni-menu" aria-label="<?php esc_attr_e( 'Menu', 'akksp' ); ?>" data-burger><span class="ak-burger__lines"><i></i><i></i><i></i></span></button>
 		</div>
 	</div>
@@ -68,7 +68,17 @@ if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_
 	</nav>
 	<div class="ak-mobile__foot ak-dark">
 		<?php echo akksp_button( akksp_contact( 'phone' ), akksp_tel_href( akksp_contact( 'phone' ) ), 'primary', array( 'icon' => 'phone' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
-		<?php echo akksp_lang_switch( 'mobile' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+		<?php echo $akksp_lang; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+	</div>
+</div>
+
+<div class="ak-search" id="hledani" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Vyhledávání', 'akksp' ); ?>" data-search>
+	<div class="ak-search__inner">
+		<div class="ak-search__head">
+			<p class="ak-label"><?php echo esc_html( akksp_contact( 'search_title' ) ); ?></p>
+			<button type="button" class="ak-search__close" aria-label="<?php esc_attr_e( 'Zavřít vyhledávání', 'akksp' ); ?>" data-search-close><span class="ak-px__ico"></span></button>
+		</div>
+		<?php echo akksp_search_form(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 	</div>
 </div>
 <?php endif; ?>

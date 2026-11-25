@@ -28,7 +28,7 @@ class Why extends Base {
 
 	protected function register_controls() {
 		$this->start_controls_section( 'content', array( 'label' => __( 'Hlavička', 'akksp' ) ) );
-		$this->add_control( 'label', array( 'label' => __( 'Štítek', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '01 · O kanceláři', 'label_block' => true ) );
+		$this->add_control( 'label', array( 'label' => __( 'Štítek', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '', 'label_block' => true ) );
 		$this->add_control( 'title', array( 'label' => __( 'Nadpis', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Proč právě AKKSP?', 'label_block' => true ) );
 		$this->add_control( 'link_text', array( 'label' => __( 'Text odkazu', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Více o nás' ) );
 		$this->add_control( 'link', array( 'label' => __( 'Odkaz', 'akksp' ), 'type' => Controls_Manager::URL, 'default' => array( 'url' => '' ) ) );
@@ -36,10 +36,9 @@ class Why extends Base {
 
 		$this->start_controls_section( 'tiles_s', array( 'label' => __( 'Dlaždice', 'akksp' ) ) );
 		$r = new Repeater();
-		$r->add_control( 'meta', array( 'label' => __( 'Štítek dlaždice', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '01 · Zkušenost' ) );
 		$r->add_control( 'value', array( 'label' => __( 'Číslo nebo slovo', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '30+' ) );
 		$r->add_control( 'text', array( 'label' => __( 'Popis', 'akksp' ), 'type' => Controls_Manager::TEXTAREA, 'rows' => 2, 'default' => '' ) );
-		$r->add_control( 'highlight', array( 'label' => __( 'Zvýraznit (zamáčknutá, písková)', 'akksp' ), 'type' => Controls_Manager::SWITCHER, 'default' => '' ) );
+		$r->add_control( 'highlight', array( 'label' => __( 'Zvýraznit (jemný zlatý obrys, „&" zlatě)', 'akksp' ), 'type' => Controls_Manager::SWITCHER, 'default' => '' ) );
 		$this->add_control(
 			'tiles',
 			array(
@@ -47,10 +46,10 @@ class Why extends Base {
 				'fields'      => $r->get_controls(),
 				'title_field' => '{{{ value }}}',
 				'default'     => array(
-					array( 'meta' => '01 · Zkušenost', 'value' => '30+', 'text' => 'let zkušeností v právním poradenství' ),
-					array( 'meta' => '02 · Tým', 'value' => '15+', 'text' => 'členný tým odborníků' ),
-					array( 'meta' => '03 · CZ / PL', 'value' => 'Česko & Polsko', 'text' => 'jedna kancelář, široké možnosti', 'highlight' => 'yes' ),
-					array( 'meta' => '04 · Přístup', 'value' => 'Praktická řešení', 'text' => 'srozumitelná, efektivní a s důrazem na výsledek' ),
+					array( 'value' => '30+', 'text' => 'let zkušeností v právním poradenství' ),
+					array( 'value' => '15+', 'text' => 'členný tým odborníků' ),
+					array( 'value' => 'Česko & Polsko', 'text' => 'jedna kancelář, široké možnosti', 'highlight' => 'yes' ),
+					array( 'value' => 'Praktická řešení', 'text' => 'srozumitelná, efektivní a s důrazem na výsledek' ),
 				),
 			)
 		);
@@ -73,9 +72,8 @@ class Why extends Base {
 				// Krátké hodnoty s číslicí = velké číslo, jinak slovo.
 				$is_num = (bool) preg_match( '/\d/', (string) $t['value'] ) && mb_strlen( (string) $t['value'] ) <= 6;
 				?>
-			<div class="ak-tile<?php echo ! empty( $t['highlight'] ) ? ' ak-tile--pressed' : ''; ?> ak-reveal" style="--i:<?php echo (int) $i; ?>">
-				<span class="ak-tile__meta ak-mono"><?php echo esc_html( $t['meta'] ); ?></span>
-				<span class="<?php echo $is_num ? 'ak-why__num' : 'ak-why__word'; ?>"><?php echo esc_html( $t['value'] ); ?></span>
+			<div class="ak-tile<?php echo ! empty( $t['highlight'] ) ? ' ak-tile--accent' : ''; ?> ak-reveal" style="--i:<?php echo (int) $i; ?>">
+				<span class="<?php echo $is_num ? 'ak-why__num' : 'ak-why__word'; ?>"><?php echo str_replace( '&amp;', '<span class="ak-amp">&amp;</span>', esc_html( $t['value'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 				<p><?php echo esc_html( $t['text'] ); ?></p>
 			</div>
 			<?php endforeach; ?>

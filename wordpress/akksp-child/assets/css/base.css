@@ -34,6 +34,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   --fg: var(--ak-ink); --fg-body: var(--ak-ink-body); --fg-2: var(--ak-ink-64); --fg-3: var(--ak-ink-44);
   --line: var(--ak-ink-14); --line-strong: var(--ak-ink-44); --accent: var(--ak-gold-line); --label: var(--ak-ink-64);
   --ctrl: var(--ak-ink);
+  /* inverze při najetí: navy výplň, zlatý text */
+  --inv-bg: var(--ak-navy); --inv-fg: var(--ak-gold-soft); --inv-edge: var(--ak-navy); --inv-line: var(--ak-gold-40);
   color: var(--fg-body);
 }
 .ak-light { background: var(--ak-cream); }
@@ -42,6 +44,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   --fg: var(--ak-paper); --fg-body: var(--ak-paper); --fg-2: var(--ak-paper-72); --fg-3: var(--ak-paper-48);
   --line: var(--ak-paper-16); --line-strong: var(--ak-gold-40); --accent: var(--ak-gold); --label: var(--ak-gold);
   --ctrl: var(--ak-gold);
+  /* inverze při najetí: zlatá výplň, navy text, zlatý obrys (nesplyne s pozadím) */
+  --inv-bg: var(--ak-gold-soft); --inv-fg: var(--ak-navy); --inv-edge: var(--ak-gold); --inv-line: rgb(0 22 40 / .2);
   background: var(--ak-navy); color: var(--fg-body);
 }
 
@@ -74,8 +78,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* --- Pohyb: odkrytí (profil B) — jen jednou, jen s JS ------------------ */
 .js .ak-reveal { opacity: 0; transform: translateY(16px); transition: opacity 600ms var(--ak-ease), transform 600ms var(--ak-ease); transition-delay: calc(var(--i, 0) * 60ms); }
 .js .ak-reveal.is-in { opacity: 1; transform: none; }
-.js .ak-mask { clip-path: inset(0 100% 0 0); transition: clip-path var(--ak-t) var(--ak-ease-reveal); }
-.js .ak-mask.is-in { clip-path: inset(0 0 0 0); }
+/* Maska má přesah nahoru/dolů, aby neuřízla háčky, čárky ani dotahy (ý, j, g, p) */
+.js .ak-mask { clip-path: inset(-0.4em 100% -0.4em -0.2em); transition: clip-path var(--ak-t) var(--ak-ease-reveal); }
+.js .ak-mask.is-in { clip-path: inset(-0.4em -0.2em -0.4em -0.2em); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

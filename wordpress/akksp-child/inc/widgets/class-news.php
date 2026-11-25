@@ -27,7 +27,7 @@ class News extends Base {
 
 	protected function register_controls() {
 		$this->start_controls_section( 'content', array( 'label' => __( 'Obsah', 'akksp' ) ) );
-		$this->add_control( 'label', array( 'label' => __( 'Štítek', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '06 · Blog', 'label_block' => true ) );
+		$this->add_control( 'label', array( 'label' => __( 'Štítek', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => '', 'label_block' => true ) );
 		$this->add_control( 'title', array( 'label' => __( 'Nadpis', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Aktuálně z právního světa', 'label_block' => true ) );
 		$this->add_control( 'link_text', array( 'label' => __( 'Text odkazu', 'akksp' ), 'type' => Controls_Manager::TEXT, 'default' => 'Všechny články' ) );
 		$this->add_control( 'link', array( 'label' => __( 'Odkaz', 'akksp' ), 'type' => Controls_Manager::URL, 'default' => array( 'url' => '/blog/' ) ) );

@@ -15,7 +15,9 @@ function akksp_contact_defaults() {
 	return array(
 		'phone'        => '+420 558 997 103',
 		'email'        => 'info@aktrinec.cz',
-		'offices'      => 'Třinec · Praha · Krakov',
+		'offices'      => 'Husova 401, Třinec',
+		'search_form_id' => '350',
+		'search_title' => 'S čím vám můžeme pomoci?',
 		'contact_url'  => '#kontakt',
 		'company'      => 'AKKSP advokátní kancelář, s.r.o.',
 		'company_info' => "IČO: 27787541\nZápis v obchodním rejstříku:\nC 29686 u Krajského soudu v Ostravě\nID datové schránky: xvwje95",
@@ -57,7 +59,9 @@ add_action(
 		$fields = array(
 			'phone'        => array( __( 'Telefon (hlavní)', 'akksp' ), 'text' ),
 			'email'        => array( __( 'E-mail', 'akksp' ), 'email' ),
-			'offices'      => array( __( 'Kanceláře (jeden řádek)', 'akksp' ), 'text' ),
+			'offices'      => array( __( 'Kancelář (jeden řádek, kontaktní lišta)', 'akksp' ), 'text' ),
+			'search_form_id' => array( __( 'Ivory Search: ID formuláře (dnes 350)', 'akksp' ), 'text' ),
+			'search_title' => array( __( 'Nadpis vyhledávání', 'akksp' ), 'text' ),
 			'contact_url'  => array( __( 'Odkaz tlačítka Kontakt', 'akksp' ), 'text' ),
 			'company'      => array( __( 'Název společnosti', 'akksp' ), 'text' ),
 			'company_info' => array( __( 'Údaje o společnosti (IČO, rejstřík, DS)', 'akksp' ), 'textarea' ),

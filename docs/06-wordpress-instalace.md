@@ -1,20 +1,21 @@
 # 06 · WordPress: instalace a práce s tématem AKKSP
 
-Child téma `wordpress/akksp-child/` (rodič: **Hello Elementor**). Balíček k nahrání: `wordpress/dist/akksp-child-1.0.0.zip`.
+Child téma `wordpress/akksp-child/` (rodič: **Hello Elementor**). Balíček k nahrání: `wordpress/dist/akksp-child-1.1.0.zip` (sestaví `tools/build-theme.ps1`). Vizuální pravidla: artefakt **AKKSP Design System** a jeho zdroj v `design-system/`.
 
 ## Co téma obsahuje
 
 | Část | Kde | Poznámka |
 |---|---|---|
-| Hlavička (plovoucí skleněná navigace, mobilní menu, CZ \| PL) | `header.php` | menu „AKKSP: hlavní menu"; přepínač jazyků z Polylangu |
+| Hlavička (navy lišta přes celou šířku, mobilní menu, CZ \| PL, vyhledávání) | `header.php` | menu „AKKSP: hlavní menu“; přepínač celých jazykových mutací z Polylangu; overlay se stávajícím **Ivory Search** |
+| Výsledky vyhledávání | `search.php`, `searchform.php` | vzhled tématu; filtry a nastavení dál řídí Ivory Search |
 | Patička (struktura jako dnes) | `footer.php` | 3 menu + údaje z Přizpůsobit |
-| Údaje kanceláře | Vzhled → Přizpůsobit → **AKKSP: kontakty a firma** | telefon, e-mail, IČO, sídlo, pobočka, LinkedIn, YouTube |
+| Údaje kanceláře | Vzhled → Přizpůsobit → **AKKSP: kontakty a firma** | telefon, e-mail, kancelář, IČO, sídlo, pobočka, LinkedIn, YouTube, ID formuláře Ivory Search (350), nadpis vyhledávání |
 | 10 Elementor widgetů | panel Elementoru → kategorie **AKKSP sekce** | výchozí obsah = schválená homepage |
 | Design system | `assets/css/` (kopie `site/css/`) | needitovat v tématu, ale v `site/` a spustit build |
 | Lokální písma | `assets/fonts/` | stáhne `tools/get-fonts.ps1`; Google Fonts z Elementoru jsou vypnutá |
 | Globální barvy a písma Elementoru | nastaví se při aktivaci tématu | Site Settings → Global Colors „AKKSP …" |
 
-Funguje s Elementorem zdarma; Elementor Pro není potřeba. Pokud v Pro existuje vlastní hlavička/patička (Theme Builder), má přednost.
+Funguje s Elementorem zdarma i s **Elementor Pro**. Současný web Elementor Pro používá: pokud je v *Šablony → Theme Builder* přiřazená hlavička nebo patička, má přednost před hlavičkou tématu. **Na stagingu jim zrušte podmínky zobrazení**, jinak se nová hlavička, vyhledávání a patička neukážou.
 
 ### Widgety
 
@@ -23,7 +24,7 @@ Funguje s Elementorem zdarma; Elementor Pro není potřeba. Pokud v Pro existuje
 | AKKSP · Hero + rozcestník | fotka, skleněný panel, přepínač CZ / PL, 3 karty |
 | AKKSP · Záhlaví podstránky | tmavý pruh s H1 pro podstránky |
 | AKKSP · Kontaktní lišta | telefon, e-mail, kanceláře, CTA (prázdná pole = údaje z Přizpůsobit) |
-| AKKSP · Proč AKKSP (čísla) | dlaždice s reliéfem; zvýrazněná = písková |
+| AKKSP · Proč AKKSP (čísla) | dlaždice s reliéfem; zvýrazněná = jemný zlatý obrys a zlatý ampersand |
 | AKKSP · Oblasti právní pomoci | 9 skleněných karet, „+ → ×", situace po řádcích |
 | AKKSP · Tým | portréty černobílé → barva |
 | AKKSP · Reference | citace + galerie log klientů |
@@ -87,7 +88,16 @@ Po startu (cca 1–2 min) jednou otevřít `http://127.0.0.1:9400/akksp-seed/see
 
 Netestováno: Polylang (přepínač ve variantě odkazů), Elementor Pro, LiteSpeed Cache, Complianz, Safari.
 
+## Vyhledávání (Ivory Search)
+
+- Plugin *Ivory Search Premium* zůstává beze změny: formuláře, indexovaný obsah, filtry slov i AJAX výsledky fungují dál stejně.
+- Téma vloží formulář `[ivory-search id="350"]` do overlaye otevíraného lupou v hlavičce (jiné ID nastavíte v Přizpůsobit). Bez pluginu se použije běžné vyhledávání WordPressu.
+- Vzhled pole i AJAX výsledků přebírá design tématu. Po nasazení vyzkoušet živé výsledky, „další výsledky“ a stránku výsledků.
+
 ## Kontrolní seznam před spuštěním
+
+- [ ] Elementor Pro: hlavička a patička z Theme Builderu nejsou přiřazené
+- [ ] Vyhledávání: živé výsledky Ivory Search v overlayi i na stránce výsledků
 
 - [ ] Hlavní menu a patička v CZ i PL
 - [ ] Údaje v Přizpůsobit (IČO, spisová značka, adresy)

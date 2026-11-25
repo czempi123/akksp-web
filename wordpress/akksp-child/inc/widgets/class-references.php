@@ -30,7 +30,7 @@ class References extends Base {
 		$this->start_controls_section( 'head', array( 'label' => __( 'Hlavička', 'akksp' ) ) );
 		$this->add_head_controls(
 			array(
-				'label'    => '04 · Reference',
+				'label'    => '',
 				'title'    => 'Co říkají klienti',
 				'lead'     => 'Důvěra našich klientů je pro nás největší motivací. Přinášíme několik vybraných referencí.',
 				'btn_text' => 'Další reference',
@@ -94,7 +94,7 @@ class References extends Base {
 		<div class="ak-refs__cards">
 			<?php foreach ( (array) $s['quotes'] as $i => $q ) : ?>
 			<figure class="ak-ref ak-card ak-reveal" style="--i:<?php echo (int) $i; ?>">
-				<div class="ak-ref__meta"><span class="ak-mono"><?php echo esc_html( sprintf( __( 'Reference / %02d', 'akksp' ), $i + 1 ) ); ?></span><span class="ak-ref__q" aria-hidden="true">„</span></div>
+				<svg class="ak-ref__q" aria-hidden="true"><use href="#i-quote"/></svg>
 				<blockquote><p><?php echo esc_html( $q['quote'] ); ?></p></blockquote>
 				<figcaption class="ak-ref__who">
 					<?php if ( ! empty( $q['logo']['url'] ) || ! empty( $q['logo']['id'] ) ) : ?>
