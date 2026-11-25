@@ -1,0 +1,57 @@
+/* ==========================================================================
+   AKKSP — design tokens (fáze 1, moodboard)
+   Barvy jsou vzorkované přímo z konceptu homepage (assets/concept/homepage-koncept-v1.webp).
+   Tyto tokeny se 1:1 přenesou do theme.json (viz docs/04-wordpress-implementace.md).
+   ========================================================================== */
+
+:root {
+  /* --- Brand barvy z konceptu ------------------------------------------- */
+  --navy-900: #001628;   /* hlavní tmavé pozadí (hero, služby, patička) */
+  --navy-850: #02182C;   /* navigace, kontaktní lišta */
+  --navy-700: #123249;   /* „světlo" v hero, zvednuté plochy na tmavé */
+  --ink:      #0A0E45;   /* nadpisy na světlém pozadí (inkoustová modř) */
+  --ink-body: #111335;   /* běžný text na světlém pozadí */
+  --gold:     #F8C46F;   /* zlatá — zvýrazněný text „Česku a Polsku" */
+  --gold-soft:#FCCE85;   /* výplň tlačítek */
+  --gold-line:#DEB66C;   /* linky, rámečky, obrysová tlačítka */
+  --amber:    #F49915;   /* uvozovky, jiskra — jen drobné akcenty */
+  --amber-deep:#E29421;  /* zlatá linka mapy / glow */
+  --mustard:  #E9C634;   /* štítky „Advokátní kancelář AKKSP" */
+  --cream:    #F5F1EE;   /* světlé sekce */
+  --paper:    #FAF8F4;   /* karty, papír */
+  --sand:     #FCE4C4;   /* zvýrazněný box „Česko & Polsko" */
+  --legacy:   #1A163A;   /* barva ze současného webu (pro srovnání) */
+
+  /* --- Odvozené (průhlednosti stejných odstínů) ------------------------- */
+  --ink-60: rgb(10 14 69 / 0.62);
+  --ink-40: rgb(10 14 69 / 0.42);
+  --ink-12: rgb(10 14 69 / 0.12);
+  --ink-08: rgb(10 14 69 / 0.08);
+  --paper-70: rgb(250 248 244 / 0.72);
+  --paper-50: rgb(250 248 244 / 0.5);
+  --paper-14: rgb(250 248 244 / 0.14);
+  --paper-08: rgb(250 248 244 / 0.08);
+  --gold-35: rgb(222 182 108 / 0.35);
+
+  /* --- Písma (všechna SIL Open Font License 1.1) ------------------------ */
+  --font-a-display: "Newsreader", "Georgia", serif;
+  --font-a-text: "Instrument Sans", system-ui, sans-serif;
+  --font-b-display: "Source Serif 4", "Georgia", serif;
+  --font-b-text: "IBM Plex Sans", system-ui, sans-serif;
+  --font-b-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-c-display: "Fraunces", "Georgia", serif;
+  --font-c-text: "Manrope", system-ui, sans-serif;
+  --font-ui: "Geist", system-ui, sans-serif;
+  --font-ui-mono: "Geist Mono", ui-monospace, monospace;
+
+  /* --- Spacing (škála 2–96 px) ------------------------------------------ */
+  --s-25: 2px; --s-50: 4px; --s-75: 8px; --s-100: 12px; --s-200: 16px;
+  --s-300: 24px; --s-400: 32px; --s-500: 40px; --s-600: 48px;
+  --s-700: 64px; --s-800: 80px; --s-900: 96px;
+
+  /* --- Pohyb: klidný, nerušivý ------------------------------------------ */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-s: 300ms;
+  --dur-m: 500ms;
+  --dur-l: 700ms;
+}
