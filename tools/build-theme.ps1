@@ -41,7 +41,7 @@ function Save-Resized([string]$from, [string]$to, [int]$maxW) {
 }
 $demo = @{
   'hero-zasedacka.jpg'    = @('2024-11-20241114_135120.jpg', 2000)
-  'jednaci-mistnost.jpg'  = @('2025-01-20241114_134712.jpg', 2000)
+  'jednaci-mistnost.jpg'  = @('2025-01-20241114_134712-orez.jpg', 2000)   # orez bez balkonovych dveri
   'schody.jpg'            = @('2025-01-schody-3.jpg', 2000)
   'troszok.jpg'           = @('2024-12-P6200389CHO-scaled-e1692876753442.jpg', 800)
   'filipczyk.jpg'         = @('2024-12-P6290544CHO-scaled-e1692876639242.jpg', 800)
