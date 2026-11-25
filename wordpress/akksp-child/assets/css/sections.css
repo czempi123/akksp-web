@@ -73,9 +73,10 @@
 .ak-why__grid { align-items: stretch; row-gap: var(--ak-gutter); }
 .ak-why__head { grid-column: 1 / 4; display: flex; flex-direction: column; gap: var(--ak-s-5); align-items: flex-start; }
 .ak-why__tiles { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ak-gutter); }
-.ak-why__num { font-family: var(--ak-serif); font-weight: 600; font-size: 56px; line-height: 1; letter-spacing: -0.03em; color: var(--ak-ink); margin-top: var(--ak-s-6); }
-.ak-why__word { font-family: var(--ak-serif); font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: -0.01em; color: var(--ak-ink); margin-top: var(--ak-s-6); }
-.ak-why .ak-tile p { font-size: 14px; line-height: 1.5; color: var(--ak-ink-64); }
+.ak-why__num { font-family: var(--ak-serif); font-weight: 600; font-size: 56px; line-height: 1; letter-spacing: -0.03em; color: var(--ak-ink); }
+.ak-why__word { font-family: var(--ak-serif); font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: -0.01em; color: var(--ak-ink); }
+.ak-why .ak-tile p { max-width: 22ch; font-size: 14px; line-height: 1.5; color: var(--ak-ink-64); text-wrap: balance; }
+.ak-why__grid { align-items: center; }
 
 /* --- 4 · Oblasti právní pomoci (3×3 sklo) ------------------------------ */
 .ak-areas { isolation: isolate; overflow: hidden; }

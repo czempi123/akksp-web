@@ -19,7 +19,7 @@ Další úpravy během vlny:
 
 - Horní kontaktní řádek nad menu byl vyzkoušen a zrušen (stačí tlačítko Kontakt).
 - Po odscrollování se hlavička zmenší jen nepatrně (80 → 74 px).
-- Dlaždice „Česko & Polsko“ je stejná jako ostatní (bez zlatého rámečku); ampersand jen tlumený.
+- Dlaždice Proč AKKSP: světlé karty, které vystupují stínem a při najetí se nadzvednou; text na středu; bez zlatého čtverečku. „Česko & Polsko“ je stejná jako ostatní, ampersand jen tlumený.
 - Ikona telefonu při najetí „zazvoní“, obálka se nadzvedne, šipka se dvakrát pružně „pošťouchne“ vpřed (už nemizí a neobjevuje se).
 - Česká typografie: jednopísmenné předložky (v, s, k…) nezůstávají na konci řádku (`akksp_typo()`).
 

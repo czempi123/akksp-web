@@ -131,17 +131,17 @@
 /* --n = počet jazyků, --pos = pořadí aktuálního (0 = první) */
 .ak-seg__thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / var(--n, 2)); border-radius: 1px; background: var(--ak-gold-soft); transform: translateX(calc(var(--pos, 0) * 100%)); transition: transform var(--ak-t) var(--ak-ease); }
 
-/* --- Dlaždice s měkkým reliéfem (jen na krémové) ------------------------ */
+/* --- Dlaždice: světlá karta, která vystupuje stínem; obsah na středu -------- */
 .ak-tile {
-  position: relative; display: flex; flex-direction: column; gap: var(--ak-s-2); padding: var(--ak-s-5);
-  background: var(--ak-cream); border-radius: var(--ak-r-1); box-shadow: var(--ak-relief), inset 0 0 0 1px rgb(255 255 255 / .7);
-  transition: box-shadow var(--ak-t) var(--ak-ease);
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--ak-s-3);
+  min-height: 210px; padding: var(--ak-s-6) var(--ak-s-5); text-align: center;
+  background: #FFFDFA; border-radius: var(--ak-r-2);
+  box-shadow: 0 1px 2px rgb(10 14 69 / .06), 0 14px 36px -8px rgb(10 14 69 / .16);
+  transition: box-shadow var(--ak-t) var(--ak-ease), transform var(--ak-t) var(--ak-ease);
 }
-.ak-tile::after { content: ""; position: absolute; top: var(--ak-s-5); right: var(--ak-s-5); width: 8px; height: 8px; background: var(--ak-gold-line); }
-.ak-tile:hover { box-shadow: 3px 3px 10px rgb(10 14 69 / .08), -3px -3px 10px #FFFDFA, inset 0 0 0 1px var(--ak-gold-line); }
-/* „Česko & Polsko“: stejná dlaždice jako ostatní, nic nevystupuje; jen ampersand je tlumený */
-.ak-tile--accent { }
-.ak-amp { color: var(--ak-ink-44); font-weight: 400; }
+.ak-tile:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgb(10 14 69 / .06), 0 22px 48px -10px rgb(10 14 69 / .22); }
+/* „Česko & Polsko“: stejná dlaždice jako ostatní; jen ampersand je tlumený */
+.ak-tile--accent { }.ak-amp { color: var(--ak-ink-44); font-weight: 400; }
 
 /* --- Karta (papír) ------------------------------------------------------- */
 .ak-card { background: var(--ak-paper); border-radius: var(--ak-r-2); box-shadow: inset 0 0 0 1px var(--ak-ink-08); transition: box-shadow var(--ak-t) var(--ak-ease); }
