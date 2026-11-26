@@ -61,6 +61,8 @@ docs/
   10-zverejneni.md      GitHub repozitář a hosting náhledu (Netlify / Cloudflare Pages)
 ```
 
+Online náhled: **https://czempi123.github.io/akksp-web/** (GitHub Pages z větve `main`, aktualizuje se po každém pushi).
+
 Stránky: `http://localhost:4173/site/` (homepage), `/site/pro-jednotlivce/`, `/site/pro-firmy/`, `/site/o-nas/`, `/site/pl/`, `/site/en/`, `/moodboard/`. Kořen `http://localhost:4173/` přesměruje na `/site/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
 
 ## Jak otevřít moodboard

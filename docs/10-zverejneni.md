@@ -1,8 +1,15 @@
 # 10 · Zveřejnění prototypu (náhled pro kolegy)
 
-Repozitář: https://github.com/czempi123/akksp-web (soukromý). Web jsou statické soubory, nic se nesestavuje.
+Repozitář: https://github.com/czempi123/akksp-web (veřejný). Web jsou statické soubory, nic se nesestavuje.
 
-## Nastavení hostingu (Netlify nebo Cloudflare Pages)
+## Aktuálně: GitHub Pages
+
+- Adresa: **https://czempi123.github.io/akksp-web/** (kořen přesměruje na `site/`).
+- Zdroj: větev `main`, složka `/ (root)`; `.nojekyll` vypíná zpracování Jekyllem.
+- Každý `git push` do `main` web za 1–2 minuty aktualizuje.
+- Repozitář i web jsou veřejné (GitHub Pages zdarma jen pro veřejné repozitáře). Stránky mají `noindex` a `robots.txt` zakazuje procházení; `_headers` GitHub Pages ignoruje.
+
+## Alternativa: Netlify nebo Cloudflare Pages (možnost soukromého repozitáře)
 
 - Zdroj: GitHub, repozitář `czempi123/akksp-web`, větev `main`.
 - Build command: žádný (prázdné). Publish / output directory: kořen repozitáře (`/`).
