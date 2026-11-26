@@ -10,7 +10,8 @@ Pracovní repozitář pro redesign webu AKKSP advokátní kancelář, s.r.o. Obs
 | 2 | Brand manual v1 (`brand-manual/`) + kompletní homepage (`site/`, desktop + mobil) | hotovo |
 | 3 | WordPress child téma pro Hello Elementor (`wordpress/akksp-child/`), 10 Elementor widgetů, lokální písma, otestováno v lokálním WP | hotovo |
 | 3.1 | Finální design homepage podle 11 připomínek, PL mutace (`site/pl/`), vyhledávání (Ivory Search), **AKKSP Design System** (`design-system/` + artefakt) | hotovo |
-| 3.2 | Druhá vlna připomínek: hlavička v jednom řádku bez burgeru, kontaktní panel, hero s prolínáním fotek, nové oblasti, patička, cookie lišta, CZ \| PL \| EN (`docs/08`) | **hotovo, čeká na připomínky a staging** |
+| 3.2 | Druhá vlna připomínek: hlavička v jednom řádku bez burgeru, kontaktní panel, hero s prolínáním fotek, nové oblasti, patička, cookie lišta, CZ \| PL \| EN (`docs/08`) | hotovo |
+| 4 | Podstránky Pro jednotlivce a Pro firmy a podnikatele, prokliky z homepage (`docs/09`) | **hotovo, čeká na připomínky** |
 
 Platná pravidla designu: **`design-system/project/README.md`** (a artefakt AKKSP Design System). `brand-manual/` a `docs/03` jsou historické verze.
 
@@ -21,11 +22,13 @@ design-system/           Design system (zdroj artefaktu): README = brand book, t
   build-components.mjs  vygeneruje komponenty a obálku (node design-system/build-components.mjs)
 site/                   Homepage (prototyp pro WordPress)
   index.html            česká verze
+  pro-jednotlivce/, pro-firmy/  podstránky (generuje tools/make-pages.ps1 z tools/pages/*.html)
   pl/, en/              jazykové mutace (generuje tools/make-lang.ps1 z tools/i18n/pl.json, en.json)
   css/tokens.css        design tokeny --ak-*
   css/base.css          základ, typografie, plochy, mřížka
   css/components.css    tlačítka, „+ → ×", sklo, karty, štítky
   css/sections.css      sekce homepage + responzivita
+  css/pages.css         sekce podstránek
   js/site.js            navigace, menu, accordion, CZ/PL, odkrývání
   css/wp.css            doplňky jen pro WordPress / Elementor
 brand-manual/           Vizuální brand manual v1 (používá CSS ze site/)
@@ -33,6 +36,7 @@ wordpress/akksp-child/  Child téma (Hello Elementor): header/footer, widgety, p
 tools/build-theme.ps1   zkopíruje CSS/JS ze site/ do tématu a vytvoří ZIP (wordpress/dist/)
 tools/get-fonts.ps1     stáhne písma (OFL) jako WOFF2 do tématu
 tools/playground/       lokální testovací WordPress (blueprint + seed)
+tools/make-pages.ps1    sestaví podstránky (hlavička/patička z homepage + obsah z tools/pages/)
 tools/shoot.ps1         celostránkové snímky přes headless Edge
 moodboard/              Moodboard fáze 1 (HTML/CSS/JS bez knihoven)
   index.html            otevřít v prohlížeči
@@ -52,9 +56,10 @@ docs/
   06-wordpress-instalace.md instalace tématu, nastavení, lokální test, checklist
   07-finalni-design-v1-1.md první vlna připomínek
   08-druha-vlna-pripominek.md druhá vlna připomínek (téma 1.2.0)
+  09-podstranky.md      podstránky Pro jednotlivce, Pro firmy
 ```
 
-Stránky: `http://localhost:4173/site/` (homepage), `/site/pl/`, `/site/en/`, `/moodboard/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
+Stránky: `http://localhost:4173/site/` (homepage), `/site/pro-jednotlivce/`, `/site/pro-firmy/`, `/site/pl/`, `/site/en/`, `/moodboard/`. Kořen `http://localhost:4173/` přesměruje na `/site/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
 
 ## Jak otevřít moodboard
 
