@@ -35,7 +35,8 @@ Podle konceptů `assets/concept/pro-jednotlivce-koncept-v1.webp`, `pro-firmy-kon
 ## Případové studie a reference
 
 - Karty případových studií (Pro firmy, O nás) vedou na stránky 3. vrstvy `site/pripadove-studie/<slug>/` (zdroj `tools/pages/pripadove-studie/`). Šablona: záhlaví se štítkem, klíčové údaje, Výchozí situace / Naše řešení / Výsledek, výzva, další studie. Texty jsou zástupné.
-- Samostatná stránka referencí nebude: tlačítko „Další reference“ (homepage, Pro jednotlivce, Pro firmy, O nás) rozbalí přímo na stránce seznam všech 24 klientů z aktrinec.cz/reference (`data-more`, „+ → ד).
+- Samostatná stránka referencí nebude: tlačítko „Další reference“ (homepage, Pro jednotlivce, Pro firmy, O nás) odkryje další položky přímo ve stávající řadě (`data-more`, „+ → ד): na homepage, Pro firmy a O nás loga všech 23 dalších klientů z aktrinec.cz/reference (Media CZ je zastoupená citací), na Pro jednotlivce karty se skutečnými citacemi. Odkaz `#ref-more` otevře rovnou rozbalené.
+- Loga s bílým pozadím jsou vyčištěná na průhledná (`tools/clean-logos.ps1` → `assets/aktrinec/clean/`), u Klimaproduktu a Vendryně znak s názvem.
 - Praha odstraněna (kancelář tam není).
 - O nás, „Kde nás najdete“: sídlo Husova 401 a pobočka, tlačítko Navigovat (Google Maps trasa) a mapa. Mapa Google se načte až po kliknutí na „Zobrazit mapu“ (do té doby náhled `2025-10-mapaak.jpg`), aby se bez souhlasu s cookies nic nenačítalo. Ve WordPressu lze napojit na souhlas Complianz.
 

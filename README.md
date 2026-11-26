@@ -36,6 +36,7 @@ wordpress/akksp-child/  Child téma (Hello Elementor): header/footer, widgety, p
 tools/build-theme.ps1   zkopíruje CSS/JS ze site/ do tématu a vytvoří ZIP (wordpress/dist/)
 tools/get-fonts.ps1     stáhne písma (OFL) jako WOFF2 do tématu
 tools/playground/       lokální testovací WordPress (blueprint + seed)
+tools/clean-logos.ps1   loga klientů s bílým pozadím -> průhledná (assets/aktrinec/clean/)
 tools/make-pages.ps1    sestaví podstránky (hlavička/patička z homepage + obsah z tools/pages/)
 tools/shoot.ps1         celostránkové snímky přes headless Edge
 moodboard/              Moodboard fáze 1 (HTML/CSS/JS bez knihoven)
@@ -57,6 +58,7 @@ docs/
   07-finalni-design-v1-1.md první vlna připomínek
   08-druha-vlna-pripominek.md druhá vlna připomínek (téma 1.2.0)
   09-podstranky.md      podstránky Pro jednotlivce, Pro firmy
+  10-zverejneni.md      GitHub repozitář a hosting náhledu (Netlify / Cloudflare Pages)
 ```
 
 Stránky: `http://localhost:4173/site/` (homepage), `/site/pro-jednotlivce/`, `/site/pro-firmy/`, `/site/o-nas/`, `/site/pl/`, `/site/en/`, `/moodboard/`. Kořen `http://localhost:4173/` přesměruje na `/site/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.

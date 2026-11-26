@@ -261,6 +261,7 @@
         btn.setAttribute("aria-expanded", String(open));
         panel.classList.toggle("is-open", open);
       });
+      if (location.hash === "#" + panel.id) btn.click(); // odkaz …#ref-more otevře rovnou rozbalené
     });
 
     // Mapa: Google Maps se načte až po kliknutí (bez souhlasu s cookies se nic nenačítá)

@@ -43,7 +43,7 @@ foreach ($p in $pages) {
   $up = '../' * ($p.slug.Split('/').Count)
   $t = [regex]::Replace($t, '(<link rel="preload" as="image" href=")[^"]*', "`${1}$up../assets/aktrinec/$($p.img)")
   $t = [regex]::Replace($t, '(<meta property="og:image" content=")[^"]*', "`${1}$up../assets/aktrinec/$($p.img)")
-  $t = $t.Replace('<link rel="stylesheet" href="css/sections.css?v=5">', "<link rel=`"stylesheet`" href=`"css/sections.css?v=5`">`n  <link rel=`"stylesheet`" href=`"css/pages.css?v=6`">")
+  $t = $t.Replace('<link rel="stylesheet" href="css/sections.css?v=10">', "<link rel=`"stylesheet`" href=`"css/sections.css?v=10`">`n  <link rel=`"stylesheet`" href=`"css/pages.css?v=10`">")
   # cesty o uroven(e) niz
   $t = $t.Replace('"../assets/', "`"$up../assets/").Replace('"../wordpress/', "`"$up../wordpress/")
   $t = $t.Replace('href="css/', "href=`"${up}css/")
