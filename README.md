@@ -11,7 +11,7 @@ Pracovní repozitář pro redesign webu AKKSP advokátní kancelář, s.r.o. Obs
 | 3 | WordPress child téma pro Hello Elementor (`wordpress/akksp-child/`), 10 Elementor widgetů, lokální písma, otestováno v lokálním WP | hotovo |
 | 3.1 | Finální design homepage podle 11 připomínek, PL mutace (`site/pl/`), vyhledávání (Ivory Search), **AKKSP Design System** (`design-system/` + artefakt) | hotovo |
 | 3.2 | Druhá vlna připomínek: hlavička v jednom řádku bez burgeru, kontaktní panel, hero s prolínáním fotek, nové oblasti, patička, cookie lišta, CZ \| PL \| EN (`docs/08`) | hotovo |
-| 4 | Podstránky Pro jednotlivce a Pro firmy a podnikatele, prokliky z homepage (`docs/09`) | **hotovo, čeká na připomínky** |
+| 4 | Podstránky Pro jednotlivce, Pro firmy a podnikatele a O nás, prokliky z homepage (`docs/09`) | **hotovo, čeká na připomínky** |
 
 Platná pravidla designu: **`design-system/project/README.md`** (a artefakt AKKSP Design System). `brand-manual/` a `docs/03` jsou historické verze.
 
@@ -22,7 +22,7 @@ design-system/           Design system (zdroj artefaktu): README = brand book, t
   build-components.mjs  vygeneruje komponenty a obálku (node design-system/build-components.mjs)
 site/                   Homepage (prototyp pro WordPress)
   index.html            česká verze
-  pro-jednotlivce/, pro-firmy/  podstránky (generuje tools/make-pages.ps1 z tools/pages/*.html)
+  pro-jednotlivce/, pro-firmy/, o-nas/  podstránky (generuje tools/make-pages.ps1 z tools/pages/*.html)
   pl/, en/              jazykové mutace (generuje tools/make-lang.ps1 z tools/i18n/pl.json, en.json)
   css/tokens.css        design tokeny --ak-*
   css/base.css          základ, typografie, plochy, mřížka
@@ -59,7 +59,7 @@ docs/
   09-podstranky.md      podstránky Pro jednotlivce, Pro firmy
 ```
 
-Stránky: `http://localhost:4173/site/` (homepage), `/site/pro-jednotlivce/`, `/site/pro-firmy/`, `/site/pl/`, `/site/en/`, `/moodboard/`. Kořen `http://localhost:4173/` přesměruje na `/site/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
+Stránky: `http://localhost:4173/site/` (homepage), `/site/pro-jednotlivce/`, `/site/pro-firmy/`, `/site/o-nas/`, `/site/pl/`, `/site/en/`, `/moodboard/`. Kořen `http://localhost:4173/` přesměruje na `/site/`. `#kontakt` otevře kontaktní panel, `#cookies` cookie lištu. Parametr `?static` vypne animace (pro snímky), `#hledat` otevře vyhledávání.
 
 ## Jak otevřít moodboard
 

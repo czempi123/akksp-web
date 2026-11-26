@@ -2,6 +2,7 @@
   "_note": "Pracovní polský překlad homepage (CZ -> PL). Nutná kontrola rodilým mluvčím. Páry se nahrazují v uvedeném pořadí. Generuje tools/make-lang.ps1.",
   "pairs": [
     ["href=\"pro-firmy/\"", "href=\"#oblasti\" data-todo=\"Podstránka zatím jen v češtině\""],
+    ["href=\"o-nas/\"", "href=\"#proc\" data-todo=\"Podstránka zatím jen v češtině\""],
     ["href=\"pro-jednotlivce/\"", "href=\"#oblasti\" data-todo=\"Podstránka zatím jen v češtině\""],
     ["<html lang=\"cs\">", "<html lang=\"pl\">"],
     ["<title>AKKSP advokátní kancelář · Právní partner v Česku a Polsku</title>", "<title>AKKSP Kancelaria Adwokacka · Partner prawny w Czechach i w Polsce</title>"],

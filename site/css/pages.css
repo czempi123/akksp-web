@@ -19,6 +19,13 @@
 .ak-subhero .ak-display { font-size: clamp(2.5rem, 1.6rem + 2.8vw, 4rem); line-height: 1.04; }
 .ak-subhero .ak-lead { max-width: 520px; color: var(--ak-paper-72); }
 .ak-subhero__actions { display: flex; gap: var(--ak-s-3); flex-wrap: wrap; margin-top: var(--ak-s-2); }
+/* Kompaktní varianta: nižší pruh, aby byl hned vidět i úvod pod ním */
+.ak-subhero--compact { min-height: clamp(320px, 29vw, 420px); }
+.ak-subhero--compact .ak-subhero__content { padding-top: var(--ak-s-7); padding-bottom: var(--ak-s-7); }
+.ak-subhero--compact .ak-subhero__text { gap: var(--ak-s-4); max-width: 640px; }
+.ak-subhero--compact .ak-display { font-size: clamp(2.25rem, 1.5rem + 2.2vw, 3.25rem); }
+.ak-subhero__sub { font-family: var(--ak-serif); font-size: clamp(1.375rem, 1.1rem + .8vw, 1.75rem); line-height: 1.2; font-weight: 600; color: var(--ak-paper); margin-top: calc(var(--ak-s-3) * -1); }
+.ak-subhero__sub em { font-style: normal; color: var(--ak-gold); }
 
 /* Drobečková navigace */
 .ak-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0; padding: 0; list-style: none;
@@ -35,6 +42,7 @@
 .ak-intro__text { grid-column: 7 / 13; padding-left: var(--ak-s-6); border-left: 1px solid var(--ak-ink-14);
   font-size: var(--ak-fs-lead); line-height: 1.7; color: var(--ak-ink-64); }
 .ak-intro__text strong { font-weight: 600; color: var(--ak-ink); }
+.ak-intro--tight { padding: clamp(48px, 4vw + 16px, 80px) 0; }
 
 /* --- Témata (S čím nejčastěji pomáháme): tmavý přehled bez rozbalování ---- */
 .ak-topics { isolation: isolate; overflow: hidden; }
@@ -84,6 +92,12 @@
 .ak-training--cta .ak-section { padding: clamp(72px, 7vw, 112px) 0; }
 .ak-training--cta .ak-training__panel { gap: var(--ak-s-4); }
 .ak-training__actions { display: flex; gap: var(--ak-s-3); flex-wrap: wrap; margin-top: var(--ak-s-2); }
+/* Doplňkové kontakty pod tlačítky (místo samostatné kontaktní lišty) */
+.ak-cta__meta { display: flex; flex-wrap: wrap; gap: var(--ak-s-2) var(--ak-s-6); margin-top: var(--ak-s-2); padding-top: var(--ak-s-4); border-top: 1px solid var(--ak-paper-16); font-size: 15px; color: var(--ak-paper-72); }
+.ak-cta__meta li, .ak-cta__meta a { display: inline-flex; align-items: center; gap: 10px; }
+.ak-cta__meta .ak-ico { color: var(--ak-gold); }
+.ak-cta__meta a { color: var(--ak-paper); transition: color var(--ak-t-fast) var(--ak-ease); }
+.ak-cta__meta a:hover, .ak-cta__meta a:focus-visible { color: var(--ak-gold); }
 
 /* --- Oblasti na světlé ploše (karty s rozbalením „+ → ×") ---------------- */
 .ak-areas--light::before { display: none; }
@@ -95,6 +109,42 @@
 .ak-areas--light .ak-area__sub { font-family: var(--ak-serif); font-size: 19px; line-height: 1.25; color: var(--ak-ink-64); }
 .ak-areas--light .ak-area__body { color: var(--ak-ink-body); }
 .ak-areas--light .ak-head { margin-bottom: var(--ak-s-7); }
+
+/* Loga klientů na střed (Pro firmy) */
+.ak-clients--center { justify-content: center; text-align: center; }
+.ak-clients--center ul { justify-content: center; }
+
+/* --- Čísla hned pod záhlavím (O nás) ----------------------------------- */
+.ak-why--tight { padding: var(--ak-s-7) 0; }
+.ak-why--tight .ak-tile { min-height: 170px; }
+
+/* --- Kdo jsme: text | fotka --------------------------------------------- */
+.ak-about__grid { row-gap: var(--ak-s-6); align-items: center; }
+.ak-about__text { grid-column: 1 / 6; display: grid; gap: var(--ak-s-5); justify-items: start; }
+.ak-about__img { grid-column: 7 / 13; overflow: hidden; border-radius: var(--ak-r-2); }
+.ak-about__img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+
+/* --- Reference v tmavém pruhu: loga + citace ---------------------------- */
+.ak-refband { isolation: isolate; overflow: hidden; }
+.ak-refband::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(50% 70% at 100% 100%, rgb(18 50 73 / .9), transparent 70%), radial-gradient(40% 50% at 0% 0%, rgb(226 148 33 / .08), transparent 70%); }
+.ak-refband__grid { row-gap: var(--ak-s-6); align-items: start; }
+.ak-refband__head { grid-column: 1 / 5; display: grid; gap: var(--ak-s-4); }
+.ak-refband__head .ak-lead { max-width: 340px; }
+.ak-refband__body { grid-column: 5 / 13; display: grid; gap: var(--ak-s-6); justify-items: start; padding-left: var(--ak-s-6); border-left: 1px solid var(--ak-paper-16); }
+.ak-refband__logos { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ak-s-5) var(--ak-s-6); align-items: center; padding-bottom: var(--ak-s-6); border-bottom: 1px solid var(--ak-paper-16); }
+.ak-refband__logos li { display: flex; align-items: center; height: 40px; }
+.ak-refband__logos img { max-height: 30px; max-width: 100%; width: auto; filter: brightness(0) invert(1); opacity: .62; transition: opacity var(--ak-t-fast) var(--ak-ease); }
+.ak-refband__logos img:hover { opacity: 1; }
+.ak-refband__quotes { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ak-s-6); }
+.ak-refband__quote { display: grid; gap: var(--ak-s-3); align-content: start; }
+.ak-refband__quote blockquote p { font-family: var(--ak-serif); font-size: 19px; line-height: 1.5; color: var(--ak-paper); }
+.ak-refband__quote figcaption b { display: block; font-size: 15px; color: var(--ak-paper); }
+.ak-refband__quote figcaption .ak-mono { display: block; margin-top: 4px; }
+
+/* --- Rozcestník s nadpisem a ikonou (Rychlý přehled) --------------------- */
+.ak-routes.ak-section { padding: var(--ak-section) 0; }
+.ak-routes__title { margin-bottom: var(--ak-s-6); }
+.ak-route__ico { width: 32px; height: 32px; fill: none; stroke: var(--ak-amber); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
 /* --- Případové studie ---------------------------------------------------- */
 .ak-cases__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ak-gutter); }
@@ -133,6 +183,9 @@
    Responzivita
    ========================================================================== */
 @media (max-width: 1180px) {
+  .ak-about__text { grid-column: 1 / 7; } .ak-about__img { grid-column: 7 / 13; }
+  .ak-refband__head { grid-column: 1 / -1; } .ak-refband__head .ak-lead { max-width: 560px; }
+  .ak-refband__body { grid-column: 1 / -1; padding-left: 0; border-left: 0; }
   .ak-contact__row > .ak-contact__cta { display: none; }
   .ak-intro__grid .ak-h2 { grid-column: 1 / 7; }
   .ak-topics__head { grid-column: 1 / -1; }
@@ -146,6 +199,9 @@
   .ak-band p { flex: 1 1 260px; }
 }
 @media (max-width: 860px) {
+  .ak-about__text, .ak-about__img { grid-column: 1 / -1; }
+  .ak-refband__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ak-refband__quotes { grid-template-columns: minmax(0, 1fr); }
   .ak-subhero { min-height: 0; align-items: flex-end; }
   .ak-subhero__media { width: 100%; clip-path: none; }
   .ak-subhero__media::after { background: linear-gradient(0deg, rgb(2 24 44 / .95) 0%, rgb(2 24 44 / .82) 55%, rgb(2 24 44 / .5) 100%); }

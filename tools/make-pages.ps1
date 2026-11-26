@@ -13,7 +13,10 @@ $pages = @(
      img  = '2024-11-stolek.jpg' },
   @{ slug = 'pro-firmy'; title = 'Pro firmy a podnikatele · AKKSP advokátní kancelář';
      desc = 'Právní podpora pro firmy a podnikatele v Česku a Polsku: smlouvy, pracovní právo, korporátní agenda, M&A a přeshraniční podnikání.';
-     img  = '2025-01-schody-3.jpg' }
+     img  = '2025-01-schody-3.jpg' },
+  @{ slug = 'o-nas'; title = 'O nás · AKKSP advokátní kancelář';
+     desc = 'AKKSP advokátní kancelář: právní partner v Česku a Polsku s více než 30 lety zkušeností. Kdo jsme, reference a případové studie.';
+     img  = '2024-11-20241114_135120.jpg' }
 )
 
 $homePage = [IO.File]::ReadAllText((Join-Path $root 'site\index.html'), $utf8)
@@ -31,7 +34,7 @@ foreach ($p in $pages) {
   $t = [regex]::Replace($t, '\s*<link rel="alternate" hreflang[^>]*>', '')
   $t = [regex]::Replace($t, '(<link rel="preload" as="image" href=")[^"]*', "`${1}../../assets/aktrinec/$($p.img)")
   $t = [regex]::Replace($t, '(<meta property="og:image" content=")[^"]*', "`${1}../../assets/aktrinec/$($p.img)")
-  $t = $t.Replace('<link rel="stylesheet" href="css/sections.css?v=5">', "<link rel=`"stylesheet`" href=`"css/sections.css?v=5`">`n  <link rel=`"stylesheet`" href=`"css/pages.css?v=1`">")
+  $t = $t.Replace('<link rel="stylesheet" href="css/sections.css?v=5">', "<link rel=`"stylesheet`" href=`"css/sections.css?v=5`">`n  <link rel=`"stylesheet`" href=`"css/pages.css?v=3`">")
   # cesty o uroven niz
   $t = $t.Replace('"../assets/', '"../../assets/').Replace('"../wordpress/', '"../../wordpress/')
   $t = $t.Replace('href="css/', 'href="../css/')
@@ -40,7 +43,7 @@ foreach ($p in $pages) {
   # menu: kotvy vedou na homepage, podstranky o uroven vys, aktualni polozka oznacena
   $t = [regex]::Replace($t, '(?s)<ul class="ak-nav__menu">.*?</ul>', {
     param($m)
-    $s = $m.Value.Replace('href="#', 'href="../#').Replace('href="pro-', 'href="../pro-')
+    $s = [regex]::Replace($m.Value, 'href="(?!https?:|mailto:|tel:|\.\./)', 'href="../')
     $s.Replace("href=`"../$($p.slug)/`"", 'href="./" aria-current="page"')
   })
   $b = $bottom.Replace('"../assets/', '"../../assets/').Replace('src="js/', 'src="../js/')
