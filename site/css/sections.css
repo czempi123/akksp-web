@@ -135,6 +135,7 @@
 .ak-clients ul { display: flex; align-items: center; gap: var(--ak-s-6); flex-wrap: wrap; }
 .ak-clients img { height: 26px; width: auto; filter: brightness(0); opacity: .5; transition: opacity var(--ak-t-fast) var(--ak-ease); }
 .ak-clients img:hover { opacity: .85; }
+.ak-refs__grid > .ak-more { grid-column: 4 / 13; }
 
 /* --- 7 · Školení --------------------------------------------------------- */
 .ak-training { position: relative; isolation: isolate; overflow: hidden; color: var(--ak-paper); }
@@ -277,7 +278,7 @@
    ========================================================================== */
 @media (max-width: 1180px) {
   .ak-why__head, .ak-team__head, .ak-refs__head { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; }
-  .ak-why__tiles, .ak-team__people, .ak-refs__cards, .ak-clients { grid-column: 1 / -1; }
+  .ak-why__tiles, .ak-team__people, .ak-refs__cards, .ak-clients, .ak-refs__grid > .ak-more { grid-column: 1 / -1; }
   .ak-contact__row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .ak-contact__title { grid-column: 1 / -1; padding-left: 0 !important; border-right: 0 !important; padding-bottom: 0 !important; }
   .ak-contact__row > .ak-btn { display: none; }

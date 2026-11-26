@@ -19,7 +19,7 @@
   <link rel="preload" as="image" href="../../assets/aktrinec/2024-11-20241114_135120.jpg" fetchpriority="high">
   <link rel="stylesheet" href="../css/tokens.css?v=5">
   <link rel="stylesheet" href="../css/base.css?v=5">
-  <link rel="stylesheet" href="../css/components.css?v=5">
+  <link rel="stylesheet" href="../css/components.css?v=6">
   <link rel="stylesheet" href="../css/sections.css?v=5">
   <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -234,7 +234,7 @@
         <h2 id="ref-title" class="ak-h2 ak-mask">Co mówią klienci</h2>
         <p class="ak-lead" style="margin-top:16px">Zaufanie klientów jest dla nas największą motywacją. Przedstawiamy kilka wybranych referencji.</p>
       </div>
-      <a class="ak-btn ak-btn--secondary" href="https://aktrinec.cz/reference/"><span>Więcej referencji</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></a>
+      <button type="button" class="ak-btn ak-btn--secondary" aria-expanded="false" aria-controls="ref-more" data-more><span>Więcej referencji</span><i class="ak-arrow-box"><span class="ak-px__ico"></span></i></button>
     </div>
     <div class="ak-refs__cards">
       <figure class="ak-ref ak-card ak-reveal" style="--i:0">
@@ -258,6 +258,8 @@
         <li><img src="../../assets/aktrinec/2024-12-logo_small-1.png" alt="Třinecká klimatizace"></li>
       </ul>
     </div>
+    <!-- Celý seznam klientů z aktrinec.cz/reference; samostatná stránka referencí nebude -->
+    <div class="ak-acc__panel ak-more" id="ref-more"><div><div class="ak-more__in"><p class="ak-mono">Współpracujemy m.in. z</p><ul class="ak-more__list"><li>Třinecké železárny, a. s.</li><li>Slévárny Třinec, a.s.</li><li>Třinecký inženýring, a.s.</li><li>Strojírny a stavby Třinec, a.s.</li><li>REFRASIL, s.r.o.</li><li>ENERGETIKA TŘINEC, a.s.</li><li>TRISIA, a.s.</li><li>Klimaprodukt, a.s.</li><li>ITeuro, a.s.</li><li>ENVIFORM a.s.</li><li>statutární město Třinec</li><li>ENEZA, s.r.o.</li><li>SGM Třinec, spol. s r.o.</li><li>KOVONA SYSTEM, a.s.</li><li>JAP INDUSTRIES s.r.o.</li><li>Třinecké gastroslužby, s.r.o.</li><li>STEELTEC CZ, s.r.o.</li><li>Třinecká klimatizace, a.s.</li><li>Obec Vendryně</li><li>B.PRO CZ s.r.o.</li><li>JELMARK, s.r.o.</li><li>TŘINECKÁ PROJEKCE, a. s.</li><li>Distribuce tepla Třinec, a.s.</li><li>Media CZ, s.r.o.</li></ul></div></div></div>
   </div>
 </section>
 
@@ -390,6 +392,6 @@
   <p class="ak-cookie__links"><a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">Zasady korzystania z plików cookies</a><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">Ochrona danych osobowych</a></p>
 </section>
 
-<script src="../js/site.js?v=5" defer></script>
+<script src="../js/site.js?v=7" defer></script>
 </body>
 </html>

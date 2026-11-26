@@ -111,7 +111,7 @@
 .ak-areas--light .ak-head { margin-bottom: var(--ak-s-7); }
 
 /* Loga klientů na střed (Pro firmy) */
-.ak-clients--center { justify-content: center; text-align: center; }
+.ak-clients--center { flex-direction: column; justify-content: center; gap: var(--ak-s-4); text-align: center; }
 .ak-clients--center ul { justify-content: center; }
 
 /* --- Čísla hned pod záhlavím (O nás) ----------------------------------- */
@@ -132,7 +132,7 @@
 .ak-refband__head .ak-lead { max-width: 340px; }
 .ak-refband__body { grid-column: 5 / 13; display: grid; gap: var(--ak-s-6); justify-items: start; padding-left: var(--ak-s-6); border-left: 1px solid var(--ak-paper-16); }
 .ak-refband__logos { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ak-s-5) var(--ak-s-6); align-items: center; padding-bottom: var(--ak-s-6); border-bottom: 1px solid var(--ak-paper-16); }
-.ak-refband__logos li { display: flex; align-items: center; height: 40px; }
+.ak-refband__logos li { display: flex; align-items: center; justify-content: center; height: 40px; }
 .ak-refband__logos img { max-height: 30px; max-width: 100%; width: auto; filter: brightness(0) invert(1); opacity: .62; transition: opacity var(--ak-t-fast) var(--ak-ease); }
 .ak-refband__logos img:hover { opacity: 1; }
 .ak-refband__quotes { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ak-s-6); }
@@ -146,6 +146,24 @@
 .ak-routes__title { margin-bottom: var(--ak-s-6); }
 .ak-route__ico { width: 32px; height: 32px; fill: none; stroke: var(--ak-amber); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 
+/* --- Rozbalené reference v řádkové variantě a v tmavém pruhu ------------- */
+.ak-refs--row .ak-refs__grid > .ak-more { grid-column: 1 / -1; }
+.ak-refband__body > .ak-more { width: 100%; margin-top: calc(var(--ak-s-6) * -1); }
+
+/* --- Kde nás najdete: adresa | mapa (načte se po kliknutí) --------------- */
+.ak-map__grid { row-gap: var(--ak-s-6); align-items: center; }
+.ak-map__info { grid-column: 1 / 5; display: grid; gap: var(--ak-s-5); justify-items: start; }
+.ak-map__addr { display: grid; grid-template-columns: 1fr 1fr; gap: var(--ak-s-5); margin: 0; }
+.ak-map__addr dt { font-family: var(--ak-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ak-ink-44); }
+.ak-map__addr dd { margin: 4px 0 0; font-family: var(--ak-serif); font-size: 20px; line-height: 1.35; font-weight: 600; color: var(--ak-ink); }
+.ak-map__actions { display: flex; flex-wrap: wrap; gap: var(--ak-s-3); }
+.ak-map__frame { grid-column: 6 / 13; position: relative; overflow: hidden; border-radius: var(--ak-r-2); aspect-ratio: 4 / 3; background: var(--ak-ink-08); box-shadow: inset 0 0 0 1px var(--ak-ink-08); }
+.ak-map__frame > img, .ak-map__frame > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.ak-map__frame > img { filter: saturate(.4); }
+.ak-map__load { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--ak-s-3); padding: var(--ak-s-5); text-align: center;
+  background: linear-gradient(0deg, rgb(250 248 244 / .82), rgb(250 248 244 / .55)); }
+.ak-map__load p { font-size: 13px; color: var(--ak-ink-64); }
+
 /* --- Případové studie ---------------------------------------------------- */
 .ak-cases__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ak-gutter); }
 .ak-case { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); overflow: hidden; }
@@ -156,6 +174,23 @@
 .ak-case__body .ak-mono { color: var(--ak-amber); }
 .ak-case__body h3 { font-family: var(--ak-serif); font-size: 22px; line-height: 1.25; color: var(--ak-ink); }
 .ak-case__body p { font-size: 14px; line-height: 1.55; color: var(--ak-ink-64); }
+.ak-case__body h3 { justify-self: start; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size var(--ak-t) var(--ak-ease); }
+a.ak-case:hover .ak-case__body h3, a.ak-case:focus-visible .ak-case__body h3 { background-size: 100% 1px; }
+.ak-case__go { justify-self: end; align-self: end; width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--ak-r-1);
+  background: var(--ak-gold-soft); color: var(--ak-navy); transition: background-color var(--ak-t-inv) var(--ak-ease), color var(--ak-t-inv) var(--ak-ease), box-shadow var(--ak-t-inv) var(--ak-ease); }
+a.ak-case:hover .ak-case__go, a.ak-case:focus-visible .ak-case__go { background: var(--ak-navy); color: var(--ak-gold); box-shadow: inset 0 0 0 1px var(--ak-gold); }
+
+/* --- Případová studie (detail): klíčové údaje a příběh ------------------ */
+.ak-facts { padding-top: var(--ak-s-7); }
+.ak-facts__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ak-gutter); margin: 0; padding: var(--ak-s-5) 0; border-top: 1px solid var(--ak-ink-14); border-bottom: 1px solid var(--ak-ink-14); }
+.ak-facts__list dt { font-family: var(--ak-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ak-ink-44); }
+.ak-facts__list dd { margin: 4px 0 0; font-family: var(--ak-serif); font-size: 19px; line-height: 1.3; font-weight: 600; color: var(--ak-ink); }
+.ak-story { padding-top: var(--ak-s-7); }
+.ak-story__row { row-gap: var(--ak-s-3); padding: var(--ak-s-6) 0; border-bottom: 1px solid var(--ak-ink-14); }
+.ak-story__row:last-child { border-bottom: 0; }
+.ak-story__row .ak-h3 { grid-column: 1 / 5; }
+.ak-story__text { grid-column: 5 / 12; font-size: var(--ak-fs-lead); line-height: 1.7; color: var(--ak-ink-body); }
+.ak-story__text .ak-list-sq { font-size: var(--ak-fs-lead); gap: 10px; }
 
 /* --- Pruh Školení a workshopy (kompaktní, fotka vpravo se šikmým řezem) --- */
 .ak-band { position: relative; isolation: isolate; overflow: hidden; background: var(--ak-navy-850); }
@@ -183,6 +218,7 @@
    Responzivita
    ========================================================================== */
 @media (max-width: 1180px) {
+  .ak-map__info { grid-column: 1 / 6; } .ak-map__frame { grid-column: 6 / 13; }
   .ak-about__text { grid-column: 1 / 7; } .ak-about__img { grid-column: 7 / 13; }
   .ak-refband__head { grid-column: 1 / -1; } .ak-refband__head .ak-lead { max-width: 560px; }
   .ak-refband__body { grid-column: 1 / -1; padding-left: 0; border-left: 0; }
@@ -199,6 +235,9 @@
   .ak-band p { flex: 1 1 260px; }
 }
 @media (max-width: 860px) {
+  .ak-map__info, .ak-map__frame { grid-column: 1 / -1; }
+  .ak-facts__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ak-story__row .ak-h3, .ak-story__text { grid-column: 1 / -1; }
   .ak-about__text, .ak-about__img { grid-column: 1 / -1; }
   .ak-refband__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ak-refband__quotes { grid-template-columns: minmax(0, 1fr); }

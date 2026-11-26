@@ -32,10 +32,17 @@ Podle konceptů `assets/concept/pro-jednotlivce-koncept-v1.webp`, `pro-firmy-kon
 - Záhlaví (kompaktní), čísla, Kdo jsme (text + fotka), Reference (tmavý pruh: 8 log klientů a obě skutečné citace z aktrinec.cz/reference), Případové studie (zástupné), Rychlý přehled (3 karty s ikonou), kontaktní lišta.
 - Případové studie budou samostatné stránky 3. vrstvy (jako profily lidí a články); karty se pak změní na odkazy.
 
+## Případové studie a reference
+
+- Karty případových studií (Pro firmy, O nás) vedou na stránky 3. vrstvy `site/pripadove-studie/<slug>/` (zdroj `tools/pages/pripadove-studie/`). Šablona: záhlaví se štítkem, klíčové údaje, Výchozí situace / Naše řešení / Výsledek, výzva, další studie. Texty jsou zástupné.
+- Samostatná stránka referencí nebude: tlačítko „Další reference“ (homepage, Pro jednotlivce, Pro firmy, O nás) rozbalí přímo na stránce seznam všech 24 klientů z aktrinec.cz/reference (`data-more`, „+ → ד).
+- Praha odstraněna (kancelář tam není).
+- O nás, „Kde nás najdete“: sídlo Husova 401 a pobočka, tlačítko Navigovat (Google Maps trasa) a mapa. Mapa Google se načte až po kliknutí na „Zobrazit mapu“ (do té doby náhled `2025-10-mapaak.jpg`), aby se bez souhlasu s cookies nic nenačítalo. Ve WordPressu lze napojit na souhlas Complianz.
+
 ## Otevřené (v kódu označeno `data-todo`)
 
 - Reference na stránce Pro jednotlivce a třetí reference na Pro firmy jsou ukázkové texty z konceptu, nahradit skutečnými.
 - Případové studie jsou ukázka z konceptu, nahradit skutečnými (se souhlasem klientů).
-- Kontaktní lišta: „Třinec, Praha, Krakov" ověřit.
+- Kontaktní lišta: „Třinec, Krakov" (Praha odstraněna, kancelář tam není); Krakov ověřit.
 - Karta „Česko / Polsko" vede zatím na oblasti na homepage, dokud nevznikne podstránka.
 - WordPress: nové sekce zatím nejsou jako Elementor widgety (`pages.css` se do tématu zatím nekopíruje).

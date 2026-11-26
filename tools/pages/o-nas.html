@@ -65,13 +65,15 @@
           <figcaption><b>Dagmar Šefčíková</b><span class="ak-mono">Likvidace společnosti v Polsku</span></figcaption>
         </figure>
       </div>
-      <a class="ak-btn ak-btn--secondary" href="https://aktrinec.cz/reference/"><span>Další reference</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></a>
+      <button type="button" class="ak-btn ak-btn--secondary" aria-expanded="false" aria-controls="ref-more" data-more><span>Další reference</span><i class="ak-arrow-box"><span class="ak-px__ico"></span></i></button>
+      <!-- Celý seznam klientů z aktrinec.cz/reference; samostatná stránka referencí nebude -->
+      <div class="ak-acc__panel ak-more" id="ref-more"><div><div class="ak-more__in"><p class="ak-mono">Spolupracujeme mimo jiné s</p><ul class="ak-more__list"><li>Třinecké železárny, a. s.</li><li>Slévárny Třinec, a.s.</li><li>Třinecký inženýring, a.s.</li><li>Strojírny a stavby Třinec, a.s.</li><li>REFRASIL, s.r.o.</li><li>ENERGETIKA TŘINEC, a.s.</li><li>TRISIA, a.s.</li><li>Klimaprodukt, a.s.</li><li>ITeuro, a.s.</li><li>ENVIFORM a.s.</li><li>statutární město Třinec</li><li>ENEZA, s.r.o.</li><li>SGM Třinec, spol. s r.o.</li><li>KOVONA SYSTEM, a.s.</li><li>JAP INDUSTRIES s.r.o.</li><li>Třinecké gastroslužby, s.r.o.</li><li>STEELTEC CZ, s.r.o.</li><li>Třinecká klimatizace, a.s.</li><li>Obec Vendryně</li><li>B.PRO CZ s.r.o.</li><li>JELMARK, s.r.o.</li><li>TŘINECKÁ PROJEKCE, a. s.</li><li>Distribuce tepla Třinec, a.s.</li><li>Media CZ, s.r.o.</li></ul></div></div></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ PŘÍPADOVÉ STUDIE
-     Zatím zástupný obsah. Každá studie bude samostatná stránka 3. vrstvy (jako profily lidí a články); karty pak budou odkazy. -->
+     Karty vedou na stránky studií (3. vrstva, tools/pages/pripadove-studie/). Texty studií jsou zatím zástupné. -->
 <section class="ak-cases ak-paper ak-section" aria-labelledby="cases-title">
   <div class="ak-wrap">
     <div class="ak-head ak-grid">
@@ -81,22 +83,24 @@
       </div>
     </div>
     <div class="ak-cases__list">
-      <article class="ak-case ak-card ak-reveal" style="--i:0" data-todo="Zástupná případová studie, nahradit odkazem na stránku studie">
+      <a class="ak-case ak-card ak-reveal" style="--i:0" href="../pripadove-studie/akvizice-polsko/">
         <div class="ak-case__img"><img src="../../assets/aktrinec/2024-11-stolek.jpg" alt="" loading="lazy"></div>
         <div class="ak-case__body">
           <span class="ak-mono">Akvizice</span>
           <h3>Úspěšná akvizice výrobní společnosti v&nbsp;Polsku</h3>
           <p>Komplexní právní podpora od due diligence po finální uzavření transakce.</p>
+          <span class="ak-case__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
         </div>
-      </article>
-      <article class="ak-case ak-card ak-reveal" style="--i:1" data-todo="Zástupná případová studie, nahradit odkazem na stránku studie">
+      </a>
+      <a class="ak-case ak-card ak-reveal" style="--i:1" href="../pripadove-studie/restrukturalizace-holdingu/">
         <div class="ak-case__img"><img src="../../assets/aktrinec/2024-11-bryle.jpg" alt="" loading="lazy"></div>
         <div class="ak-case__body">
           <span class="ak-mono">Restrukturalizace</span>
           <h3>Restrukturalizace skupiny a&nbsp;optimalizace holdingu</h3>
           <p>Nastavení efektivní struktury, snížení rizik a&nbsp;zajištění provozní stability.</p>
+          <span class="ak-case__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 </section>
@@ -128,6 +132,30 @@
   </div>
 </section>
 
+<!-- ============================================================ KDE NÁS NAJDETE (mapa se načte až po kliknutí: Google Maps bez souhlasu s cookies nenačítáme) -->
+<section class="ak-map ak-paper ak-section" aria-labelledby="mapa-title">
+  <div class="ak-wrap ak-grid ak-map__grid">
+    <div class="ak-map__info">
+      <h2 id="mapa-title" class="ak-h2 ak-mask">Kde nás najdete</h2>
+      <dl class="ak-map__addr">
+        <div><dt>Sídlo</dt><dd>Husova 401<br>739 61 Třinec</dd></div>
+        <div><dt>Pobočka</dt><dd>Průmyslová 1032<br>739 61 Třinec</dd></div>
+      </dl>
+      <div class="ak-map__actions">
+        <a class="ak-btn ak-btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Husova%20401%2C%20739%2061%20T%C5%99inec" target="_blank" rel="noopener"><span>Navigovat na Husova 401</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-arrow"/></svg></i></a>
+        <a class="ak-btn ak-btn--secondary" href="tel:+420558997103"><span>+420 558 997 103</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-phone"/></svg></i></a>
+      </div>
+    </div>
+    <div class="ak-map__frame ak-reveal" data-map data-map-src="https://www.google.com/maps?q=Husova%20401%2C%20739%2061%20T%C5%99inec&amp;z=16&amp;output=embed" data-map-title="Mapa: AKKSP advokátní kancelář, Husova 401, Třinec">
+      <img src="../../assets/aktrinec/2025-10-mapaak.jpg" alt="Náhled mapy: AKKSP advokátní kancelář v Třinci" loading="lazy" width="1229" height="901">
+      <div class="ak-map__load">
+        <button type="button" class="ak-btn ak-btn--primary" data-map-load><span>Zobrazit mapu</span><i class="ak-arrow-box"><svg class="ak-ico"><use href="#i-pin"/></svg></i></button>
+        <p>Mapa se načte ze služby Google Maps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================ KONTAKTNÍ LIŠTA -->
 <section class="ak-contact ak-dark" aria-label="Kontakt">
   <div class="ak-wrap">
@@ -135,7 +163,7 @@
       <h2 class="ak-contact__title">Kontaktujte nás</h2>
       <a href="tel:+420558997103"><svg class="ak-ico" aria-hidden="true"><use href="#i-phone"/></svg><span>+420 558 997 103</span></a>
       <a href="mailto:info@aktrinec.cz"><svg class="ak-ico" aria-hidden="true"><use href="#i-mail"/></svg><span>info@aktrinec.cz</span></a>
-      <div class="ak-contact__place" data-todo="Ověřit seznam míst (koncept: Třinec, Praha, Krakov)"><svg class="ak-ico" aria-hidden="true"><use href="#i-pin"/></svg>Třinec, Praha, Krakov</div>
+      <div class="ak-contact__place" data-todo="Ověřit Krakov"><svg class="ak-ico" aria-hidden="true"><use href="#i-pin"/></svg>Třinec, Krakov</div>
       <div class="ak-contact__cta"><a class="ak-btn ak-btn--primary ak-btn--sm" href="#kontakt" aria-controls="kontakt" data-contact-open><span>Kontaktovat nás</span><i class="ak-arrow-box"><svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></i></a></div>
     </div>
   </div>

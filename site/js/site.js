@@ -251,6 +251,34 @@
       });
     });
 
+    // „Další …" (např. Další reference): rozbalí panel přímo na stránce, „+ → ×"
+    root.querySelectorAll("[data-more]:not([data-ak-ready])").forEach((btn) => {
+      btn.dataset.akReady = "1";
+      const panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (!panel) return;
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(open));
+        panel.classList.toggle("is-open", open);
+      });
+    });
+
+    // Mapa: Google Maps se načte až po kliknutí (bez souhlasu s cookies se nic nenačítá)
+    root.querySelectorAll("[data-map]:not([data-ak-ready])").forEach((box) => {
+      box.dataset.akReady = "1";
+      const btn = box.querySelector("[data-map-load]");
+      if (!btn) return;
+      btn.addEventListener("click", () => {
+        const f = document.createElement("iframe");
+        f.src = box.dataset.mapSrc;
+        f.title = box.dataset.mapTitle || "Mapa";
+        f.loading = "lazy";
+        f.referrerPolicy = "no-referrer-when-downgrade";
+        f.setAttribute("allowfullscreen", "");
+        box.replaceChildren(f);
+      });
+    });
+
     // Odkrytí — jen jednou; v editoru vše hned viditelné
     const items = root.querySelectorAll(".ak-reveal:not(.is-in), .ak-mask:not(.is-in)");
     if (reduce || inEditor() || !("IntersectionObserver" in window)) {

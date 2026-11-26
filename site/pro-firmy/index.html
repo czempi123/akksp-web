@@ -16,9 +16,9 @@
   <link rel="preload" as="image" href="../../assets/aktrinec/2025-01-schody-3.jpg" fetchpriority="high">
   <link rel="stylesheet" href="../css/tokens.css?v=5">
   <link rel="stylesheet" href="../css/base.css?v=5">
-  <link rel="stylesheet" href="../css/components.css?v=5">
+  <link rel="stylesheet" href="../css/components.css?v=6">
   <link rel="stylesheet" href="../css/sections.css?v=5">
-  <link rel="stylesheet" href="../css/pages.css?v=3">
+  <link rel="stylesheet" href="../css/pages.css?v=6">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -140,7 +140,7 @@
       <h2 class="ak-contact__title">Kontaktujte nás</h2>
       <a href="tel:+420558997103"><svg class="ak-ico" aria-hidden="true"><use href="#i-phone"/></svg><span>+420 558 997 103</span></a>
       <a href="mailto:info@aktrinec.cz"><svg class="ak-ico" aria-hidden="true"><use href="#i-mail"/></svg><span>info@aktrinec.cz</span></a>
-      <div class="ak-contact__place" data-todo="Ověřit seznam míst (koncept: Třinec, Praha, Krakov)"><svg class="ak-ico" aria-hidden="true"><use href="#i-pin"/></svg>Třinec, Praha, Krakov</div>
+      <div class="ak-contact__place" data-todo="Ověřit Krakov"><svg class="ak-ico" aria-hidden="true"><use href="#i-pin"/></svg>Třinec, Krakov</div>
       <div class="ak-contact__cta"><a class="ak-btn ak-btn--primary ak-btn--sm" href="#kontakt" aria-controls="kontakt" data-contact-open><span>Kontaktovat nás</span><i class="ak-arrow-box"><svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></i></a></div>
     </div>
   </div>
@@ -177,7 +177,7 @@
   <div class="ak-wrap ak-grid ak-refs__grid">
     <div class="ak-refs__head">
       <h2 id="ref-title" class="ak-h2 ak-mask">Co říkají naši klienti</h2>
-      <a class="ak-link" href="https://aktrinec.cz/reference/">Všechny reference <svg class="ak-ico ak-ico--sm"><use href="#i-arrow"/></svg></a>
+      <button type="button" class="ak-btn ak-btn--secondary" aria-expanded="false" aria-controls="ref-more" data-more><span>Další reference</span><i class="ak-arrow-box"><span class="ak-px__ico"></span></i></button>
     </div>
     <div class="ak-refs__cards ak-refs__cards--3">
       <figure class="ak-ref ak-card ak-reveal" style="--i:0">
@@ -206,33 +206,37 @@
         <li><img src="../../assets/aktrinec/2024-12-logo_small-1.png" alt="Třinecká klimatizace"></li>
       </ul>
     </div>
+    <!-- Celý seznam klientů z aktrinec.cz/reference; samostatná stránka referencí nebude -->
+    <div class="ak-acc__panel ak-more" id="ref-more"><div><div class="ak-more__in"><p class="ak-mono">Spolupracujeme mimo jiné s</p><ul class="ak-more__list"><li>Třinecké železárny, a. s.</li><li>Slévárny Třinec, a.s.</li><li>Třinecký inženýring, a.s.</li><li>Strojírny a stavby Třinec, a.s.</li><li>REFRASIL, s.r.o.</li><li>ENERGETIKA TŘINEC, a.s.</li><li>TRISIA, a.s.</li><li>Klimaprodukt, a.s.</li><li>ITeuro, a.s.</li><li>ENVIFORM a.s.</li><li>statutární město Třinec</li><li>ENEZA, s.r.o.</li><li>SGM Třinec, spol. s r.o.</li><li>KOVONA SYSTEM, a.s.</li><li>JAP INDUSTRIES s.r.o.</li><li>Třinecké gastroslužby, s.r.o.</li><li>STEELTEC CZ, s.r.o.</li><li>Třinecká klimatizace, a.s.</li><li>Obec Vendryně</li><li>B.PRO CZ s.r.o.</li><li>JELMARK, s.r.o.</li><li>TŘINECKÁ PROJEKCE, a. s.</li><li>Distribuce tepla Třinec, a.s.</li><li>Media CZ, s.r.o.</li></ul></div></div></div>
   </div>
 </section>
 
 <!-- ============================================================ PŘÍPADOVÉ STUDIE
-     Obsah z konceptu (ukázka). Před spuštěním nahradit skutečnými případy se souhlasem klientů. -->
+     Karty vedou na stránky studií (3. vrstva, tools/pages/pripadove-studie/). Texty studií jsou zatím zástupné. -->
 <section class="ak-cases ak-paper ak-section" aria-labelledby="cases-title">
   <div class="ak-wrap">
     <div class="ak-head ak-grid">
       <div class="ak-head__title"><h2 id="cases-title" class="ak-h2 ak-mask">Případové studie</h2></div>
     </div>
     <div class="ak-cases__list">
-      <article class="ak-case ak-card ak-reveal" style="--i:0" data-todo="Ukázková případová studie z konceptu">
+      <a class="ak-case ak-card ak-reveal" style="--i:0" href="../pripadove-studie/akvizice-polsko/">
         <div class="ak-case__img"><img src="../../assets/aktrinec/2024-11-20241114_135120.jpg" alt="" loading="lazy"></div>
         <div class="ak-case__body">
           <span class="ak-mono">Akvizice</span>
           <h3>Úspěšná akvizice výrobní společnosti v&nbsp;Polsku</h3>
           <p>Komplexní právní podpora od due diligence po finální uzavření transakce.</p>
+          <span class="ak-case__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
         </div>
-      </article>
-      <article class="ak-case ak-card ak-reveal" style="--i:1" data-todo="Ukázková případová studie z konceptu">
+      </a>
+      <a class="ak-case ak-card ak-reveal" style="--i:1" href="../pripadove-studie/restrukturalizace-holdingu/">
         <div class="ak-case__img"><img src="../../assets/aktrinec/2024-11-bryle.jpg" alt="" loading="lazy"></div>
         <div class="ak-case__body">
           <span class="ak-mono">Restrukturalizace</span>
           <h3>Restrukturalizace skupiny a&nbsp;optimalizace holdingu</h3>
           <p>Nastavení efektivní struktury, snížení rizik a&nbsp;zajištění provozní stability.</p>
+          <span class="ak-case__go ak-arrow-box" aria-hidden="true"><svg class="ak-ico"><use href="#i-arrow"/></svg></span>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 </section>
@@ -367,6 +371,6 @@
   <p class="ak-cookie__links"><a href="https://aktrinec.cz/wp-content/uploads/2026/04/Informace_o_pouzivani_cookies_WEB_FINAL.pdf">Zásady používání cookies</a><a href="https://aktrinec.cz/wp-content/uploads/2025/03/Informace_o_zpracovani_osobnich_udaju_WEB.pdf">Ochrana osobních údajů</a></p>
 </section>
 
-<script src="../js/site.js?v=5" defer></script>
+<script src="../js/site.js?v=7" defer></script>
 </body>
 </html>

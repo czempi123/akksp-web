@@ -2,6 +2,7 @@
   "_note": "Pracovní polský překlad homepage (CZ -> PL). Nutná kontrola rodilým mluvčím. Páry se nahrazují v uvedeném pořadí. Generuje tools/make-lang.ps1.",
   "pairs": [
     ["href=\"pro-firmy/\"", "href=\"#oblasti\" data-todo=\"Podstránka zatím jen v češtině\""],
+    ["<p class=\"ak-mono\">Spolupracujeme mimo jiné s</p>", "<p class=\"ak-mono\">Współpracujemy m.in. z</p>"],
     ["href=\"o-nas/\"", "href=\"#proc\" data-todo=\"Podstránka zatím jen v češtině\""],
     ["href=\"pro-jednotlivce/\"", "href=\"#oblasti\" data-todo=\"Podstránka zatím jen v češtině\""],
     ["<html lang=\"cs\">", "<html lang=\"pl\">"],

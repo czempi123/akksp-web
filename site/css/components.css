@@ -205,3 +205,12 @@
 .ak-search .is-search-content, .ak-search__result p { margin-top: 4px; font-size: 14px; line-height: 1.5; color: var(--ak-ink-64); }
 .ak-search mark, .ak-search .is-highlight, .ak-search__result mark { background: var(--ak-sand); color: var(--ak-ink); padding: 0 2px; }
 .ak-search .is-show-more-results, .ak-search .is-ajax-search-no-result { padding: 16px 24px !important; font-family: var(--ak-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ak-ink) !important; background: var(--ak-cream) !important; text-align: left !important; }
+
+/* --- Rozbalení „Další …" (např. Další reference): tlačítko s „+ → ×" a panel pod ním --- */
+.ak-acc__panel.is-open { grid-template-rows: 1fr; }
+.ak-acc__panel.is-open > div > * { opacity: 1; transition-delay: 120ms; }
+.ak-btn[data-more] > i .ak-px__ico { width: 12px; height: 12px; }
+.ak-more__in { display: grid; gap: var(--ak-s-4); padding-top: var(--ak-s-6); }
+.ak-more__list { columns: 3 220px; column-gap: var(--ak-s-6); font-size: 15px; line-height: 1.4; color: var(--fg-2); }
+.ak-more__list li { display: flex; gap: 10px; align-items: baseline; break-inside: avoid; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.ak-more__list li::before { content: ""; flex: none; width: 6px; height: 6px; background: var(--ak-gold); transform: translateY(-2px); }
